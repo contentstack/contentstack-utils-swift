@@ -1,0 +1,712 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXAggregateTarget section */
+		"ContentstackUtils::ContentstackUtilsPackageTests::ProductTarget" /* ContentstackUtilsPackageTests */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = OBJ_31 /* Build configuration list for PBXAggregateTarget "ContentstackUtilsPackageTests" */;
+			buildPhases = (
+			);
+			dependencies = (
+				OBJ_34 /* PBXTargetDependency */,
+			);
+			name = ContentstackUtilsPackageTests;
+			productName = ContentstackUtilsPackageTests;
+		};
+/* End PBXAggregateTarget section */
+
+/* Begin PBXBuildFile section */
+		0F01BA4B25237725005A3EE0 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F01BA4A25237725005A3EE0 /* String+Extension.swift */; };
+		0F07E62F25244DB5003E0BD1 /* StringExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F07E62E25244DB5003E0BD1 /* StringExtensionTests.swift */; };
+		0F07E63425246BE8003E0BD1 /* EmbedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F07E63325246BE8003E0BD1 /* EmbedModel.swift */; };
+		0F5E48452525BECA0038C16B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F5E48442525BECA0038C16B /* Constants.swift */; };
+		0F5E48472525BEFC0038C16B /* ContentBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F5E48462525BEFC0038C16B /* ContentBlock.swift */; };
+		0F5E484C2525DB600038C16B /* TestClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F5E484B2525DB600038C16B /* TestClient.swift */; };
+		0F5E484E2525DDD70038C16B /* EntryEmbedded.json in Resources */ = {isa = PBXBuildFile; fileRef = 0F5E48482525D4880038C16B /* EntryEmbedded.json */; };
+		0F7142C425514A6F00C18A61 /* ContentstackUtilsArrayTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7142C325514A6F00C18A61 /* ContentstackUtilsArrayTest.swift */; };
+		0F7142C62551684600C18A61 /* ContentstackUtilsCustomRendertest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F7142C52551684600C18A61 /* ContentstackUtilsCustomRendertest.swift */; };
+		0FA3D57F2521F1D400E58179 /* Option.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA3D57E2521F1D400E58179 /* Option.swift */; };
+		0FA3D5842521F21300E58179 /* StyleType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA3D5822521F21300E58179 /* StyleType.swift */; };
+		0FA3D5852521F21300E58179 /* EntryEmbedded.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA3D5832521F21300E58179 /* EntryEmbedded.swift */; };
+		0FA3D58A252207B000E58179 /* DefaultRenderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA3D589252207B000E58179 /* DefaultRenderTests.swift */; };
+		0FA3D58D2522098000E58179 /* EmbededModelMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FA3D58C2522098000E58179 /* EmbededModelMock.swift */; };
+		0FEC0B1A254FE0B2008D4E66 /* libxmlHTMLNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FEC0B12254FE0B2008D4E66 /* libxmlHTMLNode.swift */; };
+		0FEC0B1B254FE0B2008D4E66 /* CSS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FEC0B13254FE0B2008D4E66 /* CSS.swift */; };
+		0FEC0B1C254FE0B2008D4E66 /* libxmlHTMLDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FEC0B14254FE0B2008D4E66 /* libxmlHTMLDocument.swift */; };
+		0FEC0B1D254FE0B2008D4E66 /* libxmlParserOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FEC0B15254FE0B2008D4E66 /* libxmlParserOption.swift */; };
+		0FEC0B1E254FE0B2008D4E66 /* Deprecated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FEC0B16254FE0B2008D4E66 /* Deprecated.swift */; };
+		0FEC0B1F254FE0B2008D4E66 /* Kanna.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FEC0B18254FE0B2008D4E66 /* Kanna.swift */; };
+		0FEC0B3B254FEC60008D4E66 /* MetadataTestTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FEC0B3A254FEC60008D4E66 /* MetadataTestTest.swift */; };
+		0FEC37B0254FFF6E00B1EFDD /* Metadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FEC37AF254FFF6E00B1EFDD /* Metadata.swift */; };
+		0FEC37B32550366500B1EFDD /* DefaultRenderMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FEC37B22550366500B1EFDD /* DefaultRenderMock.swift */; };
+		0FEC37B82550394F00B1EFDD /* EmbedItemType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FEC37B72550394E00B1EFDD /* EmbedItemType.swift */; };
+		0FEC37BA25503E5000B1EFDD /* CustomRenderOptionMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FEC37B925503E5000B1EFDD /* CustomRenderOptionMock.swift */; };
+		OBJ_22 /* ContentstackUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_9 /* ContentstackUtils.swift */; };
+		OBJ_29 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_6 /* Package.swift */; };
+		OBJ_40 /* ContentstackUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_12 /* ContentstackUtilsTests.swift */; };
+		OBJ_41 /* XCTestManifests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_13 /* XCTestManifests.swift */; };
+		OBJ_43 /* ContentstackUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = "ContentstackUtils::ContentstackUtils::Product" /* ContentstackUtils.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		0F1C60B2251B63BB0075BA87 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = OBJ_1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = "ContentstackUtils::ContentstackUtils";
+			remoteInfo = ContentstackUtils;
+		};
+		0F1C60B3251B63BC0075BA87 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = OBJ_1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = "ContentstackUtils::ContentstackUtilsTests";
+			remoteInfo = ContentstackUtilsTests;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0F01BA4A25237725005A3EE0 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		0F07E62E25244DB5003E0BD1 /* StringExtensionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensionTests.swift; sourceTree = "<group>"; };
+		0F07E63325246BE8003E0BD1 /* EmbedModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmbedModel.swift; sourceTree = "<group>"; };
+		0F5E48442525BECA0038C16B /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		0F5E48462525BEFC0038C16B /* ContentBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentBlock.swift; sourceTree = "<group>"; };
+		0F5E48482525D4880038C16B /* EntryEmbedded.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = EntryEmbedded.json; sourceTree = "<group>"; };
+		0F5E484B2525DB600038C16B /* TestClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestClient.swift; sourceTree = "<group>"; };
+		0F7142C325514A6F00C18A61 /* ContentstackUtilsArrayTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentstackUtilsArrayTest.swift; sourceTree = "<group>"; };
+		0F7142C52551684600C18A61 /* ContentstackUtilsCustomRendertest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentstackUtilsCustomRendertest.swift; sourceTree = "<group>"; };
+		0F7142C725517A4900C18A61 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		0FA3D57E2521F1D400E58179 /* Option.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Option.swift; sourceTree = "<group>"; };
+		0FA3D5822521F21300E58179 /* StyleType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StyleType.swift; sourceTree = "<group>"; };
+		0FA3D5832521F21300E58179 /* EntryEmbedded.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntryEmbedded.swift; sourceTree = "<group>"; };
+		0FA3D589252207B000E58179 /* DefaultRenderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultRenderTests.swift; sourceTree = "<group>"; };
+		0FA3D58C2522098000E58179 /* EmbededModelMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmbededModelMock.swift; sourceTree = "<group>"; };
+		0FA3D58F252228E300E58179 /* build.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = build.sh; sourceTree = "<group>"; };
+		0FA3D5902522290700E58179 /* run-test-case.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = "run-test-case.sh"; sourceTree = "<group>"; };
+		0FEC0B12254FE0B2008D4E66 /* libxmlHTMLNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = libxmlHTMLNode.swift; sourceTree = "<group>"; };
+		0FEC0B13254FE0B2008D4E66 /* CSS.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CSS.swift; sourceTree = "<group>"; };
+		0FEC0B14254FE0B2008D4E66 /* libxmlHTMLDocument.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = libxmlHTMLDocument.swift; sourceTree = "<group>"; };
+		0FEC0B15254FE0B2008D4E66 /* libxmlParserOption.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = libxmlParserOption.swift; sourceTree = "<group>"; };
+		0FEC0B16254FE0B2008D4E66 /* Deprecated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Deprecated.swift; sourceTree = "<group>"; };
+		0FEC0B18254FE0B2008D4E66 /* Kanna.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Kanna.swift; sourceTree = "<group>"; };
+		0FEC0B3A254FEC60008D4E66 /* MetadataTestTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetadataTestTest.swift; sourceTree = "<group>"; };
+		0FEC37AF254FFF6E00B1EFDD /* Metadata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Metadata.swift; sourceTree = "<group>"; };
+		0FEC37B22550366500B1EFDD /* DefaultRenderMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultRenderMock.swift; sourceTree = "<group>"; };
+		0FEC37B72550394E00B1EFDD /* EmbedItemType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmbedItemType.swift; sourceTree = "<group>"; };
+		0FEC37B925503E5000B1EFDD /* CustomRenderOptionMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomRenderOptionMock.swift; sourceTree = "<group>"; };
+		"ContentstackUtils::ContentstackUtils::Product" /* ContentstackUtils.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = ContentstackUtils.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		"ContentstackUtils::ContentstackUtilsTests::Product" /* ContentstackUtilsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; path = ContentstackUtilsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		OBJ_12 /* ContentstackUtilsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentstackUtilsTests.swift; sourceTree = "<group>"; };
+		OBJ_13 /* XCTestManifests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCTestManifests.swift; sourceTree = "<group>"; };
+		OBJ_6 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
+		OBJ_9 /* ContentstackUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentstackUtils.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		OBJ_23 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		OBJ_42 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 0;
+			files = (
+				OBJ_43 /* ContentstackUtils.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0F01BA49252376E5005A3EE0 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				0F01BA4A25237725005A3EE0 /* String+Extension.swift */,
+			);
+			name = Extensions;
+			sourceTree = "<group>";
+		};
+		0F07E6322524675E003E0BD1 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				0F07E63325246BE8003E0BD1 /* EmbedModel.swift */,
+				0FEC37AF254FFF6E00B1EFDD /* Metadata.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		0FA3D57D2521F1B100E58179 /* Options */ = {
+			isa = PBXGroup;
+			children = (
+				0FA3D57E2521F1D400E58179 /* Option.swift */,
+			);
+			name = Options;
+			sourceTree = "<group>";
+		};
+		0FA3D5862521F21C00E58179 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				0FA3D5832521F21300E58179 /* EntryEmbedded.swift */,
+			);
+			name = Protocols;
+			sourceTree = "<group>";
+		};
+		0FA3D58B252208B100E58179 /* Mock */ = {
+			isa = PBXGroup;
+			children = (
+				0FEC37B925503E5000B1EFDD /* CustomRenderOptionMock.swift */,
+				0FEC37B22550366500B1EFDD /* DefaultRenderMock.swift */,
+				0F5E48442525BECA0038C16B /* Constants.swift */,
+				0FA3D58C2522098000E58179 /* EmbededModelMock.swift */,
+				0F5E48462525BEFC0038C16B /* ContentBlock.swift */,
+				0F5E48482525D4880038C16B /* EntryEmbedded.json */,
+			);
+			name = Mock;
+			sourceTree = "<group>";
+		};
+		0FA3D58E252228E300E58179 /* Scripts */ = {
+			isa = PBXGroup;
+			children = (
+				0FA3D58F252228E300E58179 /* build.sh */,
+				0FA3D5902522290700E58179 /* run-test-case.sh */,
+			);
+			path = Scripts;
+			sourceTree = "<group>";
+		};
+		0FEC0B11254FE0B2008D4E66 /* Kanna */ = {
+			isa = PBXGroup;
+			children = (
+				0FEC0B12254FE0B2008D4E66 /* libxmlHTMLNode.swift */,
+				0FEC0B13254FE0B2008D4E66 /* CSS.swift */,
+				0FEC0B14254FE0B2008D4E66 /* libxmlHTMLDocument.swift */,
+				0FEC0B15254FE0B2008D4E66 /* libxmlParserOption.swift */,
+				0FEC0B16254FE0B2008D4E66 /* Deprecated.swift */,
+				0FEC0B18254FE0B2008D4E66 /* Kanna.swift */,
+			);
+			name = Kanna;
+			path = Sources/Kanna;
+			sourceTree = "<group>";
+		};
+		0FEC37B42550381C00B1EFDD /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				0FEC37B72550394E00B1EFDD /* EmbedItemType.swift */,
+				0FA3D5822521F21300E58179 /* StyleType.swift */,
+			);
+			name = Enums;
+			sourceTree = "<group>";
+		};
+		OBJ_10 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_11 /* ContentstackUtilsTests */,
+			);
+			name = Tests;
+			sourceTree = SOURCE_ROOT;
+		};
+		OBJ_11 /* ContentstackUtilsTests */ = {
+			isa = PBXGroup;
+			children = (
+				0FA3D58B252208B100E58179 /* Mock */,
+				OBJ_12 /* ContentstackUtilsTests.swift */,
+				OBJ_13 /* XCTestManifests.swift */,
+				0FA3D589252207B000E58179 /* DefaultRenderTests.swift */,
+				0F07E62E25244DB5003E0BD1 /* StringExtensionTests.swift */,
+				0F5E484B2525DB600038C16B /* TestClient.swift */,
+				0FEC0B3A254FEC60008D4E66 /* MetadataTestTest.swift */,
+				0F7142C325514A6F00C18A61 /* ContentstackUtilsArrayTest.swift */,
+				0F7142C52551684600C18A61 /* ContentstackUtilsCustomRendertest.swift */,
+			);
+			name = ContentstackUtilsTests;
+			path = Tests/ContentstackUtilsTests;
+			sourceTree = SOURCE_ROOT;
+		};
+		OBJ_14 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				"ContentstackUtils::ContentstackUtils::Product" /* ContentstackUtils.framework */,
+				"ContentstackUtils::ContentstackUtilsTests::Product" /* ContentstackUtilsTests.xctest */,
+			);
+			name = Products;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		OBJ_5 = {
+			isa = PBXGroup;
+			children = (
+				OBJ_6 /* Package.swift */,
+				0F7142C725517A4900C18A61 /* README.md */,
+				0FA3D58E252228E300E58179 /* Scripts */,
+				OBJ_7 /* Sources */,
+				OBJ_10 /* Tests */,
+				OBJ_14 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		OBJ_7 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				0FEC0B11254FE0B2008D4E66 /* Kanna */,
+				OBJ_8 /* ContentstackUtils */,
+			);
+			name = Sources;
+			sourceTree = SOURCE_ROOT;
+		};
+		OBJ_8 /* ContentstackUtils */ = {
+			isa = PBXGroup;
+			children = (
+				0FEC37B42550381C00B1EFDD /* Enums */,
+				0F07E6322524675E003E0BD1 /* Models */,
+				0F01BA49252376E5005A3EE0 /* Extensions */,
+				0FA3D5862521F21C00E58179 /* Protocols */,
+				0FA3D57D2521F1B100E58179 /* Options */,
+				OBJ_9 /* ContentstackUtils.swift */,
+			);
+			name = ContentstackUtils;
+			path = Sources/ContentstackUtils;
+			sourceTree = SOURCE_ROOT;
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		"ContentstackUtils::ContentstackUtils" /* ContentstackUtils */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = OBJ_18 /* Build configuration list for PBXNativeTarget "ContentstackUtils" */;
+			buildPhases = (
+				OBJ_21 /* Sources */,
+				OBJ_23 /* Frameworks */,
+				0F07E6352524BB67003E0BD1 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ContentstackUtils;
+			packageProductDependencies = (
+			);
+			productName = ContentstackUtils;
+			productReference = "ContentstackUtils::ContentstackUtils::Product" /* ContentstackUtils.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		"ContentstackUtils::ContentstackUtilsTests" /* ContentstackUtilsTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = OBJ_36 /* Build configuration list for PBXNativeTarget "ContentstackUtilsTests" */;
+			buildPhases = (
+				OBJ_39 /* Sources */,
+				OBJ_42 /* Frameworks */,
+				0F5E484D2525DDCF0038C16B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				OBJ_44 /* PBXTargetDependency */,
+			);
+			name = ContentstackUtilsTests;
+			productName = ContentstackUtilsTests;
+			productReference = "ContentstackUtils::ContentstackUtilsTests::Product" /* ContentstackUtilsTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		"ContentstackUtils::SwiftPMPackageDescription" /* ContentstackUtilsPackageDescription */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = OBJ_25 /* Build configuration list for PBXNativeTarget "ContentstackUtilsPackageDescription" */;
+			buildPhases = (
+				OBJ_28 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ContentstackUtilsPackageDescription;
+			productName = ContentstackUtilsPackageDescription;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		OBJ_1 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftMigration = 9999;
+				LastUpgradeCheck = 9999;
+			};
+			buildConfigurationList = OBJ_2 /* Build configuration list for PBXProject "ContentstackUtils" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = OBJ_5;
+			packageReferences = (
+			);
+			productRefGroup = OBJ_14 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				"ContentstackUtils::ContentstackUtils" /* ContentstackUtils */,
+				"ContentstackUtils::SwiftPMPackageDescription" /* ContentstackUtilsPackageDescription */,
+				"ContentstackUtils::ContentstackUtilsPackageTests::ProductTarget" /* ContentstackUtilsPackageTests */,
+				"ContentstackUtils::ContentstackUtilsTests" /* ContentstackUtilsTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		0F5E484D2525DDCF0038C16B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0F5E484E2525DDD70038C16B /* EntryEmbedded.json in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0F07E6352524BB67003E0BD1 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		OBJ_21 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 0;
+			files = (
+				0FEC37B0254FFF6E00B1EFDD /* Metadata.swift in Sources */,
+				0FEC0B1F254FE0B2008D4E66 /* Kanna.swift in Sources */,
+				0FEC37B82550394F00B1EFDD /* EmbedItemType.swift in Sources */,
+				0FEC0B1E254FE0B2008D4E66 /* Deprecated.swift in Sources */,
+				0FA3D5842521F21300E58179 /* StyleType.swift in Sources */,
+				0FA3D57F2521F1D400E58179 /* Option.swift in Sources */,
+				0FEC0B1A254FE0B2008D4E66 /* libxmlHTMLNode.swift in Sources */,
+				0FEC0B1C254FE0B2008D4E66 /* libxmlHTMLDocument.swift in Sources */,
+				0FA3D5852521F21300E58179 /* EntryEmbedded.swift in Sources */,
+				0FEC0B1B254FE0B2008D4E66 /* CSS.swift in Sources */,
+				0F01BA4B25237725005A3EE0 /* String+Extension.swift in Sources */,
+				0F07E63425246BE8003E0BD1 /* EmbedModel.swift in Sources */,
+				0FEC0B1D254FE0B2008D4E66 /* libxmlParserOption.swift in Sources */,
+				OBJ_22 /* ContentstackUtils.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		OBJ_28 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 0;
+			files = (
+				OBJ_29 /* Package.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		OBJ_39 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 0;
+			files = (
+				0F5E48472525BEFC0038C16B /* ContentBlock.swift in Sources */,
+				OBJ_40 /* ContentstackUtilsTests.swift in Sources */,
+				0F5E484C2525DB600038C16B /* TestClient.swift in Sources */,
+				0FEC37BA25503E5000B1EFDD /* CustomRenderOptionMock.swift in Sources */,
+				0FA3D58A252207B000E58179 /* DefaultRenderTests.swift in Sources */,
+				0FEC0B3B254FEC60008D4E66 /* MetadataTestTest.swift in Sources */,
+				0FA3D58D2522098000E58179 /* EmbededModelMock.swift in Sources */,
+				0F07E62F25244DB5003E0BD1 /* StringExtensionTests.swift in Sources */,
+				0F7142C425514A6F00C18A61 /* ContentstackUtilsArrayTest.swift in Sources */,
+				0FEC37B32550366500B1EFDD /* DefaultRenderMock.swift in Sources */,
+				OBJ_41 /* XCTestManifests.swift in Sources */,
+				0F7142C62551684600C18A61 /* ContentstackUtilsCustomRendertest.swift in Sources */,
+				0F5E48452525BECA0038C16B /* Constants.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		OBJ_34 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = "ContentstackUtils::ContentstackUtilsTests" /* ContentstackUtilsTests */;
+			targetProxy = 0F1C60B3251B63BC0075BA87 /* PBXContainerItemProxy */;
+		};
+		OBJ_44 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = "ContentstackUtils::ContentstackUtils" /* ContentstackUtils */;
+			targetProxy = 0F1C60B2251B63BB0075BA87 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		OBJ_19 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
+				);
+				HEADER_SEARCH_PATHS = "$(inherited)";
+				INFOPLIST_FILE = ContentstackUtils.xcodeproj/ContentstackUtils_Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) $(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				OTHER_CFLAGS = "$(inherited)";
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = ContentstackUtils;
+				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited)";
+				SWIFT_INCLUDE_PATHS = "$(SRCROOT)/Modules";
+				SWIFT_INSTALL_OBJC_HEADER = NO;
+				SWIFT_VERSION = 5.0;
+				TARGET_NAME = ContentstackUtils;
+				TVOS_DEPLOYMENT_TARGET = 9.0;
+				WATCHOS_DEPLOYMENT_TARGET = 2.0;
+			};
+			name = Debug;
+		};
+		OBJ_20 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
+				);
+				HEADER_SEARCH_PATHS = "$(inherited)";
+				INFOPLIST_FILE = ContentstackUtils.xcodeproj/ContentstackUtils_Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) $(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				OTHER_CFLAGS = "$(inherited)";
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = ContentstackUtils;
+				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited)";
+				SWIFT_INCLUDE_PATHS = "$(SRCROOT)/Modules";
+				SWIFT_INSTALL_OBJC_HEADER = NO;
+				SWIFT_VERSION = 5.0;
+				TARGET_NAME = ContentstackUtils;
+				TVOS_DEPLOYMENT_TARGET = 9.0;
+				WATCHOS_DEPLOYMENT_TARGET = 2.0;
+			};
+			name = Release;
+		};
+		OBJ_26 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				HEADER_SEARCH_PATHS = "$(SDKROOT)/usr/include/libxml2";
+				LD = /usr/bin/true;
+				OTHER_SWIFT_FLAGS = "-swift-version 5 -I $(TOOLCHAIN_DIR)/usr/lib/swift/pm/4_2 -target x86_64-apple-macosx10.10 -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk -package-description-version 5.1";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		OBJ_27 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				HEADER_SEARCH_PATHS = "$(SDKROOT)/usr/include/libxml2";
+				LD = /usr/bin/true;
+				OTHER_SWIFT_FLAGS = "-swift-version 5 -I $(TOOLCHAIN_DIR)/usr/lib/swift/pm/4_2 -target x86_64-apple-macosx10.10 -sdk /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk -package-description-version 5.1";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		OBJ_3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_NS_ASSERTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"SWIFT_PACKAGE=1",
+					"DEBUG=1",
+				);
+				HEADER_SEARCH_PATHS = "$(SDKROOT)/usr/include/libxml2";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "-lxml2";
+				OTHER_SWIFT_FLAGS = "$(inherited) -DXcode";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SUPPORTED_PLATFORMS = "macosx iphoneos iphonesimulator appletvos appletvsimulator watchos watchsimulator";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) SWIFT_PACKAGE DEBUG";
+				SWIFT_INCLUDE_PATHS = "$(SRCROOT)/Modules";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				USE_HEADERMAP = NO;
+			};
+			name = Debug;
+		};
+		OBJ_32 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Debug;
+		};
+		OBJ_33 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Release;
+		};
+		OBJ_37 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
+				);
+				HEADER_SEARCH_PATHS = "$(inherited)";
+				INFOPLIST_FILE = ContentstackUtils.xcodeproj/ContentstackUtilsTests_Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @loader_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				OTHER_CFLAGS = "$(inherited)";
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited)";
+				SWIFT_INSTALL_OBJC_HEADER = YES;
+				SWIFT_VERSION = 5.0;
+				TARGET_NAME = ContentstackUtilsTests;
+				TVOS_DEPLOYMENT_TARGET = 9.0;
+				WATCHOS_DEPLOYMENT_TARGET = 2.0;
+			};
+			name = Debug;
+		};
+		OBJ_38 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
+				);
+				HEADER_SEARCH_PATHS = "$(inherited)";
+				INFOPLIST_FILE = ContentstackUtils.xcodeproj/ContentstackUtilsTests_Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @loader_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				OTHER_CFLAGS = "$(inherited)";
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited)";
+				SWIFT_INSTALL_OBJC_HEADER = YES;
+				SWIFT_VERSION = 5.0;
+				TARGET_NAME = ContentstackUtilsTests;
+				TVOS_DEPLOYMENT_TARGET = 9.0;
+				WATCHOS_DEPLOYMENT_TARGET = 2.0;
+			};
+			name = Release;
+		};
+		OBJ_4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_OPTIMIZATION_LEVEL = s;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"SWIFT_PACKAGE=1",
+				);
+				HEADER_SEARCH_PATHS = "$(SDKROOT)/usr/include/libxml2";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				OTHER_LDFLAGS = "-lxml2";
+				OTHER_SWIFT_FLAGS = "$(inherited) -DXcode";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SUPPORTED_PLATFORMS = "macosx iphoneos iphonesimulator appletvos appletvsimulator watchos watchsimulator";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) SWIFT_PACKAGE";
+				SWIFT_INCLUDE_PATHS = "$(SRCROOT)/Modules";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				USE_HEADERMAP = NO;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		OBJ_18 /* Build configuration list for PBXNativeTarget "ContentstackUtils" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				OBJ_19 /* Debug */,
+				OBJ_20 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		OBJ_2 /* Build configuration list for PBXProject "ContentstackUtils" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				OBJ_3 /* Debug */,
+				OBJ_4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		OBJ_25 /* Build configuration list for PBXNativeTarget "ContentstackUtilsPackageDescription" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				OBJ_26 /* Debug */,
+				OBJ_27 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		OBJ_31 /* Build configuration list for PBXAggregateTarget "ContentstackUtilsPackageTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				OBJ_32 /* Debug */,
+				OBJ_33 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		OBJ_36 /* Build configuration list for PBXNativeTarget "ContentstackUtilsTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				OBJ_37 /* Debug */,
+				OBJ_38 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = OBJ_1 /* Project object */;
+}
