@@ -1,0 +1,8 @@
+excluded:
+    - Carthage
+    - Pods
+    - Tests/ContentstackUtilsTests/Constants.swift
+    - Sources/Kanna
+type_body_length:
+    - 600 # warning
+    - 900 # error

@@ -1,0 +1,7 @@
+
+coverage_service: cobertura_xml
+xcodeproj: ./ContentstackUtils.xcodeproj
+scheme: ContentstackUtils-Package
+ignore:
+  - "Tests/*"
+  - "Sources/Kanna/*"
