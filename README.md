@@ -57,16 +57,14 @@ Add the following to your Podfile:
 
 *Note: When a build error occurs, please try run the following command:*
 
-    ```bash
     // Linux(Ubuntu)
     $ sudo apt-get install pkg-config
-    ```
 
 #### Manual Installation
 1. Add Contentstack Utils file to your project:
-    [ContentstackUtils](Source/ContentstackUtils)  
+    [ContentstackUtils](Sources/ContentstackUtils)  
 1. Add Kanna files to your project:  
-      [Kanna](Source/Kanna)  
+      [Kanna](Sources/Kanna)  
       [Modules](Modules)
 1. In the target settings add `$(SDKROOT)/usr/include/libxml2` to the `Search Paths > Header Search Paths` field
 1. In the target settings add `$(SRCROOT)/Modules` to the `Swift Compiler - Search Paths > Import Paths` field
