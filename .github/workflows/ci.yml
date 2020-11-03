@@ -16,6 +16,6 @@ jobs:
       matrix:
         destination: ["OS=13.4,name=iPhone 11 Pro"]
     steps:
+      - uses: actions/checkout@v1
       - name: iOS - ${{ matrix.destination }}
-        run: xcodebuild -project "ContentstackUtils.xcodeproje" -scheme "ContentstackUtils-Package" -destination "${{ matrix.destination }}" test | xcpretty
-
+        run: xcodebuild -project "ContentstackUtils.xcodeproj" -scheme "ContentstackUtils-Package" -destination "${{ matrix.destination }}" test | xcpretty
