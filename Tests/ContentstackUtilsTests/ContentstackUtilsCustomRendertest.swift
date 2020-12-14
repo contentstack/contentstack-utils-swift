@@ -68,7 +68,7 @@ final class ContentstackUtilsCustomRendertest: XCTestCase {
             result = try ContentstackUtils
                 .render(content: kEntryBlock,
                         CustomRenderOption(entry:
-                            EmbeddedModel("", embedContentUID: "blt55f6d8cbd7e03a1f")))
+                            EmbeddedModel("", embedContentUID: "blt55f6d8cbd7e03a1f", embedContentTypeUID: "article")))
             XCTAssertEqual(result, kEntryBlockCustomResult)
         } catch {}
     }
@@ -81,7 +81,7 @@ final class ContentstackUtilsCustomRendertest: XCTestCase {
             result = try ContentstackUtils
                 .render(content: kEntryInline,
                         CustomRenderOption(entry:
-                            EmbeddedModel("", embedContentUID: "blt55f6d8cbd7e03a1f")))
+                            EmbeddedModel("", embedContentUID: "blt55f6d8cbd7e03a1f", embedContentTypeUID: "article")))
             XCTAssertEqual(result, kEntryInlineCustomeResult)
         } catch {}
     }
@@ -94,7 +94,7 @@ final class ContentstackUtilsCustomRendertest: XCTestCase {
             result = try ContentstackUtils
                 .render(content: kEntryLink,
                         CustomRenderOption(entry:
-                            EmbeddedModel("", embedContentUID: "blt55f6d8cbd7e03a1f")))
+                            EmbeddedModel("", embedContentUID: "blt55f6d8cbd7e03a1f", embedContentTypeUID: "article")))
             XCTAssertEqual(result, kEntryLinkCustomResult)
         } catch {}
     }
@@ -109,7 +109,7 @@ final class ContentstackUtilsCustomRendertest: XCTestCase {
 
 """)
             let embModel = EmbeddedModel("")
-            embModel.embeddedAssets = ["rte": [
+            embModel.embeddedItems = ["rte": [
                 EmbeddedAssetModel(uid: "blt8d49bb742bcf2c83"),
                 EmbeddedAssetModel(uid: "blt120a5a04d91c9466")]]
 
@@ -128,7 +128,7 @@ final class ContentstackUtilsCustomRendertest: XCTestCase {
             result = try ContentstackUtils
                 .render(content: "\(kEntryBlock)\(kEntryLink)",
                         CustomRenderOption(entry:
-                            EmbeddedModel("", embedContentUID: "blt55f6d8cbd7e03a1f")))
+                            EmbeddedModel("", embedContentUID: "blt55f6d8cbd7e03a1f", embedContentTypeUID: "article")))
             XCTAssertEqual(result, kEntryBlockLinkCustomResult)
         } catch {}
     }
@@ -142,7 +142,7 @@ final class ContentstackUtilsCustomRendertest: XCTestCase {
             result = try ContentstackUtils
                 .render(content: rte,
                         CustomRenderOption(entry:
-                            EmbeddedModel("", embedContentUID: "blt55f6d8cbd7e03a1f")))
+                            EmbeddedModel("", embedContentUID: "blt55f6d8cbd7e03a1f", embedContentTypeUID: "article")))
             XCTAssertEqual(result, kEntryBlockLinkInlineCustomResult)
         } catch {}
     }
@@ -166,7 +166,7 @@ final class ContentstackUtilsCustomRendertest: XCTestCase {
             result = try ContentstackUtils
                 .render(content: rte,
                         CustomRenderOption(entry:
-                            EmbeddedModel("", embedContentUID: "blt55f6d8cbd7e03a1f")))
+                            EmbeddedModel("", embedContentUID: "blt55f6d8cbd7e03a1f", embedContentTypeUID: "article")))
             XCTAssertEqual(result, kAllEmbedCustomeResult)
         } catch {}
     }
@@ -182,8 +182,8 @@ final class ContentstackUtilsCustomRendertest: XCTestCase {
                     .render(content: contentblock.richTextEditor,
                             CustomRenderOption(entry: contentblock))
                 XCTAssertEqual(result, kContentblockRichTextResult)
-            } catch {
-
+            } catch let error {
+                print(error.localizedDescription)
             }
         }
     }

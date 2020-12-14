@@ -43,7 +43,7 @@ class StringExtensionTests: XCTestCase {
     func testUnexpectedClose() {
         try? kUnexpectedClose.findEmbeddedObject { (model) in
             XCTAssertEqual(model.itemType, EmbedItemType.asset)
-            XCTAssertEqual(model.itemUid, "uid")
+            XCTAssertEqual(model.itemUid, "entryuid")
             XCTAssertEqual(model.contentTypeUid, "data-sys-content-type-uid")
             XCTAssertEqual(model.styleType, StyleType.inline)
             XCTAssertEqual(model.text, "\n")
@@ -53,7 +53,7 @@ class StringExtensionTests: XCTestCase {
     func testNoChildmodel() {
         try? kNoChildNode.findEmbeddedObject { (model) in
             XCTAssertEqual(model.itemType, EmbedItemType.asset)
-            XCTAssertEqual(model.itemUid, "uid")
+            XCTAssertEqual(model.itemUid, "entryuid")
             XCTAssertEqual(model.contentTypeUid, "data-sys-content-type-uid")
             XCTAssertEqual(model.styleType, StyleType.inline)
             XCTAssertEqual(model.text, "\n")
@@ -64,7 +64,7 @@ class StringExtensionTests: XCTestCase {
         try? kAssetDisplay.findEmbeddedObject { (model) in
             XCTAssertEqual(model.itemType, EmbedItemType.asset)
             XCTAssertEqual(model.itemUid, "blt55f6d8cbd7e03a1f")
-            XCTAssertEqual(model.contentTypeUid, "")
+            XCTAssertEqual(model.contentTypeUid, "sys_assets")
             XCTAssertEqual(model.styleType, StyleType.display)
             XCTAssertEqual(model.text, "\n")
         }
@@ -108,7 +108,7 @@ class StringExtensionTests: XCTestCase {
                 if model.itemUid == "blt8d49bb742bcf2c83" {
                     XCTAssertEqual(model.itemType, EmbedItemType.asset)
                     XCTAssertEqual(model.itemUid, "blt8d49bb742bcf2c83")
-                    XCTAssertEqual(model.contentTypeUid, "")
+                    XCTAssertEqual(model.contentTypeUid, "sys_assets")
                     XCTAssertEqual(model.styleType, StyleType.display)
                     XCTAssertEqual(model.text, "")
                     XCTAssertEqual(model.attributes["data-sys-asset-uid"] as? String, "blt8d49bb742bcf2c83")
@@ -189,7 +189,7 @@ class StringExtensionTests: XCTestCase {
             if model.styleType == StyleType.display {
                 XCTAssertEqual(model.itemType, EmbedItemType.asset)
                 XCTAssertEqual(model.itemUid, "blt55f6d8cbd7e03a1f")
-                XCTAssertEqual(model.contentTypeUid, "")
+                XCTAssertEqual(model.contentTypeUid, "sys_assets")
                 XCTAssertEqual(model.styleType, StyleType.display)
                 XCTAssertEqual(model.text, "\n")
             } else if model.styleType == StyleType.link {

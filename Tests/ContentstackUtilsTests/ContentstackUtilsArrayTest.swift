@@ -37,14 +37,14 @@ class ContentstackUtilsArrayTest: XCTestCase {
     func testUnexpectedClose() {
         do {
             let result = try ContentstackUtils.render(contents: [kUnexpectedClose], defaultRender)
-            XCTAssertEqual(result, ["<span>uid</span>"])
+            XCTAssertEqual(result, ["<span>entryuid</span>"])
         } catch {}
     }
 
     func testNoChildmodel() {
         do {
             let result = try ContentstackUtils.render(contents: [kNoChildNode], defaultRender)
-            XCTAssertEqual(result, ["<span>uid</span>"])
+            XCTAssertEqual(result, ["<span>entryuid</span>"])
         } catch {}
     }
 
@@ -70,7 +70,7 @@ class ContentstackUtilsArrayTest: XCTestCase {
             result = try ContentstackUtils
                 .render(contents: [kEntryBlock],
                         DefaultRender(entry:
-                            EmbeddedModel("", embedContentUID: "blt55f6d8cbd7e03a1f")))
+                            EmbeddedModel("", embedContentUID: "blt55f6d8cbd7e03a1f", embedContentTypeUID: "article")))
             XCTAssertEqual(result,
                            ["<div><p>blt55f6d8cbd7e03a1f</p><p>Content type: <span>contentTypeUid</span></p></div>"])
         } catch {}
@@ -84,7 +84,7 @@ class ContentstackUtilsArrayTest: XCTestCase {
             result = try ContentstackUtils
                 .render(contents: [kEntryInline],
                         DefaultRender(entry:
-                            EmbeddedModel("", embedContentUID: "blt55f6d8cbd7e03a1f")))
+                            EmbeddedModel("", embedContentUID: "blt55f6d8cbd7e03a1f", embedContentTypeUID: "article")))
             XCTAssertEqual(result,
                            ["<span>blt55f6d8cbd7e03a1f</span>"])
         } catch {}
@@ -98,7 +98,7 @@ class ContentstackUtilsArrayTest: XCTestCase {
             result = try ContentstackUtils
                 .render(contents: [kEntryLink],
                         DefaultRender(entry:
-                            EmbeddedModel("", embedContentUID: "blt55f6d8cbd7e03a1f")))
+                            EmbeddedModel("", embedContentUID: "blt55f6d8cbd7e03a1f", embedContentTypeUID: "article")))
             XCTAssertEqual(result,
                            ["""
 <a href="blt55f6d8cbd7e03a1f">
@@ -118,7 +118,7 @@ class ContentstackUtilsArrayTest: XCTestCase {
 
 """])
             let embModel = EmbeddedModel("")
-            embModel.embeddedAssets = ["rte": [
+            embModel.embeddedItems = ["rte": [
                 EmbeddedAssetModel(uid: "blt8d49bb742bcf2c83"),
                 EmbeddedAssetModel(uid: "blt120a5a04d91c9466")]]
 
@@ -142,7 +142,7 @@ class ContentstackUtilsArrayTest: XCTestCase {
             result = try ContentstackUtils
                 .render(contents: ["\(kEntryBlock)\(kEntryLink)"],
                         DefaultRender(entry:
-                            EmbeddedModel("", embedContentUID: "blt55f6d8cbd7e03a1f")))
+                            EmbeddedModel("", embedContentUID: "blt55f6d8cbd7e03a1f", embedContentTypeUID: "article")))
             XCTAssertEqual(result, ["""
 <div><p>blt55f6d8cbd7e03a1f</p><p>Content type: <span>contentTypeUid</span></p></div><a href="blt55f6d8cbd7e03a1f">
 {{title}}
@@ -160,7 +160,7 @@ class ContentstackUtilsArrayTest: XCTestCase {
             result = try ContentstackUtils
                 .render(contents: rte,
                         DefaultRender(entry:
-                            EmbeddedModel("", embedContentUID: "blt55f6d8cbd7e03a1f")))
+                            EmbeddedModel("", embedContentUID: "blt55f6d8cbd7e03a1f", embedContentTypeUID: "article")))
             XCTAssertEqual(result, ["""
 <div><p>blt55f6d8cbd7e03a1f</p><p>Content type: <span>contentTypeUid</span></p></div><a href="blt55f6d8cbd7e03a1f">
 {{title}}
@@ -188,7 +188,7 @@ class ContentstackUtilsArrayTest: XCTestCase {
             result = try ContentstackUtils
                 .render(contents: rte,
                         DefaultRender(entry:
-                            EmbeddedModel("", embedContentUID: "blt55f6d8cbd7e03a1f")))
+                            EmbeddedModel("", embedContentUID: "blt55f6d8cbd7e03a1f", embedContentTypeUID: "article")))
             XCTAssertEqual(result, ["""
 
 <div><p>blt55f6d8cbd7e03a1f</p><p>Content type: <span>contentTypeUid</span></p></div>
@@ -214,7 +214,7 @@ class ContentstackUtilsArrayTest: XCTestCase {
 """
 <div><p>blttitleUpdateUID</p><p>Content type: <span>embeddedrte</span></p></div>
 <p></p>
-<img src="/v3/assets/blturl/bltassetEmbuid/5f59f360d33e9a0a3571b707/svg-logo-text.png" alt="svg-logo-text.png" />
+
 """])
             } catch {
 

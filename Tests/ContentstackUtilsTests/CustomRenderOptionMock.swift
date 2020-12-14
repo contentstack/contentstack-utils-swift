@@ -14,7 +14,7 @@ class CustomRenderOption: Option {
         self.entry = entry
     }
 
-    func renderOptions(_ metadata: Metadata, embeddedObject: EmbeddedObject) -> String? {
+    func renderOptions(embeddedObject: EmbeddedObject, metadata: Metadata) -> String? {
         let attributeString = metadata.attributes.map { (key: AnyHashable, value: Any) -> String in
             if let stringKey = key as? String ,
                 let stringValue = value as? String {

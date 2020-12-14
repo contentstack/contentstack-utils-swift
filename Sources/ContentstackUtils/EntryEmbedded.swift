@@ -1,6 +1,7 @@
 public protocol EmbeddedObject: class {
 /// The `unique identifier` of the entity.
     var uid: String { get }
+    var contentTypeUID: String {get}
 }
 
 public protocol EmbeddedContentTypeUid: EmbeddedObject {
@@ -8,7 +9,7 @@ public protocol EmbeddedContentTypeUid: EmbeddedObject {
     static var contentTypeUid: String { get }
 }
 
-public protocol EmbeddedEntry: EmbeddedObject {
+public protocol EmbeddedEntry: EmbeddedContentTypeUid {
     var title: String { get }
 }
 
@@ -23,6 +24,5 @@ public protocol EmbeddedAsset: EmbeddedObject {
 }
 
 public protocol EntryEmbedable {
-    var embeddedEntries: [AnyHashable: [EmbeddedContentTypeUid]]? { get }
-    var embeddedAssets: [AnyHashable: [EmbeddedAsset]]? { get }
+    var embeddedItems: [AnyHashable: [EmbeddedObject]]? { get }
 }

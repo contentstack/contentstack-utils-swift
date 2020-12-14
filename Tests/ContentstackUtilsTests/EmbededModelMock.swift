@@ -11,17 +11,23 @@ import ContentstackUtils
 class EmbeddedModel: EntryEmbedable {
     var rte: String
 
-    init(_ rte: String, embedContentUID: String = "uid", embedAssetUID: String = "uid") {
+    init(_ rte: String,
+         embedContentUID: String = "entryuid",
+         embedContentTypeUID: String = "data-sys-content-type-uid", embedAssetUID: String = "assetuid") {
         self.rte = rte
-        self.embeddedEntries = ["rte": [EmbeddedContentTypeUidModel(uid: embedContentUID)]]
-        self.embeddedAssets = ["rte": [EmbeddedAssetModel(uid: embedAssetUID)]]
+        self.embeddedItems = [
+            "rte": [
+                EmbeddedContentTypeUidModel(uid: embedContentUID, contentTypeUID: embedContentTypeUID),
+                EmbeddedAssetModel(uid: embedAssetUID)
+            ]
+        ]
     }
 
-    var embeddedEntries: [AnyHashable: [EmbeddedContentTypeUid]]?
-    var embeddedAssets: [AnyHashable: [EmbeddedAsset]]?
+    var embeddedItems: [AnyHashable: [EmbeddedObject]]?
 }
 
 class Embedded: EmbeddedObject {
+    var contentTypeUID: String = "data-sys-content-type-uid"
     var uid: String
     init(uid: String = "uid") {
         self.uid = uid
@@ -54,10 +60,12 @@ class Embedded: EmbeddedObject {
 }
 
 class EmbeddedContentTypeUidModel: EmbeddedContentTypeUid {
+    var contentTypeUID: String = "data-sys-content-type-uid"
     static var contentTypeUid: String = "contentTypeUid"
     var uid: String
-    init(uid: String = "uid") {
+    init(uid: String = "uid", contentTypeUID: String) {
         self.uid = uid
+        self.contentTypeUID = contentTypeUID
     }
 
     func renderString(_ embedType: StyleType, text: String? = nil) -> String {
@@ -89,7 +97,8 @@ class EmbeddedContentTypeUidModel: EmbeddedContentTypeUid {
     }
 }
 
-class EmbeddedEntryModel: EmbeddedContentTypeUid, EmbeddedEntry {
+class EmbeddedEntryModel: EmbeddedEntry {
+    var contentTypeUID: String = "data-sys-content-type-uid"
     static var contentTypeUid: String = "contentTypeUid"
     var title: String = "title"
     var uid: String
@@ -100,7 +109,7 @@ class EmbeddedEntryModel: EmbeddedContentTypeUid, EmbeddedEntry {
     func renderString(_ embedType: StyleType, text: String? = nil) -> String {
         switch embedType {
         case .block:
-            return "<div><p>\(self.uid)</p><p>Content type: <span>\(self.title)</span></p></div>"
+            return "<div><p>\(self.title)</p><p>Content type: <span>\(type(of: self).contentTypeUid)</span></p></div>"
         case .inline:
             return "<span>\(self.title)</span>"
         case .link:
@@ -126,6 +135,7 @@ class EmbeddedEntryModel: EmbeddedContentTypeUid, EmbeddedEntry {
 }
 
 class EmbeddedAssetModel: EmbeddedAsset {
+    var contentTypeUID: String = "sys_assets"
     var title: String = "title"
     var filename: String = "filename"
     var url: String = "url"

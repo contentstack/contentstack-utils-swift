@@ -12,16 +12,16 @@ let kNoHTML = "non html string"
 let kSimpleHTML = "<h1>Hello</h1> World"
 
 let kUnexpectedClose = """
-<figur2 class="embedded-asset" type="asset" data-sys-entry-uid="uid" data-sys-content-type-uid="data-sys-content-type-uid" style="display:inline;" sys-style-type="inline">
+<figur2 class="embedded-asset" type="asset" data-sys-entry-uid="entryuid" data-sys-content-type-uid="data-sys-content-type-uid" style="display:inline;" sys-style-type="inline">
 </figure>
 """
 let kNoChildNode = """
-<figure class="embedded-asset" type="asset" data-sys-entry-uid="uid" data-sys-content-type-uid="data-sys-content-type-uid" style="display:inline;" sys-style-type="inline">
+<figure class="embedded-asset" type="asset" data-sys-entry-uid="entryuid" data-sys-content-type-uid="data-sys-content-type-uid" style="display:inline;" sys-style-type="inline">
 </figure>
 """
 
 let kAssetDisplay = """
-<figure class="embedded-asset" type="asset" data-sys-asset-uid="blt55f6d8cbd7e03a1f" style="display:inline;" sys-style-type="display">
+<figure class="embedded-asset" type="asset" data-sys-asset-uid="blt55f6d8cbd7e03a1f" style="display:inline;" sys-style-type="display" data-sys-content-type-uid="sys_assets">
 <img src="{{url}}" data-sys-asset-uid="{{uid}}" alt="{{object.title}}"></figure>
 """
 let kEntryBlock = """
@@ -42,10 +42,10 @@ let kEntryLink = """
 """
 
 let kAssetEmbed = """
-<figure class="embedded-asset" data-sys-asset-filelink="https://images.contentstack.com/v3/assets/blt77263d300aee3e6b/blt8d49bb742bcf2c83/5f744bfcb3d3d20813386c10/clitud.jpeg" data-sys-asset-uid="blt8d49bb742bcf2c83" data-sys-asset-filename="Cuvier-67_Autruche_d_Afrique.jpg" data-sys-asset-contenttype="image/jpeg" data-sys-asset-alt="Cuvier-67_Autruche_d_Afrique.jpg" data-sys-asset-caption="somecaption" data-sys-asset-link="http://abc.com" data-sys-asset-position="center" data-sys-asset-isnewtab="true" type="asset" sys-style-type="display"></figure>
+<figure class="embedded-asset" data-sys-asset-filelink="https://images.contentstack.com/v3/assets/blt77263d300aee3e6b/blt8d49bb742bcf2c83/5f744bfcb3d3d20813386c10/clitud.jpeg" data-sys-content-type-uid="sys_assets" data-sys-asset-uid="blt8d49bb742bcf2c83" data-sys-asset-filename="Cuvier-67_Autruche_d_Afrique.jpg" data-sys-asset-contenttype="image/jpeg" data-sys-asset-alt="Cuvier-67_Autruche_d_Afrique.jpg" data-sys-asset-caption="somecaption" data-sys-asset-link="http://abc.com" data-sys-asset-position="center" data-sys-asset-isnewtab="true" type="asset" sys-style-type="display"></figure>
 <p></p>
 <p></p>
-<figure class="embedded-asset" data-redactor-type="embed" data-widget-code="" data-sys-asset-filelink="https://images.contentstack.com/v3/assets/blt77263d300aee3e6b/blt120a5a04d91c9466/5ebb86965a68ad069038b729/iphone-mockup.png" data-sys-asset-uid="blt120a5a04d91c9466" data-sys-asset-filename="iphone-mockup.png" data-sys-asset-contenttype="image/png" type="asset" sys-style-type="display"></figure>
+<figure class="embedded-asset" data-redactor-type="embed" data-widget-code="" data-sys-content-type-uid="sys_assets" data-sys-asset-filelink="https://images.contentstack.com/v3/assets/blt77263d300aee3e6b/blt120a5a04d91c9466/5ebb86965a68ad069038b729/iphone-mockup.png" data-sys-asset-uid="blt120a5a04d91c9466" data-sys-asset-filename="iphone-mockup.png" data-sys-asset-contenttype="image/png" type="asset" sys-style-type="display"></figure>
 """
 
 let kEntryEmbed = """
@@ -62,12 +62,11 @@ let kAllEmbeddEntry = """
 
 
 let kUnexpectedResult = """
-<span class="embedded-asset" data-sys-content-type-uid="data-sys-content-type-uid" data-sys-entry-uid="uid" style="display:inline;" sys-style-type="inline" type="asset"><b>title</b> 
-</span>
+<span class=\"embedded-asset\" data-sys-content-type-uid=\"data-sys-content-type-uid\" data-sys-entry-uid=\"entryuid\" style=\"display:inline;\" sys-style-type=\"inline\" type=\"asset\"><b>entryuid</b></span>
 """
 
 let kAssetDisplayCustomResult = """
-<b>title</b><p>filename image: <img class="embedded-asset" data-sys-asset-uid="blt55f6d8cbd7e03a1f" style="display:inline;" sys-style-type="display" type="asset" /></p>
+<b>title</b><p>filename image: <img class="embedded-asset" data-sys-asset-uid="blt55f6d8cbd7e03a1f" data-sys-content-type-uid="sys_assets" style="display:inline;" sys-style-type="display" type="asset" /></p>
 """
 
 let kEntryBlockCustomResult = """
@@ -85,10 +84,10 @@ let kEntryLinkCustomResult = """
 """
 
 let kAssetdisplayCustomResult = """
-<b>title</b><p>filename image: <img class="embedded-asset" data-sys-asset-alt="Cuvier-67_Autruche_d_Afrique.jpg" data-sys-asset-caption="somecaption" data-sys-asset-contenttype="image/jpeg" data-sys-asset-filelink="https://images.contentstack.com/v3/assets/blt77263d300aee3e6b/blt8d49bb742bcf2c83/5f744bfcb3d3d20813386c10/clitud.jpeg" data-sys-asset-filename="Cuvier-67_Autruche_d_Afrique.jpg" data-sys-asset-isnewtab="true" data-sys-asset-link="http://abc.com" data-sys-asset-position="center" data-sys-asset-uid="blt8d49bb742bcf2c83" sys-style-type="display" type="asset" /></p>
+<b>title</b><p>filename image: <img class="embedded-asset" data-sys-asset-alt="Cuvier-67_Autruche_d_Afrique.jpg" data-sys-asset-caption="somecaption" data-sys-asset-contenttype="image/jpeg" data-sys-asset-filelink="https://images.contentstack.com/v3/assets/blt77263d300aee3e6b/blt8d49bb742bcf2c83/5f744bfcb3d3d20813386c10/clitud.jpeg" data-sys-asset-filename="Cuvier-67_Autruche_d_Afrique.jpg" data-sys-asset-isnewtab="true" data-sys-asset-link="http://abc.com" data-sys-asset-position="center" data-sys-asset-uid="blt8d49bb742bcf2c83" data-sys-content-type-uid="sys_assets" sys-style-type="display" type="asset" /></p>
 <p></p>
 <p></p>
-<b>title</b><p>filename image: <img class="embedded-asset" data-redactor-type="embed" data-sys-asset-contenttype="image/png" data-sys-asset-filelink="https://images.contentstack.com/v3/assets/blt77263d300aee3e6b/blt120a5a04d91c9466/5ebb86965a68ad069038b729/iphone-mockup.png" data-sys-asset-filename="iphone-mockup.png" data-sys-asset-uid="blt120a5a04d91c9466" data-widget-code="" sys-style-type="display" type="asset" /></p>
+<b>title</b><p>filename image: <img class="embedded-asset" data-redactor-type="embed" data-sys-asset-contenttype="image/png" data-sys-asset-filelink="https://images.contentstack.com/v3/assets/blt77263d300aee3e6b/blt120a5a04d91c9466/5ebb86965a68ad069038b729/iphone-mockup.png" data-sys-asset-filename="iphone-mockup.png" data-sys-asset-uid="blt120a5a04d91c9466" data-sys-content-type-uid="sys_assets" data-widget-code="" sys-style-type="display" type="asset" /></p>
 """
 
 let kEntryBlockLinkCustomResult = """
@@ -125,5 +124,5 @@ let kContentblockRichTextResult = """
 <figure class="embedded-asset" data-sys-asset-filelink="https://contentstack.image/v3/assets/blturl/bltassetUID/5f4dee15f4b7a40acfb622dc/DIABETICDIET-800x600.jpg" data-sys-asset-uid="bltassetUID" data-sys-asset-filename="DIABETICDIET-800x600.jpg" data-sys-asset-contenttype="image/jpeg" type="asset" sys-style-type="display"></figure>
 </div>
 <p></p>
-<b>svg-logo-text.png</b><p>svg-logo-text.png image: <img class="embedded-asset" data-sys-asset-contenttype="image/png" data-sys-asset-filelink="https://contentstack.image/v3/assets/blturl/bltassetEmbuid/5f57ae45c83b840a87d92910/html5.png" data-sys-asset-filename="svg-logo-text.png" data-sys-asset-uid="bltassetEmbuid" sys-style-type="display" type="asset" /></p>
+
 """

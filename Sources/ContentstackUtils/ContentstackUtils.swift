@@ -11,7 +11,9 @@ struct ContentstackUtils {
                     if let outerHTML = model.outerHTML {
                         var replaceString = ""
                         if let embeddedObject = findObject(model, entry: option.entry) {
-                            if let string = option.renderOptions(model, embeddedObject: embeddedObject) {
+                            if let string = option.renderOptions(
+                                embeddedObject: embeddedObject,
+                                metadata: model) {
                                 replaceString = string
                             }
                         }
@@ -38,28 +40,13 @@ struct ContentstackUtils {
     }
 
     static private func findObject(_ model: Metadata, entry: EntryEmbedable) -> EmbeddedObject? {
-        switch model.itemType {
-        case .asset:
-            if let assets = entry.embeddedAssets, let uid = model.itemUid {
-                for (_, value) in assets {
-                    let embedModel = value.filter { (asset: EmbeddedAsset) -> Bool in
-                        return asset.uid == uid
-                    }
-                    if !embedModel.isEmpty {
-                        return embedModel.first
-                    }
+        if let items = entry.embeddedItems, let uid = model.itemUid, let contentTypeUID = model.contentTypeUid {
+            for (_, value) in items {
+                let embedModel = value.filter { (item: EmbeddedObject) -> Bool in
+                    return item.uid == uid && item.contentTypeUID == contentTypeUID
                 }
-            }
-        case .entry:
-            if let entries = entry.embeddedEntries,
-                let uid = model.itemUid {
-                for (_, value) in entries {
-                    let embedModel = value.filter { (entry: EmbeddedContentTypeUid) -> Bool in
-                        return entry.uid == uid
-                    }
-                    if !embedModel.isEmpty {
-                        return embedModel.first
-                    }
+                if !embedModel.isEmpty {
+                    return embedModel.first
                 }
             }
         }

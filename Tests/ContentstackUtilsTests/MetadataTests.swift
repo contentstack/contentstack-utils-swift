@@ -7,7 +7,7 @@
 
 import XCTest
 @testable import ContentstackUtils
-class MetadataTest: XCTestCase {
+class MetadataTests: XCTestCase {
 
     func testBlankAttributes() {
         let html = "<h1>TEST</h1>"
