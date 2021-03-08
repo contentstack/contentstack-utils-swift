@@ -36,14 +36,14 @@ xcodebuild \
     -project ContentstackUtils.xcodeproj \
     -scheme "ContentstackUtils-Package" \
     test \
-    -destination "id=18C1CD7D-CD1F-4EBC-A172-41B823B2168B" \
+    -destination "OS=14.1,name=iPhone 11" \
     -resultBundlePath "$TEST_BUNDLE_PATH/$FILE_NAME-iOS.xcresult" \
         | xcpretty \
             --color \
             --report html \
-            --output "$TEST_RESULT_PATH/$FILE_NAME/test-result-iOS.html"
+            --output "$TEST_RESULT_PATH/$FILE_NAME-test-result-iOS.html"
 
-slather coverage --html --output-directory "$TEST_COVERAGE_PATH/$FILE_NAME/iOS"
+slather coverage --html --output-directory "$TEST_COVERAGE_PATH/$FILE_NAME-iOS"
 
 # Run Contentstack-tvOS Test case
 echo "Running Test cases on tvOS..."
@@ -57,9 +57,9 @@ xcodebuild \
         | xcpretty \
             --color \
             --report html \
-            --output  "$TEST_RESULT_PATH/$FILE_NAME/test-result-tvOS.html"
+            --output  "$TEST_RESULT_PATH/$FILE_NAME-test-result-tvOS.html"
 
-slather coverage --html  --output-directory "$TEST_COVERAGE_PATH/$FILE_NAME/tvOS"
+slather coverage --html  --output-directory "$TEST_COVERAGE_PATH/$FILE_NAME-tvOS"
 
 
 # Run Contentstack-macOS Test case
@@ -74,7 +74,7 @@ xcodebuild \
         | xcpretty \
             --color \
             --report html \
-            --output "$TEST_RESULT_PATH/$FILE_NAME/test-result-macOS.html"
+            --output "$TEST_RESULT_PATH/$FILE_NAME-test-result-macOS.html"
 
-slather coverage --html  --output-directory "$TEST_COVERAGE_PATH/$FILE_NAME/macOS"
+slather coverage --html  --output-directory "$TEST_COVERAGE_PATH/$FILE_NAME-macOS"
 
