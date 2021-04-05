@@ -69,5 +69,103 @@ Add the following to your Podfile:
 1. In the target settings add `$(SDKROOT)/usr/include/libxml2` to the `Search Paths > Header Search Paths` field
 1. In the target settings add `$(SRCROOT)/Modules` to the `Swift Compiler - Search Paths > Import Paths` field
 
+> Note: If you are using Contentstack Swift SDK in your project, the ContentstackUtils file is already imported.
 
+## Usage
 
+Let’s learn how you can use Utils SDK to render embedded items.
+
+### Create Render Option
+
+To render embedded items on the front-end, create a class implementing Option protocol,  and define the UI elements you want to show in the front-end of your website, as shown in the example below:
+```swift
+import Foundation  
+import ContentstackUtils  
+class  CustomRenderOption: Option {  
+var entry: EntryEmbedable  
+  
+init(entry: EntryEmbedable) {  
+    self.entry = entry  
+}  
+  
+func  renderOptions(embeddedObject: EmbeddedObject, metadata: Metadata) -> String? {  
+    var result = ""  
+    switch metadata.styleType {  
+        case .block:  
+            if metadata.contentTypeUid == 'product' {  
+                result = """  
+                    <div>  
+                    <h2 >\(embeddedObject.title)</h2>  
+                    <img src=\(embeddedObject.product_image.url) alt=\(embeddedObject.product_image.title)/>  
+                    <p>\(embeddedObject.price)</p>  
+                    </div>  
+                """  
+            }else {  
+                result = """  
+                    <div>  
+                    <h2>\(entry.title)</h2>  
+                    <p>\(entry.description)</p>  
+                    </div>  
+                """              
+            }  
+        case .inline:  
+            result = "<span><b>\(embeddedObject.title)</b> - \(embeddedObject.description)</span>"  
+        case .link:  
+            result = "<a href=\(metadata.attributes.href)>\(metadata.text)</a>"  
+        case .display:  
+            result = "<img src=\(metadata.attributes.src) alt=\(metadata.alt) />"  
+        case .download:  
+            result = "<a href=\(metadata.attributes.href)>\(metadata.text)</a>"  
+        }  
+        return result  
+    }  
+}
+```
+
+## Basic Queries
+Contentstack Utils SDK lets you interact with the Content Delivery APIs and retrieve embedded items from the RTE field of an entry.
+
+### Fetch Embedded Item(s) from a Single Entry
+
+To get an embedded items of a single entry, you need to provide the stack API key, environment name, delivery token, content type and entry UID. Then, use the Contentstack.Utils.render functions as shown below:
+```
+import ContentstackSwift  
+
+let stack:Stack = Contentstack.stack(apiKey: API_KEY, deliveryToken: DELIVERY_TOKEN, environment: ENVIRONMENT)  
+
+stack.contentType(uid: contentTypeUID)
+     .entry(uid: entryUID)
+     .include(.embeddedItems)  
+     .fetch { (result: Result<EntryModel, Error>, response: ResponseType) in  
+        switch result {  
+            case .success(let model):
+                Contentstack.Utils.render(content: model.richTextContent, DefaultRender(entry: model))  
+            case .failure(let error):  
+                //Error Message  
+        }  
+    }
+```
+### Fetch Embedded Item(s) from Multiple Entries
+To get embedded items from multiple entries, you need to provide the stack API key, environment name, delivery token, and content type UID. Then, use the Contentstack.Utils.render functions as shown below:
+```
+import ContentstackSwift  
+
+let stack = Contentstack.stack(apiKey: apiKey,  
+deliveryToken: deliveryToken,  
+environment: environment)  
+  
+stack.contentType(uid: contentTypeUID)
+     .entry()
+     .query()
+     .include(.embeddedItems)
+     .find { (result: Result<ContentstackResponse<EntryModel>, Error>, response: ResponseType) in  
+        switch result {  
+            case .success(let contentstackResponse):  
+                for item in contentstackResponse.items {  
+                    Contentstack.Utils.render(content: item.richTextContent, CustomRenderOption(entry: item))  
+                }  
+            case .failure(let error):  
+                //Error Message  
+        }  
+    }
+```
