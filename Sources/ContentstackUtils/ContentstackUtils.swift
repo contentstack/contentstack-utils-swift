@@ -1,6 +1,6 @@
-struct ContentstackUtils {
+public struct ContentstackUtils {
 
-    static func render(content: String, _ option: Option) throws -> String {
+    public static func render(content: String, _ option: Option) throws -> String {
         do {
             let appendContent = content.appendFrame()
             var resultContent = try HTML(html: appendContent, encoding: .utf8)
@@ -26,7 +26,7 @@ struct ContentstackUtils {
         }
     }
 
-    static func render(contents: [String], _ options: Option) throws -> [String] {
+    public static func render(contents: [String], _ options: Option) throws -> [String] {
         do {
             var resultContents: [String] = []
             try contents.forEach { (content) in

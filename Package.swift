@@ -36,7 +36,7 @@ let package = Package(
     products: [
         .library(
             name: "ContentstackUtils",
-            targets: ["ContentstackUtils"])
+            targets: ["Utils"])
     ],
     dependencies: [
         // lib dependency
@@ -52,7 +52,7 @@ let package = Package(
             providers: provider
         ),
         .target(
-            name: "ContentstackUtils",
+            name: "Utils",
             dependencies: dependencies,
             path: "Sources",
             exclude: [
@@ -61,10 +61,8 @@ let package = Package(
                 "Tests/KannaTests/Data"
             ]
         ),
-        .target(
-            name: "ContentstackUtils"),
         .testTarget(
             name: "ContentstackUtilsTests",
-            dependencies: ["ContentstackUtils"])
+            dependencies: ["Utils"])
     ]
 )
