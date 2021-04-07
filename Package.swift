@@ -26,24 +26,23 @@ let provider: [SystemPackageProvider] = [
     .brew(["libxml2"])
 ]
 #endif
-
 let package = Package(
     name: "ContentstackUtils",
     platforms: [.macOS(.v10_12),
                 .iOS(.v10),
                 .tvOS(.v10),
                 .watchOS(.v3)],
+
     products: [
+        // Products define the executables and libraries a package produces, and make them visible to other packages.
         .library(
             name: "ContentstackUtils",
-            targets: ["Utils"])
+            targets: ["ContentstackUtils"]),
     ],
     dependencies: [
-        // lib dependency
-
-        // dev dependency
+        // Dependencies declare other packages that this package depends on.
+        // .package(url: /* package url */, from: "1.0.0"),
     ],
-
     targets: [
         .systemLibrary(
             name: "libxml2",
@@ -52,17 +51,18 @@ let package = Package(
             providers: provider
         ),
         .target(
-            name: "Utils",
+            name: "ContentstackUtils",
             dependencies: dependencies,
             path: "Sources",
             exclude: [
                 "Sources/Kanna/Info.plist",
                 "Sources/Kanna/Kanna.h",
                 "Tests/KannaTests/Data"
-            ]
-        ),
+            ]),
         .testTarget(
             name: "ContentstackUtilsTests",
-            dependencies: ["Utils"])
-    ]
+            dependencies: ["ContentstackUtils"]),
+        
+    ],
+    swiftLanguageVersions: [.v5]
 )
