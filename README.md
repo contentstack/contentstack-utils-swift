@@ -18,7 +18,7 @@ To use this SDK on iOS platform, you will have to install the SDK according to t
 Add the following to your Podfile:
 
     use_frameworks!
-    pod 'ContentstackUtils', '~> 1.1.0'
+    pod 'ContentstackUtils', '~> 1.1.1'
     
 #### Swift Package Manager
 1. Installing libxml2 to your computer:
@@ -41,7 +41,7 @@ Add the following to your Podfile:
     let package = Package(
         name: "YourProject",
         dependencies: [
-            .package(url: "https://github.com/tid-kijyun/ContentstackUtils.git", from: "1.1.0"),
+            .package(url: "https://github.com/tid-kijyun/ContentstackUtils.git", from: "1.1.1"),
         ],
         targets: [
             .target(

@@ -52,7 +52,7 @@ xcodebuild \
     -project ContentstackUtils.xcodeproj \
     -scheme "ContentstackUtils-Package" \
     test \
-    -destination "OS=13.0,name=Apple TV 4K" \
+    -destination "OS=14.0,name=Apple TV 4K" \
     -resultBundlePath "$TEST_BUNDLE_PATH/$FILE_NAME-tvOS.xcresult" \
         | xcpretty \
             --color \
