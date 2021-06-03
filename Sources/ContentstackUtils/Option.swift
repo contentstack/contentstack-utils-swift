@@ -1,5 +1,7 @@
 public protocol Renderable {
     func renderOptions(embeddedObject: EmbeddedObject, metadata: Metadata) -> String?
+    func renderMark(markType: MarkType, text: String) -> String
+    func renderNode(nodeType: NodeType, node: String, next: (() -> String)) -> String
 }
 
 public protocol Option: Renderable {
