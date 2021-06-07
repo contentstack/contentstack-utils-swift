@@ -109,6 +109,23 @@ class DefaultRenderTests: XCTestCase {
                                                      metadata: getMetaData(styleType: .link, text: text))
         XCTAssertEqual(linkString, self.embeddedEntry.renderString(.link, text: text))
     }
+    
+    func testMarkTypeRender() {
+        let boldString = defaultRender.renderMark(markType: .bold, text: text)
+        XCTAssertEqual(boldString, "<strong>\(text)</strong>")
+        let italicString = defaultRender.renderMark(markType: .italic, text: text)
+        XCTAssertEqual(italicString, "<em>\(text)</em>")
+        let underlineString = defaultRender.renderMark(markType: .underline, text: text)
+        XCTAssertEqual(underlineString, "<u>\(text)</u>")
+        let strickthroughString = defaultRender.renderMark(markType: .strickthrough, text: text)
+        XCTAssertEqual(strickthroughString, "<strike>\(text)</strike>")
+        let inlineCodeString = defaultRender.renderMark(markType: .inlineCode, text: text)
+        XCTAssertEqual(inlineCodeString, "<span>\(text)</span>")
+        let subscriptString = defaultRender.renderMark(markType: .subscript, text: text)
+        XCTAssertEqual(subscriptString, "<sub>\(text)</sub>")
+        let superscriptString = defaultRender.renderMark(markType: .superscript, text: text)
+        XCTAssertEqual(superscriptString, "<sup>\(text)</sup>")
+    }
 
     func testEmbeddedAssetWithText() {
         let displayString = defaultRender.renderOptions(embeddedObject: self.embeddedAsset,
@@ -124,7 +141,8 @@ class DefaultRenderTests: XCTestCase {
         ("testEmbeddedWithText", testEmbeddedWithText),
         ("testEmbeddedContentTypeEntryWithText", testEmbeddedContentTypeEntryWithText),
         ("testEmbeddedEntryWithText", testEmbeddedEntryWithText),
-        ("testEmbeddedAssetWithText", testEmbeddedAssetWithText)
+        ("testEmbeddedAssetWithText", testEmbeddedAssetWithText),
+        ("testMarkTypeRender", testMarkTypeRender)
     ]
 }
 

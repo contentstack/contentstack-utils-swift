@@ -11,7 +11,7 @@ public enum NodeType: String {
     
          link = "a",
          image = "img",
-         embed = "embed",
+         embed,
 
          heading_1 = "h1",
          heading_2 = "h2",
@@ -37,6 +37,8 @@ public enum NodeType: String {
          blockQuote = "blockquote",
          code,
 
-         text = "text",
-         reference = "reference"
+         text,
+         reference,
+         
+         unknown
 }

@@ -23,6 +23,9 @@
 /* Begin PBXBuildFile section */
 		0F01BA4B25237725005A3EE0 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F01BA4A25237725005A3EE0 /* String+Extension.swift */; };
 		0F07E62F25244DB5003E0BD1 /* StringExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F07E62E25244DB5003E0BD1 /* StringExtensionTests.swift */; };
+		0F57953B266A50710082815C /* Decodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F57953A266A50710082815C /* Decodable.swift */; };
+		0F579541266A50D40082815C /* MarkTypeTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F579540266A50D40082815C /* MarkTypeTest.swift */; };
+		0F579547266A50E30082815C /* NodeTypeTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F579546266A50E30082815C /* NodeTypeTest.swift */; };
 		0F5E48452525BECA0038C16B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F5E48442525BECA0038C16B /* Constants.swift */; };
 		0F5E48472525BEFC0038C16B /* ContentBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F5E48462525BEFC0038C16B /* ContentBlock.swift */; };
 		0F5E484C2525DB600038C16B /* TestClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F5E484B2525DB600038C16B /* TestClient.swift */; };
@@ -46,6 +49,11 @@
 		0FEC37B32550366500B1EFDD /* DefaultRenderMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FEC37B22550366500B1EFDD /* DefaultRenderMock.swift */; };
 		0FEC37B82550394F00B1EFDD /* EmbedItemType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FEC37B72550394E00B1EFDD /* EmbedItemType.swift */; };
 		0FEC37BA25503E5000B1EFDD /* CustomRenderOptionMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FEC37B925503E5000B1EFDD /* CustomRenderOptionMock.swift */; };
+		0FFD88D7266DDD1900BA5919 /* ContentstackUtilsJsonToHtmlTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FFD88D6266DDD1900BA5919 /* ContentstackUtilsJsonToHtmlTest.swift */; };
+		0FFD88EE266DE1A600BA5919 /* NodeParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FFD88E4266DE01600BA5919 /* NodeParser.swift */; };
+		0FFD88F7266DE1FB00BA5919 /* JsonNodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FFD88DE266DDE2700BA5919 /* JsonNodes.swift */; };
+		0FFD88FD266DE75700BA5919 /* JsonNodesHtmlResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FFD88FC266DE75700BA5919 /* JsonNodesHtmlResults.swift */; };
+		0FFD8903266DEC0D00BA5919 /* TextNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FFD8902266DEC0D00BA5919 /* TextNode.swift */; };
 		0FFF2F242668FB6F003E9DBF /* MarkType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FFF2F232668FB6F003E9DBF /* MarkType.swift */; };
 		0FFF2F2A2668FC54003E9DBF /* NodeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FFF2F292668FC54003E9DBF /* NodeType.swift */; };
 		0FFF2F382668FE85003E9DBF /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FFF2F372668FE85003E9DBF /* Node.swift */; };
@@ -76,6 +84,9 @@
 /* Begin PBXFileReference section */
 		0F01BA4A25237725005A3EE0 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		0F07E62E25244DB5003E0BD1 /* StringExtensionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensionTests.swift; sourceTree = "<group>"; };
+		0F57953A266A50710082815C /* Decodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Decodable.swift; sourceTree = "<group>"; };
+		0F579540266A50D40082815C /* MarkTypeTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkTypeTest.swift; sourceTree = "<group>"; };
+		0F579546266A50E30082815C /* NodeTypeTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeTypeTest.swift; sourceTree = "<group>"; };
 		0F5E48442525BECA0038C16B /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		0F5E48462525BEFC0038C16B /* ContentBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentBlock.swift; sourceTree = "<group>"; };
 		0F5E48482525D4880038C16B /* EntryEmbedded.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = EntryEmbedded.json; sourceTree = "<group>"; };
@@ -102,6 +113,11 @@
 		0FEC37B22550366500B1EFDD /* DefaultRenderMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultRenderMock.swift; sourceTree = "<group>"; };
 		0FEC37B72550394E00B1EFDD /* EmbedItemType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmbedItemType.swift; sourceTree = "<group>"; };
 		0FEC37B925503E5000B1EFDD /* CustomRenderOptionMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomRenderOptionMock.swift; sourceTree = "<group>"; };
+		0FFD88D6266DDD1900BA5919 /* ContentstackUtilsJsonToHtmlTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentstackUtilsJsonToHtmlTest.swift; sourceTree = "<group>"; };
+		0FFD88DE266DDE2700BA5919 /* JsonNodes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonNodes.swift; sourceTree = "<group>"; };
+		0FFD88E4266DE01600BA5919 /* NodeParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeParser.swift; sourceTree = "<group>"; };
+		0FFD88FC266DE75700BA5919 /* JsonNodesHtmlResults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonNodesHtmlResults.swift; sourceTree = "<group>"; };
+		0FFD8902266DEC0D00BA5919 /* TextNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextNode.swift; sourceTree = "<group>"; };
 		0FFF2F232668FB6F003E9DBF /* MarkType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkType.swift; sourceTree = "<group>"; };
 		0FFF2F292668FC54003E9DBF /* NodeType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeType.swift; sourceTree = "<group>"; };
 		0FFF2F372668FE85003E9DBF /* Node.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
@@ -148,6 +164,14 @@
 			name = Models;
 			sourceTree = "<group>";
 		};
+		0F579539266A50510082815C /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				0F57953A266A50710082815C /* Decodable.swift */,
+			);
+			name = Utilities;
+			sourceTree = "<group>";
+		};
 		0FA3D57D2521F1B100E58179 /* Options */ = {
 			isa = PBXGroup;
 			children = (
@@ -167,12 +191,12 @@
 		0FA3D58B252208B100E58179 /* Mock */ = {
 			isa = PBXGroup;
 			children = (
+				0FFD88DD266DDDCF00BA5919 /* RenderMock */,
+				0FFD88DC266DDDB900BA5919 /* JsonToHtmMock */,
 				0FEC37B925503E5000B1EFDD /* CustomRenderOptionMock.swift */,
 				0FEC37B22550366500B1EFDD /* DefaultRenderMock.swift */,
-				0F5E48442525BECA0038C16B /* Constants.swift */,
 				0FA3D58C2522098000E58179 /* EmbededModelMock.swift */,
 				0F5E48462525BEFC0038C16B /* ContentBlock.swift */,
-				0F5E48482525D4880038C16B /* EntryEmbedded.json */,
 			);
 			name = Mock;
 			sourceTree = "<group>";
@@ -190,6 +214,7 @@
 			isa = PBXGroup;
 			children = (
 				0FEA64C42587525900F39DA4 /* Decodable.swift */,
+				0FFD88E4266DE01600BA5919 /* NodeParser.swift */,
 			);
 			name = Helper;
 			sourceTree = "<group>";
@@ -219,10 +244,29 @@
 			name = Enums;
 			sourceTree = "<group>";
 		};
+		0FFD88DC266DDDB900BA5919 /* JsonToHtmMock */ = {
+			isa = PBXGroup;
+			children = (
+				0FFD88DE266DDE2700BA5919 /* JsonNodes.swift */,
+				0FFD88FC266DE75700BA5919 /* JsonNodesHtmlResults.swift */,
+			);
+			name = JsonToHtmMock;
+			sourceTree = "<group>";
+		};
+		0FFD88DD266DDDCF00BA5919 /* RenderMock */ = {
+			isa = PBXGroup;
+			children = (
+				0F5E48442525BECA0038C16B /* Constants.swift */,
+				0F5E48482525D4880038C16B /* EntryEmbedded.json */,
+			);
+			name = RenderMock;
+			sourceTree = "<group>";
+		};
 		0FFF2F222668FB2E003E9DBF /* Nodes */ = {
 			isa = PBXGroup;
 			children = (
 				0FFF2F372668FE85003E9DBF /* Node.swift */,
+				0FFD8902266DEC0D00BA5919 /* TextNode.swift */,
 			);
 			name = Nodes;
 			sourceTree = "<group>";
@@ -248,6 +292,9 @@
 				0FEC0B3A254FEC60008D4E66 /* MetadataTests.swift */,
 				0F7142C325514A6F00C18A61 /* ContentstackUtilsArrayTest.swift */,
 				0F7142C52551684600C18A61 /* ContentstackUtilsCustomRendertest.swift */,
+				0F579540266A50D40082815C /* MarkTypeTest.swift */,
+				0F579546266A50E30082815C /* NodeTypeTest.swift */,
+				0FFD88D6266DDD1900BA5919 /* ContentstackUtilsJsonToHtmlTest.swift */,
 			);
 			name = ContentstackUtilsTests;
 			path = Tests/ContentstackUtilsTests;
@@ -286,6 +333,7 @@
 		OBJ_8 /* ContentstackUtils */ = {
 			isa = PBXGroup;
 			children = (
+				0F579539266A50510082815C /* Utilities */,
 				0FFF2F222668FB2E003E9DBF /* Nodes */,
 				0FEC37B42550381C00B1EFDD /* Enums */,
 				0F07E6322524675E003E0BD1 /* Models */,
@@ -419,6 +467,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
+				0FFD8903266DEC0D00BA5919 /* TextNode.swift in Sources */,
 				0FEC37B0254FFF6E00B1EFDD /* Metadata.swift in Sources */,
 				0FEC0B1F254FE0B2008D4E66 /* Kanna.swift in Sources */,
 				0FEC37B82550394F00B1EFDD /* EmbedItemType.swift in Sources */,
@@ -431,6 +480,7 @@
 				0FA3D5852521F21300E58179 /* EntryEmbedded.swift in Sources */,
 				0FEC0B1B254FE0B2008D4E66 /* CSS.swift in Sources */,
 				0FFF2F382668FE85003E9DBF /* Node.swift in Sources */,
+				0F57953B266A50710082815C /* Decodable.swift in Sources */,
 				0FFF2F242668FB6F003E9DBF /* MarkType.swift in Sources */,
 				0F01BA4B25237725005A3EE0 /* String+Extension.swift in Sources */,
 				0FEC0B1D254FE0B2008D4E66 /* libxmlParserOption.swift in Sources */,
@@ -451,16 +501,22 @@
 			buildActionMask = 0;
 			files = (
 				0F5E48472525BEFC0038C16B /* ContentBlock.swift in Sources */,
+				0F579541266A50D40082815C /* MarkTypeTest.swift in Sources */,
 				OBJ_40 /* ContentstackUtilsTests.swift in Sources */,
+				0FFD88FD266DE75700BA5919 /* JsonNodesHtmlResults.swift in Sources */,
 				0F5E484C2525DB600038C16B /* TestClient.swift in Sources */,
 				0F5FCEE925875507007AC9CC /* Decodable.swift in Sources */,
+				0F579547266A50E30082815C /* NodeTypeTest.swift in Sources */,
 				0FEC37BA25503E5000B1EFDD /* CustomRenderOptionMock.swift in Sources */,
 				0FA3D58A252207B000E58179 /* DefaultRenderTests.swift in Sources */,
 				0FEC0B3B254FEC60008D4E66 /* MetadataTests.swift in Sources */,
 				0FA3D58D2522098000E58179 /* EmbededModelMock.swift in Sources */,
+				0FFD88D7266DDD1900BA5919 /* ContentstackUtilsJsonToHtmlTest.swift in Sources */,
 				0F07E62F25244DB5003E0BD1 /* StringExtensionTests.swift in Sources */,
 				0F7142C425514A6F00C18A61 /* ContentstackUtilsArrayTest.swift in Sources */,
 				0FEC37B32550366500B1EFDD /* DefaultRenderMock.swift in Sources */,
+				0FFD88EE266DE1A600BA5919 /* NodeParser.swift in Sources */,
+				0FFD88F7266DE1FB00BA5919 /* JsonNodes.swift in Sources */,
 				OBJ_41 /* XCTestManifests.swift in Sources */,
 				0F7142C62551684600C18A61 /* ContentstackUtilsCustomRendertest.swift in Sources */,
 				0F5E48452525BECA0038C16B /* Constants.swift in Sources */,

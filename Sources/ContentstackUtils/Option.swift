@@ -1,7 +1,7 @@
 public protocol Renderable {
     func renderOptions(embeddedObject: EmbeddedObject, metadata: Metadata) -> String?
     func renderMark(markType: MarkType, text: String) -> String
-    func renderNode(nodeType: NodeType, node: String, next: (() -> String)) -> String
+//    func renderNode(nodeType: NodeType, node: String, next: (() -> String)) -> String
 }
 
 public protocol Option: Renderable {
@@ -36,6 +36,25 @@ extension Option {
                 return "<img src=\"\(asset.url)\" alt=\"\(asset.title)\" />"
             }
             return "<img src=\"\(embeddedObject.uid)\" alt=\"\(embeddedObject.uid)\" />"
+        }
+    }
+    
+    public func renderMark(markType: MarkType, text: String) -> String {
+        switch markType {
+        case .bold:
+            return "<strong>\(text)</strong>"
+        case .italic:
+            return "<em>\(text)</em>"
+        case .underline:
+            return "<u>\(text)</u>"
+        case .strickthrough:
+            return "<strike>\(text)</strike>"
+        case .inlineCode:
+            return "<span>\(text)</span>"
+        case .subscript:
+            return "<sub>\(text)</sub>"
+        case .superscript:
+            return "<sup>\(text)</sup>"
         }
     }
 }
