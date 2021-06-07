@@ -398,7 +398,7 @@ let kParagraphJson = """
             "uid": "0a1b5676aa510e5a",
             "children": [
                 {
-                    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed condimentum iaculis magna in vehicula. Vestibulum vitae convallis lacus. Praesent a diam iaculis turpis rhoncus faucibus. Aliquam sed pulvinar sem."
+                    "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed condimentum iaculis magna in vehicula. Vestibulum vitae convallis lacus. Praesent a diam iaculis turpis rhoncus faucibus. Aliquam sed pulvinar sem."
                 }
             ]
         }
@@ -658,9 +658,32 @@ let kLinkInPJson = """
 }
 """
 
+let kEmbedJson = """
+{
+  "uid": "06e34a7190849d7f2acd",
+  "_version": 13,
+  "attrs": {},
+  "children": [
+        {
+          "uid": "251017315905c35d42c9",
+          "type": "embed",
+          "attrs": {
+            "url": "https://www.youtube.com/watch?v=AOP0yARiW8U"
+          },
+          "children": [
+            {
+              "text": ""
+            }
+          ]
+        }
+    ],
+    "type": "doc"
+}
+"""
+
 let kAssetReferenceJson = """
 {
-    "uid": "06e34a7a7a5e4e549d7fc2acd",
+    "uid": "06e34a7  5e4 e549d7fc2acd",
     "_version": 1,
     "attrs": {},
     "children": [
@@ -693,7 +716,7 @@ let kAssetReferenceJson = """
 
 let kEntryReferenceBlockJson = """
 {
-    "uid": "06e34a7a7a5e4e549d7fc2acd",
+    "uid": "06e34a7  5e4 e549d7fc2acd",
     "_version": 1,
     "attrs": {},
     "children": [
@@ -721,7 +744,7 @@ let kEntryReferenceBlockJson = """
 
 let kEntryReferenceLinkJson = """
 {
-    "uid": "06e34a7a7a5e4e549d7fc2acd",
+    "uid": "06e34a7  5e4 e549d7fc2acd",
     "_version": 1,
     "attrs": {},
     "children": [
@@ -751,7 +774,7 @@ let kEntryReferenceLinkJson = """
 
 let kEntryReferenceInlineJson = """
 {
-    "uid": "06e34a7a7a5e4e549d7fc2acd",
+    "uid": "06e34a7  5e4 e549d7fc2acd",
     "_version": 1,
     "attrs": {},
     "children": [
@@ -771,6 +794,28 @@ let kEntryReferenceInlineJson = """
                 "text": ""
             }
             ]
+        }
+    ],
+    "type": "doc"
+}
+"""
+
+let kHRJson = """
+
+{
+    "uid": "06e34a7  5e4 e549d7fc2acd",
+    "_version": 1,
+    "attrs": {},
+    "children": [
+        {
+          "uid": "f5a7b57 40a8a5c3 576828276b",
+          "type": "hr",
+          "children": [
+            {
+              "text": ""
+            }
+          ],
+          "attrs": {}
         }
     ],
     "type": "doc"

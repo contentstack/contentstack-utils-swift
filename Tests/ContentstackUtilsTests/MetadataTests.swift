@@ -68,4 +68,13 @@ TEST</h1>
         }
     }
 
+    func testNodeAttributes() {
+        let node = NodeParser.parse(from: kBlankDocument)
+        let metadata = Metadata(nodeAttribute: node.attrs, text: nil)
+        XCTAssertEqual(metadata.itemType, .entry)
+        XCTAssertEqual(metadata.styleType, .block)
+        XCTAssertEqual(metadata.itemUid, "")
+        XCTAssertEqual(metadata.contentTypeUid, "")
+        XCTAssertEqual(metadata.text, nil)
+    }
 }

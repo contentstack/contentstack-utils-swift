@@ -9,8 +9,8 @@ import Foundation
 @testable import ContentstackUtils
 
 class DefaultRender: Option {
-    var entry: EntryEmbedable
-    init(entry: EntryEmbedable) {
+    var entry: EntryEmbedable?
+    init(entry: EntryEmbedable? = nil) {
         self.entry = entry
     }
 }

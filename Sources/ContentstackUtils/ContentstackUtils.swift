@@ -10,7 +10,8 @@ public struct ContentstackUtils {
                 .findEmbeddedObject { (model) in
                     if let outerHTML = model.outerHTML {
                         var replaceString = ""
-                        if let embeddedObject = findObject(model, entry: option.entry) {
+                        if let entry = option.entry,
+                           let embeddedObject = findObject(model, entry: entry) {
                             if let string = option.renderOptions(
                                 embeddedObject: embeddedObject,
                                 metadata: model) {
@@ -65,7 +66,9 @@ public struct ContentstackUtils {
         case .reference:
             return referenceToHtml(node, option)
         default:
-           return ""
+            return option.renderNode(nodeType: node.type,node: node) { (children) -> String in
+                return nodeChildrenToHtml(children: children, option)
+            }
         }
     }
     
@@ -97,7 +100,8 @@ public struct ContentstackUtils {
     
     static private func referenceToHtml(_ node: Node, _ option: Option) -> String {
         let metadata = Metadata(nodeAttribute: node.attrs, text: node.children.count > 0 ? (node.children.first as? TextNode)?.text : "")
-        if let embeddedObject = findObject(metadata, entry: option.entry) {
+        if let entry = option.entry,
+           let embeddedObject = findObject(metadata, entry: entry) {
             return option.renderOptions(embeddedObject: embeddedObject, metadata: metadata) ?? ""
         }
         return ""

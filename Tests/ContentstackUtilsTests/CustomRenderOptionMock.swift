@@ -8,7 +8,7 @@
 import Foundation
 import ContentstackUtils
 class CustomRenderOption: Option {
-    var entry: EntryEmbedable
+    var entry: EntryEmbedable?
 
     init(entry: EntryEmbedable) {
         self.entry = entry
