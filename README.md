@@ -107,8 +107,7 @@ func renderOptions(embeddedObject: EmbeddedObject, metadata: Metadata) -> String
       switch metadata.styleType {
       case .block:
           if metadata.contentTypeUid == "product" {
-              if let product = embeddedObject as? EmbeddedRTE {
-
+              if let product = embeddedObject as? Product {
                   return """
                       <div>
                       <h2 >\(product.title)</h2>
@@ -157,10 +156,10 @@ stack.contentType(uid: contentTypeUID)
     }
 ```
 
-Render Supercharged RTE contents
+#### Render Supercharged RTE contents
 To get a single entry, you need to provide the stack API key, environment name, delivery token, content type and entry UID. Then, use `ContentstackUtils.jsonToHtml` function as shown below:
 ```swift
-import ContentstackSwift  
+import ContentstackUtils  
 
 let stack:Stack = Contentstack.stack(apiKey: API_KEY, deliveryToken: DELIVERY_TOKEN, environment: ENVIRONMENT)  
 
@@ -204,7 +203,7 @@ stack.contentType(uid: contentTypeUID)
     }
 ```
 
-Render Supercharged RTE contents
+#### Render Supercharged RTE contents
 To get a Multiple entry, you need to provide the stack API key, environment name, delivery token, content type and entry UID. Then, use `Contentstack.Utils.jsonToHtml` function as shown below:
 ```swift
 import ContentstackUtils  
@@ -219,7 +218,7 @@ stack.contentType(uid: contentTypeUID)
         switch result {  
             case .success(let model):
                 for item in contentstackResponse.items {  
-                    ContentstackUtils.jsonToHtml(content: model.richTextContent, CustomRenderOption(entry: model))  
+                    ContentstackUtils.jsonToHtml(content: item.richTextContent, CustomRenderOption(entry: item))  
                 }
             case .failure(let error):  
                 //Error Message  
