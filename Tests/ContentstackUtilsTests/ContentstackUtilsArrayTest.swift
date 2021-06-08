@@ -9,7 +9,7 @@ import XCTest
 @testable import ContentstackUtils
 
 class ContentstackUtilsArrayTest: XCTestCase {
-    let defaultRender = DefaultRender(entry: EmbeddedModel(""))
+    let defaultRender = Option(entry: EmbeddedModel(""))
 
     func testRenderBlankArray() {
         XCTAssertEqual(try? ContentstackUtils.render(contents: [""], defaultRender), [""])
@@ -55,7 +55,7 @@ class ContentstackUtilsArrayTest: XCTestCase {
 
             result = try ContentstackUtils
                 .render(contents: [kAssetDisplay],
-                        DefaultRender(entry:
+                        Option(entry:
                             EmbeddedModel("", embedAssetUID: "blt55f6d8cbd7e03a1f")))
             XCTAssertEqual(result, ["<img src=\"url\" alt=\"title\" />"])
 
@@ -69,7 +69,7 @@ class ContentstackUtilsArrayTest: XCTestCase {
 
             result = try ContentstackUtils
                 .render(contents: [kEntryBlock],
-                        DefaultRender(entry:
+                        Option(entry:
                             EmbeddedModel("", embedContentUID: "blt55f6d8cbd7e03a1f", embedContentTypeUID: "article")))
             XCTAssertEqual(result,
                            ["<div><p>blt55f6d8cbd7e03a1f</p><p>Content type: <span>contentTypeUid</span></p></div>"])
@@ -83,7 +83,7 @@ class ContentstackUtilsArrayTest: XCTestCase {
 
             result = try ContentstackUtils
                 .render(contents: [kEntryInline],
-                        DefaultRender(entry:
+                        Option(entry:
                             EmbeddedModel("", embedContentUID: "blt55f6d8cbd7e03a1f", embedContentTypeUID: "article")))
             XCTAssertEqual(result,
                            ["<span>blt55f6d8cbd7e03a1f</span>"])
@@ -97,7 +97,7 @@ class ContentstackUtilsArrayTest: XCTestCase {
 
             result = try ContentstackUtils
                 .render(contents: [kEntryLink],
-                        DefaultRender(entry:
+                        Option(entry:
                             EmbeddedModel("", embedContentUID: "blt55f6d8cbd7e03a1f", embedContentTypeUID: "article")))
             XCTAssertEqual(result,
                            ["""
@@ -124,7 +124,7 @@ class ContentstackUtilsArrayTest: XCTestCase {
 
             result = try ContentstackUtils
                 .render(contents: [kAssetEmbed],
-                        DefaultRender(entry: embModel))
+                        Option(entry: embModel))
             XCTAssertEqual(result, ["""
 <img src="url" alt="title" />
 <p></p>
@@ -141,7 +141,7 @@ class ContentstackUtilsArrayTest: XCTestCase {
 
             result = try ContentstackUtils
                 .render(contents: ["\(kEntryBlock)\(kEntryLink)"],
-                        DefaultRender(entry:
+                        Option(entry:
                             EmbeddedModel("", embedContentUID: "blt55f6d8cbd7e03a1f", embedContentTypeUID: "article")))
             XCTAssertEqual(result, ["""
 <div><p>blt55f6d8cbd7e03a1f</p><p>Content type: <span>contentTypeUid</span></p></div><a href="blt55f6d8cbd7e03a1f">
@@ -159,7 +159,7 @@ class ContentstackUtilsArrayTest: XCTestCase {
 
             result = try ContentstackUtils
                 .render(contents: rte,
-                        DefaultRender(entry:
+                        Option(entry:
                             EmbeddedModel("", embedContentUID: "blt55f6d8cbd7e03a1f", embedContentTypeUID: "article")))
             XCTAssertEqual(result, ["""
 <div><p>blt55f6d8cbd7e03a1f</p><p>Content type: <span>contentTypeUid</span></p></div><a href="blt55f6d8cbd7e03a1f">
@@ -187,7 +187,7 @@ class ContentstackUtilsArrayTest: XCTestCase {
 
             result = try ContentstackUtils
                 .render(contents: rte,
-                        DefaultRender(entry:
+                        Option(entry:
                             EmbeddedModel("", embedContentUID: "blt55f6d8cbd7e03a1f", embedContentTypeUID: "article")))
             XCTAssertEqual(result, ["""
 
@@ -205,7 +205,7 @@ class ContentstackUtilsArrayTest: XCTestCase {
             do {
                 let result = try ContentstackUtils.render(contents:
                     [contentblock.rte, contentblock.richTextEditor],
-                                                          DefaultRender(entry: contentblock))
+                                                          Option(entry: contentblock))
                 XCTAssertEqual(result, ["""
 <div><p>blttitleuid</p><p>Content type: <span>embeddedrte</span></p></div>
 <span>bltemmbedEntryUID</span>

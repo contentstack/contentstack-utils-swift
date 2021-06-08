@@ -1,15 +1,19 @@
 public protocol Renderable {
-    func renderOptions(embeddedObject: EmbeddedObject, metadata: Metadata) -> String?
+    func renderItem(embeddedObject: EmbeddedObject, metadata: Metadata) -> String?
     func renderMark(markType: MarkType, text: String) -> String
     func renderNode(nodeType: NodeType, node: Node, next: (([Node]) -> String)) -> String
 }
 
-public protocol Option: Renderable {
-    var entry: EntryEmbedable? { get }
-}
+open class Option: Renderable {
+    var entry: EntryEmbedable?
+    
+    public init() {}
+    
+    public init(entry: EntryEmbedable?) {
+        self.entry = entry
+    }
 
-extension Option {
-    func renderOptions(embeddedObject: EmbeddedObject, metadata: Metadata) -> String? {
+    open func renderItem(embeddedObject: EmbeddedObject, metadata: Metadata) -> String? {
         switch metadata.styleType {
         case StyleType.block:
             var renderString = "<div><p>\(embeddedObject.uid)</p>"
@@ -39,7 +43,7 @@ extension Option {
         }
     }
     
-    public func renderMark(markType: MarkType, text: String) -> String {
+    open func renderMark(markType: MarkType, text: String) -> String {
         switch markType {
         case .bold:
             return "<strong>\(text)</strong>"
@@ -47,7 +51,7 @@ extension Option {
             return "<em>\(text)</em>"
         case .underline:
             return "<u>\(text)</u>"
-        case .strickthrough:
+        case .strikethrough:
             return "<strike>\(text)</strike>"
         case .inlineCode:
             return "<span>\(text)</span>"
@@ -58,7 +62,7 @@ extension Option {
         }
     }
     
-    public func renderNode(nodeType: NodeType, node: Node, next: (([Node]) -> String)) -> String {
+    open func renderNode(nodeType: NodeType, node: Node, next: (([Node]) -> String)) -> String {
         switch nodeType {
         case .paragraph:
             return "<p>\(next(node.children))</p>"

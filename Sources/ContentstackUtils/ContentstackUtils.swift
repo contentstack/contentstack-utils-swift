@@ -12,7 +12,7 @@ public struct ContentstackUtils {
                         var replaceString = ""
                         if let entry = option.entry,
                            let embeddedObject = findObject(model, entry: entry) {
-                            if let string = option.renderOptions(
+                            if let string = option.renderItem(
                                 embeddedObject: embeddedObject,
                                 metadata: model) {
                                 replaceString = string
@@ -41,7 +41,7 @@ public struct ContentstackUtils {
     }
     
     
-    public static func jsonToHtml(node documents: [Node], _ option: Option) -> [String] {
+    public static func jsonToHtml(node documents: [Node], _ option: Option = Option()) -> [String] {
         var resultContents: [String] = []
         documents.forEach { (document) in
             resultContents.append(jsonToHtml(node: document, option))
@@ -49,7 +49,7 @@ public struct ContentstackUtils {
         return resultContents
     }
 
-    public static func jsonToHtml(node document: Node, _ option: Option) -> String {
+    public static func jsonToHtml(node document: Node, _ option: Option = Option()) -> String {
         return nodeChildrenToHtml(children: document.children, option)
     }
 
@@ -84,7 +84,7 @@ public struct ContentstackUtils {
             text = option.renderMark(markType: .inlineCode, text: text)
         }
         if (textNode.strikethrough) {
-            text = option.renderMark(markType: .strickthrough, text: text)
+            text = option.renderMark(markType: .strikethrough, text: text)
         }
         if (textNode.underline) {
             text = option.renderMark(markType: .underline, text: text)
@@ -102,7 +102,7 @@ public struct ContentstackUtils {
         let metadata = Metadata(nodeAttribute: node.attrs, text: node.children.count > 0 ? (node.children.first as? TextNode)?.text : "")
         if let entry = option.entry,
            let embeddedObject = findObject(metadata, entry: entry) {
-            return option.renderOptions(embeddedObject: embeddedObject, metadata: metadata) ?? ""
+            return option.renderItem(embeddedObject: embeddedObject, metadata: metadata) ?? ""
         }
         return ""
     }

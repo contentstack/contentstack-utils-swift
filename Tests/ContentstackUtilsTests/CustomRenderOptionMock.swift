@@ -8,13 +8,28 @@
 import Foundation
 import ContentstackUtils
 class CustomRenderOption: Option {
-    var entry: EntryEmbedable?
 
-    init(entry: EntryEmbedable) {
-        self.entry = entry
+    override func renderMark(markType: MarkType, text: String) -> String {
+        switch markType {
+        case .bold:
+            return "<b>\(text)</b>"
+        default:
+            return super.renderMark(markType: markType, text: text)
+        }
     }
-
-    func renderOptions(embeddedObject: EmbeddedObject, metadata: Metadata) -> String? {
+    
+    override func renderNode(nodeType: NodeType, node: Node, next: (([Node]) -> String)) -> String {
+        switch nodeType {
+        case .paragraph:
+            return "<p class='class-id'>\(next(node.children))</p>"
+        case .heading_1:
+            return "<h1 class='class-id'>\(next(node.children))</h1>"
+        default:
+            return super.renderNode(nodeType: nodeType, node: node, next: next)
+        }
+    }
+    
+    override func renderItem(embeddedObject: EmbeddedObject, metadata: Metadata) -> String? {
         let attributeString = metadata.attributes.map { (key: AnyHashable, value: Any) -> String in
             if let stringKey = key as? String ,
                 let stringValue = value as? String {
@@ -35,6 +50,7 @@ class CustomRenderOption: Option {
             } else if let blockEntry = embeddedObject as? EmbeddedContentTypeUidModel {
                 result = "<div \(attributeString)> <b>\(blockEntry.uid)</b></div>"
             }
+            return result
 
         case .inline:
             if let inlineEntry = embeddedObject as? EmbeddedRTE {
@@ -44,6 +60,7 @@ class CustomRenderOption: Option {
             } else if let inlineEntry = embeddedObject as? EmbeddedContentTypeUidModel {
                 result = "<span \(attributeString)><b>\(inlineEntry.uid)</b></span>"
             }
+            return result
 
         case .link:
             if let linkEntry = embeddedObject as? EmbeddedRTE {
@@ -55,13 +72,14 @@ class CustomRenderOption: Option {
 <span> Please find link to: <a \(attributeString)><b>\(metadata.text ?? linkEntry.uid)</b></a>
 """
             }
+            return result
         case .display:
             if let asset = embeddedObject as? Asset {
                 result = "<b>\(asset.title)</b><p>\(asset.filename) image: <img \(attributeString) /></p>"
             } else if let asset = embeddedObject as? EmbeddedAssetModel {
                 result = "<b>\(asset.title)</b><p>\(asset.filename) image: <img \(attributeString) /></p>"
             }
+            return result
         }
-        return result
     }
 }

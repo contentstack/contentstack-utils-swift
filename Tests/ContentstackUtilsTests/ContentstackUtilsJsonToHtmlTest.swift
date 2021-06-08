@@ -10,12 +10,10 @@ import XCTest
 @testable import ContentstackUtils
 
 class ContentstackUtilsJsonToHtmlTest: XCTestCase {
-    let defaultRender = DefaultRender()
-
     func testEmpty_Node_Returns_Empty_String()  {
         let node = NodeParser.parse(from: kBlankDocument)
 
-        let result = ContentstackUtils.jsonToHtml(node: node, defaultRender)
+        let result = ContentstackUtils.jsonToHtml(node: node)
 
         XCTAssertEqual(result, "")
     }
@@ -23,7 +21,7 @@ class ContentstackUtilsJsonToHtmlTest: XCTestCase {
     func testEmpty_Nodes_Array_Returns_Empty_String_Array()  {
         let node = NodeParser.parse(from: kBlankDocument)
 
-        let result = ContentstackUtils.jsonToHtml(node: [node], defaultRender)
+        let result = ContentstackUtils.jsonToHtml(node: [node])
 
         XCTAssertEqual(result, [""])
     }
@@ -31,7 +29,7 @@ class ContentstackUtilsJsonToHtmlTest: XCTestCase {
     func testPlainText_Document_Return_HtmlString_Result()  {
         let node = NodeParser.parse(from: kPlainTextJson)
 
-        let result = ContentstackUtils.jsonToHtml(node: node, defaultRender)
+        let result = ContentstackUtils.jsonToHtml(node: node)
 
         XCTAssertEqual(result, kPlainTextHtml)
     }
@@ -39,7 +37,7 @@ class ContentstackUtilsJsonToHtmlTest: XCTestCase {
     func testArray_PlainText_Document_Return_HtmlString_Result()  {
         let node = NodeParser.parse(from: kPlainTextJson)
 
-        let result = ContentstackUtils.jsonToHtml(node: [node], defaultRender)
+        let result = ContentstackUtils.jsonToHtml(node: [node])
 
         XCTAssertEqual(result, [kPlainTextHtml])
     }
@@ -47,12 +45,12 @@ class ContentstackUtilsJsonToHtmlTest: XCTestCase {
     func testAsset_Reference_Document() {
         let node = NodeParser.parse(from: kAssetReferenceJson)
 
-        var result = ContentstackUtils.jsonToHtml(node: node, defaultRender)
+        var result = ContentstackUtils.jsonToHtml(node: node)
 
         XCTAssertEqual(result, "")
 
         result = ContentstackUtils.jsonToHtml(node: node,
-                                                  DefaultRender(entry:
+                                                  Option(entry:
                                                                     EmbeddedModel("", embedAssetUID: "blt44asset")))
 
         XCTAssertEqual(result, "<img src=\"url\" alt=\"title\" />")
@@ -63,12 +61,12 @@ class ContentstackUtilsJsonToHtmlTest: XCTestCase {
         let node = NodeParser.parse(from: kAssetReferenceJson)
 
         
-        var result = ContentstackUtils.jsonToHtml(node: [node], defaultRender)
+        var result = ContentstackUtils.jsonToHtml(node: [node])
 
         XCTAssertEqual(result, [""])
         
         result = ContentstackUtils.jsonToHtml(node: [node],
-                                                  DefaultRender(entry:
+                                                  Option(entry:
                                                                     EmbeddedModel("", embedAssetUID: "blt44asset")))
 
         XCTAssertEqual(result, ["<img src=\"url\" alt=\"title\" />"])
@@ -77,12 +75,12 @@ class ContentstackUtilsJsonToHtmlTest: XCTestCase {
     func testEntryBlock_Reference_Document() {
         let node = NodeParser.parse(from: kEntryReferenceBlockJson)
 
-        var result = ContentstackUtils.jsonToHtml(node: node, defaultRender)
+        var result = ContentstackUtils.jsonToHtml(node: node)
 
         XCTAssertEqual(result, "")
 
         result = ContentstackUtils.jsonToHtml(node: node,
-                                                  DefaultRender(entry:
+                                                  Option(entry:
                                                                     EmbeddedModel("",
                                                                                   embedContentUID: "blttitleuid",
                                                                                   embedContentTypeUID: "content_block")))
@@ -95,12 +93,12 @@ class ContentstackUtilsJsonToHtmlTest: XCTestCase {
         let node = NodeParser.parse(from: kEntryReferenceBlockJson)
 
         
-        var result = ContentstackUtils.jsonToHtml(node: [node], defaultRender)
+        var result = ContentstackUtils.jsonToHtml(node: [node])
 
         XCTAssertEqual(result, [""])
         
         result = ContentstackUtils.jsonToHtml(node: [node],
-                                                  DefaultRender(entry:
+                                                  Option(entry:
                                                                     EmbeddedModel("",
                                                                                   embedContentUID: "blttitleuid",
                                                                                   embedContentTypeUID: "content_block")))
@@ -111,12 +109,12 @@ class ContentstackUtilsJsonToHtmlTest: XCTestCase {
     func testEntryLink_Reference_Document() {
         let node = NodeParser.parse(from: kEntryReferenceLinkJson)
 
-        var result = ContentstackUtils.jsonToHtml(node: node, defaultRender)
+        var result = ContentstackUtils.jsonToHtml(node: node)
 
         XCTAssertEqual(result, "")
 
         result = ContentstackUtils.jsonToHtml(node: node,
-                                                  DefaultRender(entry:
+                                                  Option(entry:
                                                                     EmbeddedModel("",
                                                                                   embedContentUID: "bltemmbedEntryuid",
                                                                                   embedContentTypeUID: "embeddedrte")))
@@ -129,12 +127,12 @@ class ContentstackUtilsJsonToHtmlTest: XCTestCase {
         let node = NodeParser.parse(from: kEntryReferenceLinkJson)
 
         
-        var result = ContentstackUtils.jsonToHtml(node: [node], defaultRender)
+        var result = ContentstackUtils.jsonToHtml(node: [node])
 
         XCTAssertEqual(result, [""])
         
         result = ContentstackUtils.jsonToHtml(node: [node],
-                                                  DefaultRender(entry:
+                                                  Option(entry:
                                                                     EmbeddedModel("",
                                                                                   embedContentUID: "bltemmbedEntryuid",
                                                                                   embedContentTypeUID: "embeddedrte")))
@@ -145,12 +143,12 @@ class ContentstackUtilsJsonToHtmlTest: XCTestCase {
     func testEntryInline_Reference_Document() {
         let node = NodeParser.parse(from: kEntryReferenceInlineJson)
 
-        var result = ContentstackUtils.jsonToHtml(node: node, defaultRender)
+        var result = ContentstackUtils.jsonToHtml(node: node)
 
         XCTAssertEqual(result, "")
 
         result = ContentstackUtils.jsonToHtml(node: node,
-                                                  DefaultRender(entry:
+                                                  Option(entry:
                                                                     EmbeddedModel("",
                                                                                   embedContentUID: "blttitleUpdateuid",
                                                                                   embedContentTypeUID: "embeddedrte")))
@@ -163,12 +161,12 @@ class ContentstackUtilsJsonToHtmlTest: XCTestCase {
         let node = NodeParser.parse(from: kEntryReferenceInlineJson)
 
         
-        var result = ContentstackUtils.jsonToHtml(node: [node], defaultRender)
+        var result = ContentstackUtils.jsonToHtml(node: [node])
 
         XCTAssertEqual(result, [""])
         
         result = ContentstackUtils.jsonToHtml(node: [node],
-                                                  DefaultRender(entry:
+                                                  Option(entry:
                                                                     EmbeddedModel("",
                                                                                   embedContentUID: "blttitleUpdateuid",
                                                                                   embedContentTypeUID: "embeddedrte")))
@@ -179,7 +177,7 @@ class ContentstackUtilsJsonToHtmlTest: XCTestCase {
     func testParagraph_Document()  {
         let node = NodeParser.parse(from: kParagraphJson)
         
-        let result = ContentstackUtils.jsonToHtml(node: node, defaultRender)
+        let result = ContentstackUtils.jsonToHtml(node: node)
         
         XCTAssertEqual(result, kParagraphHtml)
     }
@@ -187,7 +185,7 @@ class ContentstackUtilsJsonToHtmlTest: XCTestCase {
     func testParagraphArray_Document()  {
         let node = NodeParser.parse(from: kParagraphJson)
         
-        let result = ContentstackUtils.jsonToHtml(node: [node], defaultRender)
+        let result = ContentstackUtils.jsonToHtml(node: [node])
         
         XCTAssertEqual(result, [kParagraphHtml])
     }
@@ -195,7 +193,7 @@ class ContentstackUtilsJsonToHtmlTest: XCTestCase {
     func testLink_Document()  {
         let node = NodeParser.parse(from: kLinkInPJson)
         
-        let result = ContentstackUtils.jsonToHtml(node: node, defaultRender)
+        let result = ContentstackUtils.jsonToHtml(node: node)
         
         XCTAssertEqual(result, kLinkInPHtml)
     }
@@ -203,7 +201,7 @@ class ContentstackUtilsJsonToHtmlTest: XCTestCase {
     func testLinkArray_Document()  {
         let node = NodeParser.parse(from: kLinkInPJson)
         
-        let result = ContentstackUtils.jsonToHtml(node: [node], defaultRender)
+        let result = ContentstackUtils.jsonToHtml(node: [node])
         
         XCTAssertEqual(result, [kLinkInPHtml])
     }
@@ -211,7 +209,7 @@ class ContentstackUtilsJsonToHtmlTest: XCTestCase {
     func testImage_Document()  {
         let node = NodeParser.parse(from: kImgJson)
         
-        let result = ContentstackUtils.jsonToHtml(node: node, defaultRender)
+        let result = ContentstackUtils.jsonToHtml(node: node)
         
         XCTAssertEqual(result, kImgHtml)
     }
@@ -219,7 +217,7 @@ class ContentstackUtilsJsonToHtmlTest: XCTestCase {
     func testImageArray_Document()  {
         let node = NodeParser.parse(from: kImgJson)
         
-        let result = ContentstackUtils.jsonToHtml(node: [node], defaultRender)
+        let result = ContentstackUtils.jsonToHtml(node: [node])
         
         XCTAssertEqual(result, [kImgHtml])
     }
@@ -227,7 +225,7 @@ class ContentstackUtilsJsonToHtmlTest: XCTestCase {
     func testEmbed_Document()  {
         let node = NodeParser.parse(from: kEmbedJson)
         
-        let result = ContentstackUtils.jsonToHtml(node: node, defaultRender)
+        let result = ContentstackUtils.jsonToHtml(node: node)
         
         XCTAssertEqual(result, kEmbedHtml)
     }
@@ -235,7 +233,7 @@ class ContentstackUtilsJsonToHtmlTest: XCTestCase {
     func testEmbedArray_Document()  {
         let node = NodeParser.parse(from: kEmbedJson)
         
-        let result = ContentstackUtils.jsonToHtml(node: [node], defaultRender)
+        let result = ContentstackUtils.jsonToHtml(node: [node])
         
         XCTAssertEqual(result, [kEmbedHtml])
     }
@@ -243,7 +241,7 @@ class ContentstackUtilsJsonToHtmlTest: XCTestCase {
     func testH1_Document()  {
         let node = NodeParser.parse(from: kH1Json)
         
-        let result = ContentstackUtils.jsonToHtml(node: node, defaultRender)
+        let result = ContentstackUtils.jsonToHtml(node: node)
         
         XCTAssertEqual(result, kH1Html)
     }
@@ -251,7 +249,7 @@ class ContentstackUtilsJsonToHtmlTest: XCTestCase {
     func testH1kArray_Document()  {
         let node = NodeParser.parse(from: kH1Json)
         
-        let result = ContentstackUtils.jsonToHtml(node: [node], defaultRender)
+        let result = ContentstackUtils.jsonToHtml(node: [node])
         
         XCTAssertEqual(result, [kH1Html])
     }
@@ -259,7 +257,7 @@ class ContentstackUtilsJsonToHtmlTest: XCTestCase {
     func testH2_Document()  {
         let node = NodeParser.parse(from: kH2Json)
         
-        let result = ContentstackUtils.jsonToHtml(node: node, defaultRender)
+        let result = ContentstackUtils.jsonToHtml(node: node)
         
         XCTAssertEqual(result, kH2Html)
     }
@@ -267,7 +265,7 @@ class ContentstackUtilsJsonToHtmlTest: XCTestCase {
     func testH2Array_Document()  {
         let node = NodeParser.parse(from: kH2Json)
         
-        let result = ContentstackUtils.jsonToHtml(node: [node], defaultRender)
+        let result = ContentstackUtils.jsonToHtml(node: [node])
         
         XCTAssertEqual(result, [kH2Html])
     }
@@ -275,7 +273,7 @@ class ContentstackUtilsJsonToHtmlTest: XCTestCase {
     func testH3_Document()  {
         let node = NodeParser.parse(from: kH3Json)
         
-        let result = ContentstackUtils.jsonToHtml(node: node, defaultRender)
+        let result = ContentstackUtils.jsonToHtml(node: node)
         
         XCTAssertEqual(result, kH3Html)
     }
@@ -283,7 +281,7 @@ class ContentstackUtilsJsonToHtmlTest: XCTestCase {
     func testH3Array_Document()  {
         let node = NodeParser.parse(from: kH3Json)
         
-        let result = ContentstackUtils.jsonToHtml(node: [node], defaultRender)
+        let result = ContentstackUtils.jsonToHtml(node: [node])
         
         XCTAssertEqual(result, [kH3Html])
     }
@@ -291,7 +289,7 @@ class ContentstackUtilsJsonToHtmlTest: XCTestCase {
     func testH4_Document()  {
         let node = NodeParser.parse(from: kH4Json)
         
-        let result = ContentstackUtils.jsonToHtml(node: node, defaultRender)
+        let result = ContentstackUtils.jsonToHtml(node: node)
         
         XCTAssertEqual(result, kH4Html)
     }
@@ -299,7 +297,7 @@ class ContentstackUtilsJsonToHtmlTest: XCTestCase {
     func testH4Array_Document()  {
         let node = NodeParser.parse(from: kH4Json)
         
-        let result = ContentstackUtils.jsonToHtml(node: [node], defaultRender)
+        let result = ContentstackUtils.jsonToHtml(node: [node])
         
         XCTAssertEqual(result, [kH4Html])
     }
@@ -307,7 +305,7 @@ class ContentstackUtilsJsonToHtmlTest: XCTestCase {
     func testH5_Document()  {
         let node = NodeParser.parse(from: kH5Json)
         
-        let result = ContentstackUtils.jsonToHtml(node: node, defaultRender)
+        let result = ContentstackUtils.jsonToHtml(node: node)
         
         XCTAssertEqual(result, kH5Html)
     }
@@ -315,7 +313,7 @@ class ContentstackUtilsJsonToHtmlTest: XCTestCase {
     func testH5Array_Document()  {
         let node = NodeParser.parse(from: kH5Json)
         
-        let result = ContentstackUtils.jsonToHtml(node: [node], defaultRender)
+        let result = ContentstackUtils.jsonToHtml(node: [node])
         
         XCTAssertEqual(result, [kH5Html])
     }
@@ -323,7 +321,7 @@ class ContentstackUtilsJsonToHtmlTest: XCTestCase {
     func testH6_Document()  {
         let node = NodeParser.parse(from: kH6Json)
         
-        let result = ContentstackUtils.jsonToHtml(node: node, defaultRender)
+        let result = ContentstackUtils.jsonToHtml(node: node)
         
         XCTAssertEqual(result, kH6Html)
     }
@@ -331,7 +329,7 @@ class ContentstackUtilsJsonToHtmlTest: XCTestCase {
     func testH6Array_Document()  {
         let node = NodeParser.parse(from: kH6Json)
         
-        let result = ContentstackUtils.jsonToHtml(node: [node], defaultRender)
+        let result = ContentstackUtils.jsonToHtml(node: [node])
         
         XCTAssertEqual(result, [kH6Html])
     }
@@ -339,7 +337,7 @@ class ContentstackUtilsJsonToHtmlTest: XCTestCase {
     func testOrderList_Document()  {
         let node = NodeParser.parse(from: kOrderListJson)
         
-        let result = ContentstackUtils.jsonToHtml(node: node, defaultRender)
+        let result = ContentstackUtils.jsonToHtml(node: node)
         
         XCTAssertEqual(result, kOrderListHtml)
     }
@@ -347,7 +345,7 @@ class ContentstackUtilsJsonToHtmlTest: XCTestCase {
     func testOrderListArray_Document()  {
         let node = NodeParser.parse(from: kOrderListJson)
         
-        let result = ContentstackUtils.jsonToHtml(node: [node], defaultRender)
+        let result = ContentstackUtils.jsonToHtml(node: [node])
         
         XCTAssertEqual(result, [kOrderListHtml])
     }
@@ -355,7 +353,7 @@ class ContentstackUtilsJsonToHtmlTest: XCTestCase {
     func testUnorderList_Document()  {
         let node = NodeParser.parse(from: kUnorderListJson)
         
-        let result = ContentstackUtils.jsonToHtml(node: node, defaultRender)
+        let result = ContentstackUtils.jsonToHtml(node: node)
         
         XCTAssertEqual(result, kIUnorderListHtml)
     }
@@ -363,7 +361,7 @@ class ContentstackUtilsJsonToHtmlTest: XCTestCase {
     func testUnorderListArray_Document()  {
         let node = NodeParser.parse(from: kUnorderListJson)
         
-        let result = ContentstackUtils.jsonToHtml(node: [node], defaultRender)
+        let result = ContentstackUtils.jsonToHtml(node: [node])
         
         XCTAssertEqual(result, [kIUnorderListHtml])
     }
@@ -371,7 +369,7 @@ class ContentstackUtilsJsonToHtmlTest: XCTestCase {
     func testTable_Document()  {
         let node = NodeParser.parse(from: kTableJson)
         
-        let result = ContentstackUtils.jsonToHtml(node: node, defaultRender)
+        let result = ContentstackUtils.jsonToHtml(node: node)
         
         XCTAssertEqual(result, kTableHtml)
     }
@@ -379,7 +377,7 @@ class ContentstackUtilsJsonToHtmlTest: XCTestCase {
     func testTableArray_Document()  {
         let node = NodeParser.parse(from: kTableJson)
         
-        let result = ContentstackUtils.jsonToHtml(node: [node], defaultRender)
+        let result = ContentstackUtils.jsonToHtml(node: [node])
         
         XCTAssertEqual(result, [kTableHtml])
     }
@@ -387,7 +385,7 @@ class ContentstackUtilsJsonToHtmlTest: XCTestCase {
     func testBlockquote_Document()  {
         let node = NodeParser.parse(from: kBlockquoteJson)
         
-        let result = ContentstackUtils.jsonToHtml(node: node, defaultRender)
+        let result = ContentstackUtils.jsonToHtml(node: node)
         
         XCTAssertEqual(result, kBlockquoteHtml)
     }
@@ -395,7 +393,7 @@ class ContentstackUtilsJsonToHtmlTest: XCTestCase {
     func testBlockquoteArray_Document()  {
         let node = NodeParser.parse(from: kBlockquoteJson)
         
-        let result = ContentstackUtils.jsonToHtml(node: [node], defaultRender)
+        let result = ContentstackUtils.jsonToHtml(node: [node])
         
         XCTAssertEqual(result, [kBlockquoteHtml])
     }
@@ -403,7 +401,7 @@ class ContentstackUtilsJsonToHtmlTest: XCTestCase {
     func testCode_Document()  {
         let node = NodeParser.parse(from: kCodeJson)
         
-        let result = ContentstackUtils.jsonToHtml(node: node, defaultRender)
+        let result = ContentstackUtils.jsonToHtml(node: node)
         
         XCTAssertEqual(result, kCodeHtml)
     }
@@ -411,7 +409,7 @@ class ContentstackUtilsJsonToHtmlTest: XCTestCase {
     func testCodeArray_Document()  {
         let node = NodeParser.parse(from: kCodeJson)
         
-        let result = ContentstackUtils.jsonToHtml(node: [node], defaultRender)
+        let result = ContentstackUtils.jsonToHtml(node: [node])
         
         XCTAssertEqual(result, [kCodeHtml])
     }
@@ -419,7 +417,7 @@ class ContentstackUtilsJsonToHtmlTest: XCTestCase {
     func testHR_Document()  {
         let node = NodeParser.parse(from: kHRJson)
 
-        let result = ContentstackUtils.jsonToHtml(node: node, defaultRender)
+        let result = ContentstackUtils.jsonToHtml(node: node)
 
         XCTAssertEqual(result, "<hr>")
     }
@@ -427,7 +425,7 @@ class ContentstackUtilsJsonToHtmlTest: XCTestCase {
     func testHRArray_Document()  {
         let node = NodeParser.parse(from: kHRJson)
 
-        let result = ContentstackUtils.jsonToHtml(node: [node], defaultRender)
+        let result = ContentstackUtils.jsonToHtml(node: [node])
 
         XCTAssertEqual(result, ["<hr>"])
     }

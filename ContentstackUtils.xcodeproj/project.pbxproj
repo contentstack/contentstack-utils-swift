@@ -46,7 +46,6 @@
 		0FEC0B1F254FE0B2008D4E66 /* Kanna.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FEC0B18254FE0B2008D4E66 /* Kanna.swift */; };
 		0FEC0B3B254FEC60008D4E66 /* MetadataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FEC0B3A254FEC60008D4E66 /* MetadataTests.swift */; };
 		0FEC37B0254FFF6E00B1EFDD /* Metadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FEC37AF254FFF6E00B1EFDD /* Metadata.swift */; };
-		0FEC37B32550366500B1EFDD /* DefaultRenderMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FEC37B22550366500B1EFDD /* DefaultRenderMock.swift */; };
 		0FEC37B82550394F00B1EFDD /* EmbedItemType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FEC37B72550394E00B1EFDD /* EmbedItemType.swift */; };
 		0FEC37BA25503E5000B1EFDD /* CustomRenderOptionMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FEC37B925503E5000B1EFDD /* CustomRenderOptionMock.swift */; };
 		0FFD88D7266DDD1900BA5919 /* ContentstackUtilsJsonToHtmlTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FFD88D6266DDD1900BA5919 /* ContentstackUtilsJsonToHtmlTest.swift */; };
@@ -110,7 +109,6 @@
 		0FEC0B18254FE0B2008D4E66 /* Kanna.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Kanna.swift; sourceTree = "<group>"; };
 		0FEC0B3A254FEC60008D4E66 /* MetadataTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetadataTests.swift; sourceTree = "<group>"; };
 		0FEC37AF254FFF6E00B1EFDD /* Metadata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Metadata.swift; sourceTree = "<group>"; };
-		0FEC37B22550366500B1EFDD /* DefaultRenderMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultRenderMock.swift; sourceTree = "<group>"; };
 		0FEC37B72550394E00B1EFDD /* EmbedItemType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmbedItemType.swift; sourceTree = "<group>"; };
 		0FEC37B925503E5000B1EFDD /* CustomRenderOptionMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomRenderOptionMock.swift; sourceTree = "<group>"; };
 		0FFD88D6266DDD1900BA5919 /* ContentstackUtilsJsonToHtmlTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentstackUtilsJsonToHtmlTest.swift; sourceTree = "<group>"; };
@@ -194,7 +192,6 @@
 				0FFD88DD266DDDCF00BA5919 /* RenderMock */,
 				0FFD88DC266DDDB900BA5919 /* JsonToHtmMock */,
 				0FEC37B925503E5000B1EFDD /* CustomRenderOptionMock.swift */,
-				0FEC37B22550366500B1EFDD /* DefaultRenderMock.swift */,
 				0FA3D58C2522098000E58179 /* EmbededModelMock.swift */,
 				0F5E48462525BEFC0038C16B /* ContentBlock.swift */,
 			);
@@ -514,7 +511,6 @@
 				0FFD88D7266DDD1900BA5919 /* ContentstackUtilsJsonToHtmlTest.swift in Sources */,
 				0F07E62F25244DB5003E0BD1 /* StringExtensionTests.swift in Sources */,
 				0F7142C425514A6F00C18A61 /* ContentstackUtilsArrayTest.swift in Sources */,
-				0FEC37B32550366500B1EFDD /* DefaultRenderMock.swift in Sources */,
 				0FFD88EE266DE1A600BA5919 /* NodeParser.swift in Sources */,
 				0FFD88F7266DE1FB00BA5919 /* JsonNodes.swift in Sources */,
 				OBJ_41 /* XCTestManifests.swift in Sources */,

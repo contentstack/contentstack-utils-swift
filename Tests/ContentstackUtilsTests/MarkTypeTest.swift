@@ -13,7 +13,7 @@ class MarkTypeTest: XCTestCase {
         XCTAssertEqual(MarkType.bold.rawValue, "bold")
         XCTAssertEqual(MarkType.italic.rawValue, "italic")
         XCTAssertEqual(MarkType.underline.rawValue, "underline")
-        XCTAssertEqual(MarkType.strickthrough.rawValue, "strickthrough")
+        XCTAssertEqual(MarkType.strikethrough.rawValue, "strikethrough")
         XCTAssertEqual(MarkType.inlineCode.rawValue, "inlineCode")
         XCTAssertEqual(MarkType.subscript.rawValue, "subscript")
         XCTAssertEqual(MarkType.superscript.rawValue, "superscript")
