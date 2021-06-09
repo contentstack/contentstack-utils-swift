@@ -204,7 +204,7 @@ stack.contentType(uid: contentTypeUID)
 ```
 
 #### Render Supercharged RTE contents
-To get a Multiple entry, you need to provide the stack API key, environment name, delivery token, content type and entry UID. Then, use `Contentstack.Utils.jsonToHtml` function as shown below:
+To get a Multiple entry, you need to provide the stack API key, environment name, delivery token, and content type UID. Then, use `Contentstack.Utils.jsonToHtml` function as shown below:
 ```swift
 import ContentstackUtils  
 
