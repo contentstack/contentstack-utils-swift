@@ -61,12 +61,12 @@ public struct ContentstackUtils {
     
     static private func nodeToHtml(_ node: Node, _ option: Option) -> String {
         switch node.type {
-        case .text:
+        case NodeType.text.rawValue:
             return textNodeToHtml(node as! TextNode, option)
-        case .reference:
+        case  NodeType.reference.rawValue:
             return referenceToHtml(node, option)
         default:
-            return option.renderNode(nodeType: node.type.rawValue, node: node) { (children) -> String in
+            return option.renderNode(nodeType: node.type, node: node) { (children) -> String in
                 return nodeChildrenToHtml(children: children, option)
             }
         }

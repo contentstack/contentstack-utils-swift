@@ -6,7 +6,7 @@
 //
 
 public class Node: Decodable {
-    public var type: NodeType = .unknown
+    public var type: String
     public var attrs: [String: Any]
     public var children: [Node] = []
     public enum FieldKeys: String, CodingKey {
@@ -14,9 +14,7 @@ public class Node: Decodable {
     }
     public required init(from decoder: Decoder) throws {
         let container   = try decoder.container(keyedBy: FieldKeys.self)
-        if let strinty = try container.decodeIfPresent(String.self, forKey: .type) {
-            type = NodeType(rawValue: strinty) ?? NodeType.unknown
-        }
+        type = try container.decodeIfPresent(String.self, forKey: .type) ?? NodeType.unknown.rawValue
         attrs = try container.decodeIfPresent(Dictionary<String, Any>.self, forKey: .attrs) ?? [:]
         if var nodes = try? container.nestedUnkeyedContainer(forKey: .children) {
             children = try Node.initWith(container: &nodes)

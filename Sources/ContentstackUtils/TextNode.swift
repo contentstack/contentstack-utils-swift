@@ -34,6 +34,6 @@ class TextNode: Node {
         superscript = try container.decodeIfPresent(Bool.self, forKey: .superscript) ?? false
         
         try super.init(from: decoder)
-        type = .text
+        type = NodeType.text.rawValue
     }
 }

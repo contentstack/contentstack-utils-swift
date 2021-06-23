@@ -1,3 +1,5 @@
 fileignoreconfig:
 - filename: README.md
   allowed_patterns: [API_KEY, DELIVERY_TOKEN, ENVIRONMENT]
+- filename: Sources/ContentstackUtils/Node.swift
+  checksum: bcdcb0b1d1bbfa02226b3e41262f3400a465959af22a5ba1914962a548ba5d8e
