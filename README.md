@@ -92,7 +92,7 @@ override func renderMark(markType: MarkType, text: String) -> String {
     }
 }
 
-override func renderNode(nodeType: NodeType, node: Node, next: (([Node]) -> String)) -> String {
+override func renderNode(nodeType: String, node: Node, next: (([Node]) -> String)) -> String {
     switch nodeType {
     case "p":
         return "<p class='class-id'>\(next(node.children))</p>"
