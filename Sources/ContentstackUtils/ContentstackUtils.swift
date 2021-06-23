@@ -66,7 +66,7 @@ public struct ContentstackUtils {
         case .reference:
             return referenceToHtml(node, option)
         default:
-            return option.renderNode(nodeType: node.type,node: node) { (children) -> String in
+            return option.renderNode(nodeType: node.type.rawValue, node: node) { (children) -> String in
                 return nodeChildrenToHtml(children: children, option)
             }
         }

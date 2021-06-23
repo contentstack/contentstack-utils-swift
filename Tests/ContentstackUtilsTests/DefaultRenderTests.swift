@@ -130,7 +130,7 @@ class OptionTests: XCTestCase {
     func testParagraphRender() {
         let node = NodeParser.parse(from: kBlankDocument)
         
-        let result = defaultRender.renderNode(nodeType: .paragraph, node: node, next: { _ in
+        let result = defaultRender.renderNode(nodeType: NodeType.paragraph.rawValue, node: node, next: { _ in
             return text
         })
         XCTAssertEqual(result, "<p>\(text)</p>")
@@ -139,7 +139,7 @@ class OptionTests: XCTestCase {
     func testLinkRender() {
         let node = NodeParser.parse(from: kBlankDocument)
         
-        let result = defaultRender.renderNode(nodeType: .link, node: node, next: { _ in
+        let result = defaultRender.renderNode(nodeType: NodeType.link.rawValue, node: node, next: { _ in
             return text
         })
         XCTAssertEqual(result, "<a href=\"\">\(text)</a>")
@@ -148,7 +148,7 @@ class OptionTests: XCTestCase {
     func testImageRender() {
         let node = NodeParser.parse(from: kBlankDocument)
 
-        let result = defaultRender.renderNode(nodeType: .image, node: node, next: { _ in
+        let result = defaultRender.renderNode(nodeType: NodeType.image.rawValue, node: node, next: { _ in
             return text
         })
         XCTAssertEqual(result, "<img src=\"\" />\(text)")
@@ -157,7 +157,7 @@ class OptionTests: XCTestCase {
     func testEmbedRender() {
         let node = NodeParser.parse(from: kBlankDocument)
 
-        let result = defaultRender.renderNode(nodeType: .embed, node: node, next: { _ in
+        let result = defaultRender.renderNode(nodeType: NodeType.embed.rawValue, node: node, next: { _ in
             return text
         })
         XCTAssertEqual(result, "<iframe src=\"\">\(text)</iframe>")
@@ -166,7 +166,7 @@ class OptionTests: XCTestCase {
     func testH1Render() {
         let node = NodeParser.parse(from: kBlankDocument)
 
-        let result = defaultRender.renderNode(nodeType: .heading_1, node: node, next: { _ in
+        let result = defaultRender.renderNode(nodeType: NodeType.heading_1.rawValue, node: node, next: { _ in
             return text
         })
         XCTAssertEqual(result, "<h1>\(text)</h1>")
@@ -175,7 +175,7 @@ class OptionTests: XCTestCase {
     func testH2Render() {
         let node = NodeParser.parse(from: kBlankDocument)
 
-        let result = defaultRender.renderNode(nodeType: .heading_2, node: node, next: { _ in
+        let result = defaultRender.renderNode(nodeType: NodeType.heading_2.rawValue, node: node, next: { _ in
             return text
         })
         XCTAssertEqual(result, "<h2>\(text)</h2>")
@@ -184,7 +184,7 @@ class OptionTests: XCTestCase {
     func testH3Render() {
         let node = NodeParser.parse(from: kBlankDocument)
 
-        let result = defaultRender.renderNode(nodeType: .heading_3, node: node, next: { _ in
+        let result = defaultRender.renderNode(nodeType: NodeType.heading_3.rawValue, node: node, next: { _ in
             return text
         })
         XCTAssertEqual(result, "<h3>\(text)</h3>")
@@ -193,7 +193,7 @@ class OptionTests: XCTestCase {
     func testH4Render() {
         let node = NodeParser.parse(from: kBlankDocument)
 
-        let result = defaultRender.renderNode(nodeType: .heading_4, node: node, next: { _ in
+        let result = defaultRender.renderNode(nodeType: NodeType.heading_4.rawValue, node: node, next: { _ in
             return text
         })
         XCTAssertEqual(result, "<h4>\(text)</h4>")
@@ -202,7 +202,7 @@ class OptionTests: XCTestCase {
     func testH5Render() {
         let node = NodeParser.parse(from: kBlankDocument)
 
-        let result = defaultRender.renderNode(nodeType: .heading_5, node: node, next: { _ in
+        let result = defaultRender.renderNode(nodeType: NodeType.heading_5.rawValue, node: node, next: { _ in
             return text
         })
         XCTAssertEqual(result, "<h5>\(text)</h5>")
@@ -211,7 +211,7 @@ class OptionTests: XCTestCase {
     func testH6Render() {
         let node = NodeParser.parse(from: kBlankDocument)
 
-        let result = defaultRender.renderNode(nodeType: .heading_6, node: node, next: { _ in
+        let result = defaultRender.renderNode(nodeType: NodeType.heading_6.rawValue, node: node, next: { _ in
             return text
         })
         XCTAssertEqual(result, "<h6>\(text)</h6>")
@@ -220,7 +220,7 @@ class OptionTests: XCTestCase {
     func testOrderListRender() {
         let node = NodeParser.parse(from: kBlankDocument)
 
-        let result = defaultRender.renderNode(nodeType: .orderList, node: node, next: { _ in
+        let result = defaultRender.renderNode(nodeType: NodeType.orderList.rawValue, node: node, next: { _ in
             return text
         })
         XCTAssertEqual(result, "<ol>\(text)</ol>")
@@ -229,7 +229,7 @@ class OptionTests: XCTestCase {
     func testUnorderListRender() {
         let node = NodeParser.parse(from: kBlankDocument)
 
-        let result = defaultRender.renderNode(nodeType: .unOrderList, node: node, next: { _ in
+        let result = defaultRender.renderNode(nodeType: NodeType.unOrderList.rawValue, node: node, next: { _ in
             return text
         })
         XCTAssertEqual(result, "<ul>\(text)</ul>")
@@ -238,7 +238,7 @@ class OptionTests: XCTestCase {
     func testListItemRender() {
         let node = NodeParser.parse(from: kBlankDocument)
 
-        let result = defaultRender.renderNode(nodeType: .listItem, node: node, next: { _ in
+        let result = defaultRender.renderNode(nodeType: NodeType.listItem.rawValue, node: node, next: { _ in
             return text
         })
         XCTAssertEqual(result, "<li>\(text)</li>")
@@ -247,7 +247,7 @@ class OptionTests: XCTestCase {
     func testHRRender() {
         let node = NodeParser.parse(from: kBlankDocument)
 
-        let result = defaultRender.renderNode(nodeType: .hr, node: node, next: { _ in
+        let result = defaultRender.renderNode(nodeType: NodeType.hr.rawValue, node: node, next: { _ in
             return text
         })
         XCTAssertEqual(result, "<hr>")
@@ -256,7 +256,7 @@ class OptionTests: XCTestCase {
     func testTableRender() {
         let node = NodeParser.parse(from: kBlankDocument)
 
-        let result = defaultRender.renderNode(nodeType: .table, node: node, next: { _ in
+        let result = defaultRender.renderNode(nodeType: NodeType.table.rawValue, node: node, next: { _ in
             return text
         })
         XCTAssertEqual(result, "<table>\(text)</table>")
@@ -265,7 +265,7 @@ class OptionTests: XCTestCase {
     func testTableHeaderRender() {
         let node = NodeParser.parse(from: kBlankDocument)
 
-        let result = defaultRender.renderNode(nodeType: .tableHeader, node: node, next: { _ in
+        let result = defaultRender.renderNode(nodeType: NodeType.tableHeader.rawValue, node: node, next: { _ in
             return text
         })
         XCTAssertEqual(result, "<thead>\(text)</thead>")
@@ -274,7 +274,7 @@ class OptionTests: XCTestCase {
     func testTableBodyRender() {
         let node = NodeParser.parse(from: kBlankDocument)
 
-        let result = defaultRender.renderNode(nodeType: .tableBody, node: node, next: { _ in
+        let result = defaultRender.renderNode(nodeType: NodeType.tableBody.rawValue, node: node, next: { _ in
             return text
         })
         XCTAssertEqual(result, "<tbody>\(text)</tbody>")
@@ -283,7 +283,7 @@ class OptionTests: XCTestCase {
     func testTableFooterRender() {
         let node = NodeParser.parse(from: kBlankDocument)
 
-        let result = defaultRender.renderNode(nodeType: .tableFooter, node: node, next: { _ in
+        let result = defaultRender.renderNode(nodeType: NodeType.tableFooter.rawValue, node: node, next: { _ in
             return text
         })
         XCTAssertEqual(result, "<tfoot>\(text)</tfoot>")
@@ -292,7 +292,7 @@ class OptionTests: XCTestCase {
     func testTableRowRender() {
         let node = NodeParser.parse(from: kBlankDocument)
 
-        let result = defaultRender.renderNode(nodeType: .tableRow, node: node, next: { _ in
+        let result = defaultRender.renderNode(nodeType: NodeType.tableRow.rawValue, node: node, next: { _ in
             return text
         })
         XCTAssertEqual(result, "<tr>\(text)</tr>")
@@ -301,7 +301,7 @@ class OptionTests: XCTestCase {
     func testTableHeadRender() {
         let node = NodeParser.parse(from: kBlankDocument)
 
-        let result = defaultRender.renderNode(nodeType: .tableHead, node: node, next: { _ in
+        let result = defaultRender.renderNode(nodeType: NodeType.tableHead.rawValue, node: node, next: { _ in
             return text
         })
         XCTAssertEqual(result, "<th>\(text)</th>")
@@ -310,7 +310,7 @@ class OptionTests: XCTestCase {
     func testTableDataRender() {
         let node = NodeParser.parse(from: kBlankDocument)
 
-        let result = defaultRender.renderNode(nodeType: .tableData, node: node, next: { _ in
+        let result = defaultRender.renderNode(nodeType: NodeType.tableData.rawValue, node: node, next: { _ in
             return text
         })
         XCTAssertEqual(result, "<td>\(text)</td>")
@@ -319,7 +319,7 @@ class OptionTests: XCTestCase {
     func testBlockquoteRender() {
         let node = NodeParser.parse(from: kBlankDocument)
 
-        let result = defaultRender.renderNode(nodeType: .blockQuote, node: node, next: { _ in
+        let result = defaultRender.renderNode(nodeType: NodeType.blockQuote.rawValue, node: node, next: { _ in
             return text
         })
         XCTAssertEqual(result, "<blockquote>\(text)</blockquote>")
@@ -328,7 +328,7 @@ class OptionTests: XCTestCase {
     func testCodeRender() {
         let node = NodeParser.parse(from: kBlankDocument)
 
-        let result = defaultRender.renderNode(nodeType: .code, node: node, next: { _ in
+        let result = defaultRender.renderNode(nodeType: NodeType.code.rawValue, node: node, next: { _ in
             return text
         })
         XCTAssertEqual(result, "<code>\(text)</code>")
@@ -337,7 +337,7 @@ class OptionTests: XCTestCase {
     func testDocumentRender() {
         let node = NodeParser.parse(from: kBlankDocument)
 
-        let result = defaultRender.renderNode(nodeType: .document, node: node, next: { _ in
+        let result = defaultRender.renderNode(nodeType: NodeType.document.rawValue, node: node, next: { _ in
             return text
         })
         XCTAssertEqual(result, text)
@@ -346,7 +346,7 @@ class OptionTests: XCTestCase {
     func testreferenceRender() {
         let node = NodeParser.parse(from: kBlankDocument)
 
-        let result = defaultRender.renderNode(nodeType: .reference, node: node, next: { _ in
+        let result = defaultRender.renderNode(nodeType: NodeType.reference.rawValue, node: node, next: { _ in
             return text
         })
         XCTAssertEqual(result, text)

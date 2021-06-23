@@ -368,7 +368,7 @@ let kImgJson = """
       "uid": "f3be74be3b64646e626",
       "type": "img",
       "attrs": {
-          "url": "https://images.contentstack.com/v3/assets/blt7726e6b/bltb42cd1/5fa3be959bedb6b/Donald.jog.png",
+          "src": "https://images.contentstack.com/v3/assets/blt7726e6b/bltb42cd1/5fa3be959bedb6b/Donald.jog.png",
           "width": 33.69418132611637,
           "height": "auto",
           "redactor-attributes": {
@@ -639,7 +639,7 @@ let kLinkInPJson = """
           "uid": "0d06598201aa8b47",
           "type": "a",
           "attrs": {
-              "url": "LINK.com",
+              "href": "LINK.com",
               "target": "_self"
           },
           "children": [
@@ -668,7 +668,7 @@ let kEmbedJson = """
           "uid": "251017315905c35d42c9",
           "type": "embed",
           "attrs": {
-            "url": "https://www.youtube.com/watch?v=AOP0yARiW8U"
+            "src": "https://www.youtube.com/watch?v=AOP0yARiW8U"
           },
           "children": [
             {

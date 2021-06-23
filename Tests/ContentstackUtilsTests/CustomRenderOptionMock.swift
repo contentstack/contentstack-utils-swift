@@ -18,11 +18,11 @@ class CustomRenderOption: Option {
         }
     }
     
-    override func renderNode(nodeType: NodeType, node: Node, next: (([Node]) -> String)) -> String {
+    override func renderNode(nodeType: String, node: Node, next: (([Node]) -> String)) -> String {
         switch nodeType {
-        case .paragraph:
+        case NodeType.paragraph.rawValue:
             return "<p class='class-id'>\(next(node.children))</p>"
-        case .heading_1:
+        case NodeType.heading_1.rawValue:
             return "<h1 class='class-id'>\(next(node.children))</h1>"
         default:
             return super.renderNode(nodeType: nodeType, node: node, next: next)

@@ -1,7 +1,7 @@
 public protocol Renderable {
     func renderItem(embeddedObject: EmbeddedObject, metadata: Metadata) -> String?
     func renderMark(markType: MarkType, text: String) -> String
-    func renderNode(nodeType: NodeType, node: Node, next: (([Node]) -> String)) -> String
+    func renderNode(nodeType: String, node: Node, next: (([Node]) -> String)) -> String
 }
 
 open class Option: Renderable {
@@ -62,53 +62,53 @@ open class Option: Renderable {
         }
     }
     
-    open func renderNode(nodeType: NodeType, node: Node, next: (([Node]) -> String)) -> String {
+    open func renderNode(nodeType: String, node: Node, next: (([Node]) -> String)) -> String {
         switch nodeType {
-        case .paragraph:
+        case NodeType.paragraph.rawValue:
             return "<p>\(next(node.children))</p>"
-        case .link:
-            return "<a href=\"\(node.attrs["url"] ?? "")\">\(next(node.children))</a>"
-        case .image:
-            return "<img src=\"\(node.attrs["url"] ?? "")\" />\(next(node.children))"
-        case .embed:
-            return "<iframe src=\"\(node.attrs["url"] ?? "")\">\(next(node.children))</iframe>"
-        case .heading_1:
+        case NodeType.link.rawValue:
+            return "<a href=\"\(node.attrs["href"] ?? "")\">\(next(node.children))</a>"
+        case NodeType.image.rawValue:
+            return "<img src=\"\(node.attrs["src"] ?? "")\" />\(next(node.children))"
+        case NodeType.embed.rawValue:
+            return "<iframe src=\"\(node.attrs["src"] ?? "")\">\(next(node.children))</iframe>"
+        case NodeType.heading_1.rawValue:
             return "<h1>\(next(node.children))</h1>"
-        case .heading_2:
+        case NodeType.heading_2.rawValue:
             return "<h2>\(next(node.children))</h2>"
-        case .heading_3:
+        case NodeType.heading_3.rawValue:
             return "<h3>\(next(node.children))</h3>"
-        case .heading_4:
+        case NodeType.heading_4.rawValue:
             return "<h4>\(next(node.children))</h4>"
-        case .heading_5:
+        case NodeType.heading_5.rawValue:
             return "<h5>\(next(node.children))</h5>"
-        case .heading_6:
+        case NodeType.heading_6.rawValue:
             return "<h6>\(next(node.children))</h6>"
-        case .orderList:
+        case NodeType.orderList.rawValue:
             return "<ol>\(next(node.children))</ol>"
-        case .unOrderList:
+        case NodeType.unOrderList.rawValue:
             return "<ul>\(next(node.children))</ul>"
-        case .listItem:
+        case NodeType.listItem.rawValue:
             return "<li>\(next(node.children))</li>"
-        case .hr:
+        case NodeType.hr.rawValue:
             return "<hr>"
-        case .table:
+        case NodeType.table.rawValue:
             return "<table>\(next(node.children))</table>"
-        case .tableHeader:
+        case NodeType.tableHeader.rawValue:
             return "<thead>\(next(node.children))</thead>"
-        case .tableBody:
+        case NodeType.tableBody.rawValue:
             return "<tbody>\(next(node.children))</tbody>"
-        case .tableFooter:
+        case NodeType.tableFooter.rawValue:
             return "<tfoot>\(next(node.children))</tfoot>"
-        case .tableRow:
+        case NodeType.tableRow.rawValue:
             return "<tr>\(next(node.children))</tr>"
-        case .tableHead:
+        case NodeType.tableHead.rawValue:
             return "<th>\(next(node.children))</th>"
-        case .tableData:
+        case NodeType.tableData.rawValue:
             return "<td>\(next(node.children))</td>"
-        case .blockQuote:
+        case NodeType.blockQuote.rawValue:
             return "<blockquote>\(next(node.children))</blockquote>"
-        case .code:
+        case NodeType.code.rawValue:
             return "<code>\(next(node.children))</code>"
         default:
             return next(node.children)
