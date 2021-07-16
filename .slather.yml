@@ -5,3 +5,4 @@ scheme: ContentstackUtils-Package
 ignore:
   - "Tests/*"
   - "Sources/Kanna/*"
+  - "Sources/ContentstackUtils/Decodable.*"

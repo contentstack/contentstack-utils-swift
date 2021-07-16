@@ -82,43 +82,53 @@ To render embedded items on the front-end, create a class implementing Option pr
 import Foundation  
 import ContentstackUtils  
 class  CustomRenderOption: Option {  
-var entry: EntryEmbedable  
+
+override func renderMark(markType: MarkType, text: String) -> String {
+    switch markType {
+    case .bold:
+        return "<b>\(text)</b>"
+    default:
+        return super.renderMark(markType: markType, text: text)
+    }
+}
+
+override func renderNode(nodeType: String, node: Node, next: (([Node]) -> String)) -> String {
+    switch nodeType {
+    case "p":
+        return "<p class='class-id'>\(next(node.children))</p>"
+    case "h1":
+        return "<h1 class='class-id'>\(next(node.children))</h1>"
+    default:
+        return super.renderNode(nodeType: nodeType, node: node, next: next)
+    }
+}
   
-init(entry: EntryEmbedable) {  
-    self.entry = entry  
-}  
-  
-func  renderOptions(embeddedObject: EmbeddedObject, metadata: Metadata) -> String? {  
-    var result = ""  
-    switch metadata.styleType {  
-        case .block:  
-            if metadata.contentTypeUid == 'product' {  
-                result = """  
-                    <div>  
-                    <h2 >\(embeddedObject.title)</h2>  
-                    <img src=\(embeddedObject.product_image.url) alt=\(embeddedObject.product_image.title)/>  
-                    <p>\(embeddedObject.price)</p>  
-                    </div>  
-                """  
-            }else {  
-                result = """  
-                    <div>  
-                    <h2>\(entry.title)</h2>  
-                    <p>\(entry.description)</p>  
-                    </div>  
-                """              
-            }  
-        case .inline:  
-            result = "<span><b>\(embeddedObject.title)</b> - \(embeddedObject.description)</span>"  
-        case .link:  
-            result = "<a href=\(metadata.attributes.href)>\(metadata.text)</a>"  
-        case .display:  
-            result = "<img src=\(metadata.attributes.src) alt=\(metadata.alt) />"  
-        case .download:  
-            result = "<a href=\(metadata.attributes.href)>\(metadata.text)</a>"  
-        }  
-        return result  
-    }  
+func renderOptions(embeddedObject: EmbeddedObject, metadata: Metadata) -> String? {
+      switch metadata.styleType {
+      case .block:
+          if metadata.contentTypeUid == "product" {
+              if let product = embeddedObject as? Product {
+                  return """
+                      <div>
+                      <h2 >\(product.title)</h2>
+                      <img src=\(product.product_image.url) alt=\(product.product_image.title)/>
+                      <p>\(product.price)</p>
+                      </div>
+                  """
+              }
+          }else {
+              if let entry = embeddedObject as? Entry {
+                  return """
+                      <div>
+                      <h2>\(entry.title)</h2>
+                      <p>\(entry.description)</p>
+                      </div>
+                      """
+              }
+          }
+      default:
+          return super.renderOptions(embeddedObject: embeddedObject, metadata: metadata)
+      }
 }
 ```
 
@@ -126,10 +136,10 @@ func  renderOptions(embeddedObject: EmbeddedObject, metadata: Metadata) -> Strin
 Contentstack Utils SDK lets you interact with the Content Delivery APIs and retrieve embedded items from the RTE field of an entry.
 
 ### Fetch Embedded Item(s) from a Single Entry
-
-To get an embedded items of a single entry, you need to provide the stack API key, environment name, delivery token, content type and entry UID. Then, use the Contentstack.Utils.render functions as shown below:
-```
-import ContentstackSwift  
+#### Render HTML RTE Embedded object
+To get an embedded items of a single entry, you need to provide the stack API key, environment name, delivery token, content type and entry UID. Then, use the `ContentstackUtils.render` functions as shown below:
+```swift
+import ContentstackUtils  
 
 let stack:Stack = Contentstack.stack(apiKey: API_KEY, deliveryToken: DELIVERY_TOKEN, environment: ENVIRONMENT)  
 
@@ -139,16 +149,39 @@ stack.contentType(uid: contentTypeUID)
      .fetch { (result: Result<EntryModel, Error>, response: ResponseType) in  
         switch result {  
             case .success(let model):
-                Contentstack.Utils.render(content: model.richTextContent, DefaultRender(entry: model))  
+                ContentstackUtils.render(content: model.richTextContent, Option(entry: model))  
             case .failure(let error):  
                 //Error Message  
         }  
     }
 ```
-### Fetch Embedded Item(s) from Multiple Entries
-To get embedded items from multiple entries, you need to provide the stack API key, environment name, delivery token, and content type UID. Then, use the Contentstack.Utils.render functions as shown below:
+
+#### Render Supercharged RTE contents
+To get a single entry, you need to provide the stack API key, environment name, delivery token, content type and entry UID. Then, use `ContentstackUtils.jsonToHtml` function as shown below:
+```swift
+import ContentstackUtils  
+
+let stack:Stack = Contentstack.stack(apiKey: API_KEY, deliveryToken: DELIVERY_TOKEN, environment: ENVIRONMENT)  
+
+stack.contentType(uid: contentTypeUID)
+     .entry(uid: entryUID)
+     .include(.embeddedItems)  
+     .fetch { (result: Result<EntryModel, Error>, response: ResponseType) in  
+        switch result {  
+            case .success(let model):
+                ContentstackUtils.jsonToHtml(content: model.richTextContent, Option(entry: model))  
+            case .failure(let error):  
+                //Error Message  
+        }  
+    }
 ```
-import ContentstackSwift  
+> Node: Supercharged RTE also supports Embedded items to get all embedded items while fetching entry use `includeEmbeddedItems` function.
+
+### Fetch Embedded Item(s) from Multiple Entries
+#### Render HTML RTE Embedded object
+To get embedded items from multiple entries, you need to provide the stack API key, environment name, delivery token, and content type UID. Then, use the `ContentstackUtils.render` functions as shown below:
+```
+import ContentstackUtils  
 
 let stack = Contentstack.stack(apiKey: apiKey,  
 deliveryToken: deliveryToken,  
@@ -162,8 +195,31 @@ stack.contentType(uid: contentTypeUID)
         switch result {  
             case .success(let contentstackResponse):  
                 for item in contentstackResponse.items {  
-                    Contentstack.Utils.render(content: item.richTextContent, CustomRenderOption(entry: item))  
+                    ContentstackUtils.render(content: item.richTextContent, CustomRenderOption(entry: item))  
                 }  
+            case .failure(let error):  
+                //Error Message  
+        }  
+    }
+```
+
+#### Render Supercharged RTE contents
+To get a Multiple entry, you need to provide the stack API key, environment name, delivery token, and content type UID. Then, use `Contentstack.Utils.jsonToHtml` function as shown below:
+```swift
+import ContentstackUtils  
+
+let stack:Stack = Contentstack.stack(apiKey: API_KEY, deliveryToken: DELIVERY_TOKEN, environment: ENVIRONMENT)  
+
+stack.contentType(uid: contentTypeUID)
+     .entry()
+     .query()
+     .include(.embeddedItems)
+     .find { (result: Result<EntryModel, Error>, response: ResponseType) in  
+        switch result {  
+            case .success(let model):
+                for item in contentstackResponse.items {  
+                    ContentstackUtils.jsonToHtml(content: item.richTextContent, CustomRenderOption(entry: item))  
+                }
             case .failure(let error):  
                 //Error Message  
         }  
