@@ -1,5 +1,5 @@
 fileignoreconfig:
 - filename: README.md
   allowed_patterns: [API_KEY, DELIVERY_TOKEN, ENVIRONMENT]
-- filename: Sources/ContentstackUtils/Node.swift
-  checksum: bcdcb0b1d1bbfa02226b3e41262f3400a465959af22a5ba1914962a548ba5d8e
+- filename: ContentstackUtils.xcodeproj/project.pbxproj
+  checksum: 5b62a76622fed7df9967d8646467bd2f04c221df2c95eddce7541fd8ab448078
