@@ -27,6 +27,8 @@ class EmbeddedModel: EntryEmbedable {
 }
 
 class Embedded: EmbeddedObject {
+    var fields: [String : Any]? = [:]
+    
     var contentTypeUID: String = "data-sys-content-type-uid"
     var uid: String
     init(uid: String = "uid") {
@@ -60,6 +62,7 @@ class Embedded: EmbeddedObject {
 }
 
 class EmbeddedContentTypeUidModel: EmbeddedContentTypeUid {
+    var fields: [String : Any]? = [:]
     var contentTypeUID: String = "data-sys-content-type-uid"
     static var contentTypeUid: String = "contentTypeUid"
     var uid: String
@@ -98,6 +101,7 @@ class EmbeddedContentTypeUidModel: EmbeddedContentTypeUid {
 }
 
 class EmbeddedEntryModel: EmbeddedEntry {
+    var fields: [String : Any]? = [:]
     var contentTypeUID: String = "data-sys-content-type-uid"
     static var contentTypeUid: String = "contentTypeUid"
     var title: String = "title"
@@ -135,6 +139,7 @@ class EmbeddedEntryModel: EmbeddedEntry {
 }
 
 class EmbeddedAssetModel: EmbeddedAsset {
+    var fields: [String : Any]? = [:]
     var contentTypeUID: String = "sys_assets"
     var title: String = "title"
     var filename: String = "filename"

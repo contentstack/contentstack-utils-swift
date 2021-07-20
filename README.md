@@ -225,3 +225,35 @@ stack.contentType(uid: contentTypeUID)
         }  
     }
 ```
+
+### GraphQL implementation
+After fetching the entries from the content type pass the JSON RTE to `ContentstackUtils.GQL.jsonToHtml` function as shown below:
+
+```swift
+import ContentstackUtils  
+import Apollo
+...
+let graphQLClient: ApolloClient
+...
+
+graphQLClient.fetch (query: ProductsQuery(), cachePolicy: CachePolicy.fetchIgnoringCacheData, queue: DispatchQueue.main) {[weak self] (result: Result<GraphQLResult<ProductsQuery.Data>, Error>) in
+    guard let slf = self else {
+                   return
+               }
+    switch result {
+    case .success(let graphQLResult):
+        guard let data = graphQLResult.data, let products = data.allAbcd?.items else {
+           return
+        }
+
+        for product in products {
+            if let rte = product.superchargedRte {
+               let result = try? ContentstackUtils.GQL.jsonToHtml(rte: rte.resultMap)
+            }
+        }
+    case .failure(let error):
+      print("Failure! Error: \(error)")
+    }
+}
+```
+
