@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
 s.name             = 'ContentstackUtils'
-s.version          = '1.1.2'
+s.version          = '1.2.0'
 s.summary          = 'Contentstack is a headless CMS with an API-first approach that puts content at the centre.'
 
 s.description      = <<-DESC

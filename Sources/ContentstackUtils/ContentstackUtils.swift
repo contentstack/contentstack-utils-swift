@@ -2,10 +2,6 @@ import Foundation
 
 public struct ContentstackUtils {
 
-//    public struct JsonNode {
-//        public var json: Node
-//        public var embeddedObject: 
-//    }
     public struct GQL {
         public static func jsonToHtml(rte document: [String: Any?], _ option: Option = Option()) throws -> Any {
             do {
