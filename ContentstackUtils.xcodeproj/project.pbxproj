@@ -21,6 +21,14 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		0F00785926A59D6600FC4925 /* GQLJsonRTE.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F00785826A59D6600FC4925 /* GQLJsonRTE.swift */; };
+		0F00785B26A5A0EB00FC4925 /* GQLJsonToHtml.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F00785A26A5A0EB00FC4925 /* GQLJsonToHtml.swift */; };
+		0F00785D26A6ACBF00FC4925 /* GQLEmbededEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F00785C26A6ACBF00FC4925 /* GQLEmbededEntry.swift */; };
+		0F00785F26A6ACDC00FC4925 /* GQLEmbededAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F00785E26A6ACDC00FC4925 /* GQLEmbededAsset.swift */; };
+		0F00786126A6AD0100FC4925 /* JSONNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F00786026A6AD0100FC4925 /* JSONNode.swift */; };
+		0F00786326A6AD2100FC4925 /* JSONNodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F00786226A6AD2100FC4925 /* JSONNodes.swift */; };
+		0F00786526A6AD3E00FC4925 /* Edges.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F00786426A6AD3E00FC4925 /* Edges.swift */; };
+		0F00786726A6AD6800FC4925 /* ConnectionNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F00786626A6AD6800FC4925 /* ConnectionNode.swift */; };
 		0F01BA4B25237725005A3EE0 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F01BA4A25237725005A3EE0 /* String+Extension.swift */; };
 		0F07E62F25244DB5003E0BD1 /* StringExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F07E62E25244DB5003E0BD1 /* StringExtensionTests.swift */; };
 		0F57953B266A50710082815C /* Decodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F57953A266A50710082815C /* Decodable.swift */; };
@@ -81,6 +89,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0F00785826A59D6600FC4925 /* GQLJsonRTE.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GQLJsonRTE.swift; sourceTree = "<group>"; };
+		0F00785A26A5A0EB00FC4925 /* GQLJsonToHtml.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GQLJsonToHtml.swift; sourceTree = "<group>"; };
+		0F00785C26A6ACBF00FC4925 /* GQLEmbededEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GQLEmbededEntry.swift; sourceTree = "<group>"; };
+		0F00785E26A6ACDC00FC4925 /* GQLEmbededAsset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GQLEmbededAsset.swift; sourceTree = "<group>"; };
+		0F00786026A6AD0100FC4925 /* JSONNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONNode.swift; sourceTree = "<group>"; };
+		0F00786226A6AD2100FC4925 /* JSONNodes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONNodes.swift; sourceTree = "<group>"; };
+		0F00786426A6AD3E00FC4925 /* Edges.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Edges.swift; sourceTree = "<group>"; };
+		0F00786626A6AD6800FC4925 /* ConnectionNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionNode.swift; sourceTree = "<group>"; };
 		0F01BA4A25237725005A3EE0 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		0F07E62E25244DB5003E0BD1 /* StringExtensionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensionTests.swift; sourceTree = "<group>"; };
 		0F57953A266A50710082815C /* Decodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Decodable.swift; sourceTree = "<group>"; };
@@ -147,6 +163,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0F00785726A59D3B00FC4925 /* GQLJsonToHtmlMock */ = {
+			isa = PBXGroup;
+			children = (
+				0F00785826A59D6600FC4925 /* GQLJsonRTE.swift */,
+			);
+			name = GQLJsonToHtmlMock;
+			sourceTree = "<group>";
+		};
 		0F01BA49252376E5005A3EE0 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -159,6 +183,12 @@
 			isa = PBXGroup;
 			children = (
 				0FEC37AF254FFF6E00B1EFDD /* Metadata.swift */,
+				0F00785C26A6ACBF00FC4925 /* GQLEmbededEntry.swift */,
+				0F00785E26A6ACDC00FC4925 /* GQLEmbededAsset.swift */,
+				0F00786026A6AD0100FC4925 /* JSONNode.swift */,
+				0F00786226A6AD2100FC4925 /* JSONNodes.swift */,
+				0F00786426A6AD3E00FC4925 /* Edges.swift */,
+				0F00786626A6AD6800FC4925 /* ConnectionNode.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -190,6 +220,7 @@
 		0FA3D58B252208B100E58179 /* Mock */ = {
 			isa = PBXGroup;
 			children = (
+				0F00785726A59D3B00FC4925 /* GQLJsonToHtmlMock */,
 				0FFD88DD266DDDCF00BA5919 /* RenderMock */,
 				0FFD88DC266DDDB900BA5919 /* JsonToHtmMock */,
 				0FEC37B925503E5000B1EFDD /* CustomRenderOptionMock.swift */,
@@ -293,6 +324,7 @@
 				0F579540266A50D40082815C /* MarkTypeTest.swift */,
 				0F579546266A50E30082815C /* NodeTypeTest.swift */,
 				0FFD88D6266DDD1900BA5919 /* ContentstackUtilsJsonToHtmlTest.swift */,
+				0F00785A26A5A0EB00FC4925 /* GQLJsonToHtml.swift */,
 			);
 			name = ContentstackUtilsTests;
 			path = Tests/ContentstackUtilsTests;
@@ -468,14 +500,18 @@
 			files = (
 				0FFD8903266DEC0D00BA5919 /* TextNode.swift in Sources */,
 				0FEC37B0254FFF6E00B1EFDD /* Metadata.swift in Sources */,
+				0F00785F26A6ACDC00FC4925 /* GQLEmbededAsset.swift in Sources */,
 				0FEC0B1F254FE0B2008D4E66 /* Kanna.swift in Sources */,
 				0FEC37B82550394F00B1EFDD /* EmbedItemType.swift in Sources */,
 				0FFF2F2A2668FC54003E9DBF /* NodeType.swift in Sources */,
 				0FEC0B1E254FE0B2008D4E66 /* Deprecated.swift in Sources */,
 				0FA3D5842521F21300E58179 /* StyleType.swift in Sources */,
+				0F00786526A6AD3E00FC4925 /* Edges.swift in Sources */,
 				0FA3D57F2521F1D400E58179 /* Option.swift in Sources */,
 				0FEC0B1A254FE0B2008D4E66 /* libxmlHTMLNode.swift in Sources */,
 				0FEC0B1C254FE0B2008D4E66 /* libxmlHTMLDocument.swift in Sources */,
+				0F00786126A6AD0100FC4925 /* JSONNode.swift in Sources */,
+				0F00786726A6AD6800FC4925 /* ConnectionNode.swift in Sources */,
 				0FA3D5852521F21300E58179 /* EntryEmbedded.swift in Sources */,
 				0FEC0B1B254FE0B2008D4E66 /* CSS.swift in Sources */,
 				0FFF2F382668FE85003E9DBF /* Node.swift in Sources */,
@@ -483,6 +519,8 @@
 				0FFF2F242668FB6F003E9DBF /* MarkType.swift in Sources */,
 				0F01BA4B25237725005A3EE0 /* String+Extension.swift in Sources */,
 				0FEC0B1D254FE0B2008D4E66 /* libxmlParserOption.swift in Sources */,
+				0F00786326A6AD2100FC4925 /* JSONNodes.swift in Sources */,
+				0F00785D26A6ACBF00FC4925 /* GQLEmbededEntry.swift in Sources */,
 				OBJ_22 /* ContentstackUtils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -515,6 +553,8 @@
 				0F7142C425514A6F00C18A61 /* ContentstackUtilsArrayTest.swift in Sources */,
 				0FFD88EE266DE1A600BA5919 /* NodeParser.swift in Sources */,
 				0FFD88F7266DE1FB00BA5919 /* JsonNodes.swift in Sources */,
+				0F00785B26A5A0EB00FC4925 /* GQLJsonToHtml.swift in Sources */,
+				0F00785926A59D6600FC4925 /* GQLJsonRTE.swift in Sources */,
 				OBJ_41 /* XCTestManifests.swift in Sources */,
 				0F7142C62551684600C18A61 /* ContentstackUtilsCustomRendertest.swift in Sources */,
 				0F5E48452525BECA0038C16B /* Constants.swift in Sources */,
@@ -551,7 +591,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) $(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				MARKETING_VERSION = 1.1.2;
+				MARKETING_VERSION = 1.2.0;
 				OTHER_CFLAGS = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
 				OTHER_SWIFT_FLAGS = "$(inherited)";
@@ -583,7 +623,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) $(TOOLCHAIN_DIR)/usr/lib/swift/macosx";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				MARKETING_VERSION = 1.1.2;
+				MARKETING_VERSION = 1.2.0;
 				OTHER_CFLAGS = "$(inherited)";
 				OTHER_LDFLAGS = "$(inherited)";
 				OTHER_SWIFT_FLAGS = "$(inherited)";

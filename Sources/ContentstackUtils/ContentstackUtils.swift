@@ -1,4 +1,25 @@
+import Foundation
+
 public struct ContentstackUtils {
+
+    public struct GQL {
+        public static func jsonToHtml(rte document: [String: Any?], _ option: Option = Option()) throws -> Any {
+            do {
+                let data = try JSONSerialization.data(withJSONObject: document, options: JSONSerialization.WritingOptions.fragmentsAllowed)
+                if (document["json"] as? [[String: Any?]]) != nil {
+                    let rte = try JSONDecoder().decode(JSONNodes.self, from: data)
+                    option.embdeddedItems = rte.embeddedItemsConnection?.edges
+                    return ContentstackUtils.jsonToHtml(node: rte.json, option)
+                }else {
+                    let rte = try JSONDecoder().decode(JSONNode.self, from: data)
+                    option.embdeddedItems = rte.embeddedItemsConnection?.edges
+                    return ContentstackUtils.jsonToHtml(node: rte.json, option)
+                }
+            } catch (let error) {
+                throw error
+            }
+        }
+    }
 
     public static func render(content: String, _ option: Option) throws -> String {
         do {
@@ -39,7 +60,6 @@ public struct ContentstackUtils {
             throw error
         }
     }
-    
     
     public static func jsonToHtml(node documents: [Node], _ option: Option = Option()) -> [String] {
         var resultContents: [String] = []
@@ -103,6 +123,13 @@ public struct ContentstackUtils {
         if let entry = option.entry,
            let embeddedObject = findObject(metadata, entry: entry) {
             return option.renderItem(embeddedObject: embeddedObject, metadata: metadata) ?? ""
+        } else if let embdeddedItems = option.embdeddedItems {
+            let embedModel = embdeddedItems.filter { (item: EmbeddedObject) -> Bool in
+                return item.uid == metadata.itemUid && item.contentTypeUID == metadata.contentTypeUid
+            }
+            if !embedModel.isEmpty {
+                return option.renderItem(embeddedObject: embedModel.first!, metadata: metadata) ?? ""
+            }
         }
         return ""
     }

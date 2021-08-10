@@ -9,6 +9,8 @@ import Foundation
 import ContentstackUtils
 
 class ContentBlock: EmbeddedObject, EmbeddedContentTypeUid, EntryEmbedable, Decodable {
+    var fields: [String : Any]?
+    
 
     static var contentTypeUid: String = "content_block"
 
@@ -31,7 +33,7 @@ class ContentBlock: EmbeddedObject, EmbeddedContentTypeUid, EntryEmbedable, Deco
         self.rte = try container.decode(String.self, forKey: .rte)
         self.richTextEditor = try container.decode(String.self, forKey: .richTextEditor)
         self.contentTypeUID = try container.decode(String.self, forKey: .contentTypeUID)
-
+        self.fields = [:]
         let embedded   = try decoder.container(keyedBy: JSONCodingKeys.self)
         let fields = try embedded.decode(Dictionary<String, Any>.self)
         if let embItems = fields["_embedded_items"] as? [AnyHashable: [EmbeddedObject]] {
@@ -41,6 +43,8 @@ class ContentBlock: EmbeddedObject, EmbeddedContentTypeUid, EntryEmbedable, Deco
 }
 
 class Asset: EmbeddedAsset, Decodable {
+    var fields: [String : Any]?
+    
 
     var uid: String
     var title: String
@@ -60,10 +64,13 @@ class Asset: EmbeddedAsset, Decodable {
         self.url = try container.decode(String.self, forKey: .url)
         self.filename = try container.decode(String.self, forKey: .filename)
         self.contentTypeUID = try container.decode(String.self, forKey: .contentTypeUID)
+        self.fields = [:]
     }
 }
 
 class EmbeddedRTE: EmbeddedContentTypeUid, Decodable {
+    var fields: [String : Any]?
+    
     static var contentTypeUid: String = "embeddedrte"
     var uid: String
     var title: String
@@ -82,5 +89,6 @@ class EmbeddedRTE: EmbeddedContentTypeUid, Decodable {
         self.title = try container.decode(String.self, forKey: .title)
         self.richTextEditor = try container.decode(String.self, forKey: .richTextEditor)
         self.contentTypeUID = try container.decode(String.self, forKey: .contentTypeUID)
+        self.fields = [:]
     }
 }

@@ -1,7 +1,8 @@
-public protocol EmbeddedObject: class {
+public protocol EmbeddedObject: AnyObject {
 /// The `unique identifier` of the entity.
     var uid: String { get }
     var contentTypeUID: String {get}
+    var fields: [String: Any]? {get}
 }
 
 public protocol EmbeddedContentTypeUid: EmbeddedObject {

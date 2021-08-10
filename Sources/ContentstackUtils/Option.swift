@@ -6,7 +6,7 @@ public protocol Renderable {
 
 open class Option: Renderable {
     var entry: EntryEmbedable?
-    
+    internal var embdeddedItems: [EmbeddedObject]?
     public init() {}
     
     public init(entry: EntryEmbedable?) {

@@ -18,7 +18,7 @@ To use this SDK on iOS platform, you will have to install the SDK according to t
 Add the following to your Podfile:
 
     use_frameworks!
-    pod 'ContentstackUtils', '~> 1.1.1'
+    pod 'ContentstackUtils', '~> 1.2.0'
     
 #### Swift Package Manager
 1. Installing libxml2 to your computer:
@@ -41,7 +41,7 @@ Add the following to your Podfile:
     let package = Package(
         name: "YourProject",
         dependencies: [
-            .package(url: "https://github.com/tid-kijyun/ContentstackUtils.git", from: "1.1.1"),
+            .package(url: "https://github.com/tid-kijyun/ContentstackUtils.git", from: "1.2.0"),
         ],
         targets: [
             .target(
@@ -225,3 +225,35 @@ stack.contentType(uid: contentTypeUID)
         }  
     }
 ```
+
+### GraphQL implementation
+After fetching the entries from the content type pass the JSON RTE to `ContentstackUtils.GQL.jsonToHtml` function as shown below:
+
+```swift
+import ContentstackUtils  
+import Apollo
+...
+let graphQLClient: ApolloClient
+...
+
+graphQLClient.fetch (query: ProductsQuery(), cachePolicy: CachePolicy.fetchIgnoringCacheData, queue: DispatchQueue.main) {[weak self] (result: Result<GraphQLResult<ProductsQuery.Data>, Error>) in
+    guard let slf = self else {
+                   return
+               }
+    switch result {
+    case .success(let graphQLResult):
+        guard let data = graphQLResult.data, let products = data.allAbcd?.items else {
+           return
+        }
+
+        for product in products {
+            if let rte = product.superchargedRte {
+               let result = try? ContentstackUtils.GQL.jsonToHtml(rte: rte.resultMap)
+            }
+        }
+    case .failure(let error):
+      print("Failure! Error: \(error)")
+    }
+}
+```
+

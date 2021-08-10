@@ -2,4 +2,16 @@ fileignoreconfig:
 - filename: README.md
   allowed_patterns: [API_KEY, DELIVERY_TOKEN, ENVIRONMENT]
 - filename: ContentstackUtils.xcodeproj/project.pbxproj
-  checksum: 5b62a76622fed7df9967d8646467bd2f04c221df2c95eddce7541fd8ab448078
+  checksum: bc8adda12b44f1b59bb8ff59c8b5135533c024e1d5d3dd8f90ebf83921b13acc
+- filename: Sources/ContentstackUtils/JSONNodes.swift
+  checksum: 46364e65d2303da49c331ef2f3b7ab5792bc8a38091c7e1672a7a9878341f1b4
+- filename: Sources/ContentstackUtils/GQLEmbededEntry.swift
+  checksum: 7f110d0ec5681966c9be5dcf0d3c6080d2a1c0edb12cdb041e81faccaa73436c
+- filename: Sources/ContentstackUtils/Edges.swift
+  checksum: f97583d4ad7fc78230f600ef766254f720c0be9320604f4ca3de6ca340b87357
+- filename: Sources/ContentstackUtils/JSONNode.swift
+  checksum: a6ba5be58ff452ca1eb5549c45dfab3b73caeb0820f24a395568c1bdffb31039
+- filename: Sources/ContentstackUtils/ConnectionNode.swift
+  checksum: 16acd4ea1aa33414082b10b8a1415d2abb6edb0b6280f922c5afa4d699333f7f
+- filename: Sources/ContentstackUtils/GQLEmbededAsset.swift
+  checksum: 12089cea20bec0300bf3293cfdb03279d1fc9fb1f30dc4549ac0b81dac0dfe14
