@@ -53,12 +53,7 @@ let package = Package(
         .target(
             name: "ContentstackUtils",
             dependencies: dependencies,
-            path: "Sources",
-            exclude: [
-                "Sources/Kanna/Info.plist",
-                "Sources/Kanna/Kanna.h",
-                "Tests/KannaTests/Data"
-            ]),
+            path: "Sources"),
         .testTarget(
             name: "ContentstackUtilsTests",
             dependencies: ["ContentstackUtils"]),
