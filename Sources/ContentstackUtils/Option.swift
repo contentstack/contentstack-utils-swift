@@ -59,6 +59,8 @@ open class Option: Renderable {
             return "<sub>\(text)</sub>"
         case .superscript:
             return "<sup>\(text)</sup>"
+        case .break:
+            return "<br />\(text)"
         }
     }
     
@@ -69,7 +71,7 @@ open class Option: Renderable {
         case NodeType.link.rawValue:
             return "<a href=\"\(node.attrs["href"] ?? "")\">\(next(node.children))</a>"
         case NodeType.image.rawValue:
-            return "<img src=\"\(node.attrs["src"] ?? "")\" />\(next(node.children))"
+            return "<img src=\"\(node.attrs["src"] ?? node.attrs["asset-link"] ?? "")\" />\(next(node.children))"
         case NodeType.embed.rawValue:
             return "<iframe src=\"\(node.attrs["src"] ?? "")\">\(next(node.children))</iframe>"
         case NodeType.heading_1.rawValue:

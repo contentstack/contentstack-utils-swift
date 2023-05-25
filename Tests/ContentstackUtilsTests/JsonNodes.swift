@@ -65,6 +65,39 @@ let kPlainTextJson = """
         "italic": true,
         "underline": true,
         "subscript": true
+    },
+    {
+        "text": " lacus. ",
+        "bold": true,
+        "italic": true,
+        "underline": true,
+        "subscript": true,
+        "break": true
+    }
+  ],
+  "type": "doc"
+}
+"""
+
+let kSpanJson = """
+{
+  "uid": "06e34a7a449d7fc2acd",
+  "_version": 13,
+  "attrs": {},
+  "children": [
+    {
+      "type": "span",
+      "attrs": {},
+      "uid": "c2dfed704d7030c65e2e1",
+      "children": [
+          {
+              "text": "Lorem ipsum dolor sit amet.",
+              "bold": true,
+              "italic": true,
+              "underline": true,
+              "subscript": true
+          }
+      ]
     }
   ],
   "type": "doc"

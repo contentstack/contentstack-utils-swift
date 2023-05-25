@@ -15,10 +15,11 @@ class TextNode: Node {
     public var inlineCode: Bool = false
     public var `subscript`: Bool = false
     public var superscript: Bool = false
+    public var `break`: Bool = false
     public var text: String
     public enum FieldKeys: String, CodingKey {
         case text
-        case bold, italic, underline, strikethrough, inlineCode, `subscript`, superscript
+        case bold, italic, underline, strikethrough, inlineCode, `subscript`, superscript, `break`
     }
     
     public required init(from decoder: Decoder) throws {
@@ -32,6 +33,8 @@ class TextNode: Node {
         inlineCode = try container.decodeIfPresent(Bool.self, forKey: .inlineCode) ?? false
         `subscript` = try container.decodeIfPresent(Bool.self, forKey: .`subscript`) ?? false
         superscript = try container.decodeIfPresent(Bool.self, forKey: .superscript) ?? false
+        `break` = try container.decodeIfPresent(Bool.self, forKey: .break) ?? false
+
         
         try super.init(from: decoder)
         type = NodeType.text.rawValue

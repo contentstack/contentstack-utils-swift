@@ -24,6 +24,8 @@ class CustomRenderOption: Option {
             return "<p class='class-id'>\(next(node.children))</p>"
         case NodeType.heading_1.rawValue:
             return "<h1 class='class-id'>\(next(node.children))</h1>"
+        case "span":
+            return "<span class='class-id'>\(next(node.children))</span>"
         default:
             return super.renderNode(nodeType: nodeType, node: node, next: next)
         }
