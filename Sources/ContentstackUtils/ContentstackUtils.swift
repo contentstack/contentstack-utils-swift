@@ -94,6 +94,9 @@ public struct ContentstackUtils {
     
     static private func textNodeToHtml(_ textNode: TextNode, _ option: Option) -> String {
         var text = textNode.text
+        if (textNode.break) {
+            text = option.renderMark(markType: .break, text: text)
+        }
         if (textNode.superscript) {
             text = option.renderMark(markType: .superscript, text: text)
         }
@@ -129,6 +132,11 @@ public struct ContentstackUtils {
             }
             if !embedModel.isEmpty {
                 return option.renderItem(embeddedObject: embedModel.first!, metadata: metadata) ?? ""
+            }
+        }
+        if let attType = node.attrs["type"] as? String, attType == "asset" {
+            return option.renderNode(nodeType: NodeType.image.rawValue, node: node) { children in
+                return nodeChildrenToHtml(children: children, option)
             }
         }
         return ""

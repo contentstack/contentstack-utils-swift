@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
 s.name             = 'ContentstackUtils'
-s.version          = '1.2.1'
+s.version          = '1.3.0'
 s.summary          = 'Contentstack is a headless CMS with an API-first approach that puts content at the centre.'
 
 s.description      = <<-DESC
@@ -16,10 +16,10 @@ s.source           = { :git => 'https://github.com/contentstack/contentstack-uti
 s.social_media_url = 'https://twitter.com/Contentstack'
 s.swift_version = '5.0'
 
-s.ios.deployment_target = '10.1'
-s.osx.deployment_target = '10.12'
-s.tvos.deployment_target = "10.0"
-s.watchos.deployment_target = "3.0"
+s.ios.deployment_target = '11.0'
+s.osx.deployment_target = '10.13'
+s.tvos.deployment_target = "11.0"
+s.watchos.deployment_target = "4.0"
 
 s.source_files =  'Sources/**/*.{swift}'
 s.framework = "Foundation"

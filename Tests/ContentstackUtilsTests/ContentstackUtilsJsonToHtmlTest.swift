@@ -42,12 +42,37 @@ class ContentstackUtilsJsonToHtmlTest: XCTestCase {
         XCTAssertEqual(result, [kPlainTextHtml])
     }
     
+    func testSpan() {
+        let node = NodeParser.parse(from: kSpanJson)
+        
+        var result = ContentstackUtils.jsonToHtml(node: node)
+
+        XCTAssertEqual(result, "<strong><em><u><sub>Lorem ipsum dolor sit amet.</sub></u></em></strong>")
+
+        result = ContentstackUtils.jsonToHtml(node: node, CustomRenderOption());
+
+        XCTAssertEqual(result, "<span class='class-id'><b><em><u><sub>Lorem ipsum dolor sit amet.</sub></u></em></b></span>")
+    }
+    
+    func testAsset_Reference_NonEmbed_Document() {
+        let node = NodeParser.parse(from: kAssetReferenceJson)
+
+        var result = ContentstackUtils.jsonToHtml(node: node)
+
+        XCTAssertEqual(result, "<img src=\"https://images.contentstack.com/v3/assets/blt77263d3e6b/blt73403ee7281/51807f919e0e4/11.jpg\" />")
+
+        result = ContentstackUtils.jsonToHtml(node: node,
+                                                  Option())
+
+        XCTAssertEqual(result, "<img src=\"https://images.contentstack.com/v3/assets/blt77263d3e6b/blt73403ee7281/51807f919e0e4/11.jpg\" />")
+
+    }
     func testAsset_Reference_Document() {
         let node = NodeParser.parse(from: kAssetReferenceJson)
 
         var result = ContentstackUtils.jsonToHtml(node: node)
 
-        XCTAssertEqual(result, "")
+        XCTAssertEqual(result, "<img src=\"https://images.contentstack.com/v3/assets/blt77263d3e6b/blt73403ee7281/51807f919e0e4/11.jpg\" />")
 
         result = ContentstackUtils.jsonToHtml(node: node,
                                                   Option(entry:
@@ -63,7 +88,7 @@ class ContentstackUtilsJsonToHtmlTest: XCTestCase {
         
         var result = ContentstackUtils.jsonToHtml(node: [node])
 
-        XCTAssertEqual(result, [""])
+        XCTAssertEqual(result, ["<img src=\"https://images.contentstack.com/v3/assets/blt77263d3e6b/blt73403ee7281/51807f919e0e4/11.jpg\" />"])
         
         result = ContentstackUtils.jsonToHtml(node: [node],
                                                   Option(entry:
