@@ -36,7 +36,7 @@ xcodebuild \
     -project ContentstackUtils.xcodeproj \
     -scheme "ContentstackUtils-Package" \
     test \
-    -destination "OS=14.1,name=iPhone 11" \
+    -destination "OS=16.2,name=iPhone 14" \
     -resultBundlePath "$TEST_BUNDLE_PATH/$FILE_NAME-iOS.xcresult" \
         | xcpretty \
             --color \
@@ -52,7 +52,7 @@ xcodebuild \
     -project ContentstackUtils.xcodeproj \
     -scheme "ContentstackUtils-Package" \
     test \
-    -destination "OS=14.0,name=Apple TV 4K" \
+    -destination "OS=16.1,name=Apple TV 4K (3rd generation)" \
     -resultBundlePath "$TEST_BUNDLE_PATH/$FILE_NAME-tvOS.xcresult" \
         | xcpretty \
             --color \

@@ -6,5 +6,5 @@
 //
 
 public enum MarkType: String {
-    case bold, italic, underline, strikethrough, inlineCode, `subscript`, superscript
+    case bold, italic, underline, strikethrough, inlineCode, `subscript`, superscript, `break`
 }
