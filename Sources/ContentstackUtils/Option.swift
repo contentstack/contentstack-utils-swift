@@ -69,7 +69,7 @@ open class Option: Renderable {
         case NodeType.paragraph.rawValue:
             return "<p>\(next(node.children))</p>"
         case NodeType.link.rawValue:
-            return "<a href=\"\(node.attrs["href"] ?? "")\">\(next(node.children))</a>"
+            return "<a href=\"\(node.attrs["href"] ?? node.attrs["url"] ?? "")\">\(next(node.children))</a>"
         case NodeType.image.rawValue:
             return "<img src=\"\(node.attrs["src"] ?? node.attrs["asset-link"] ?? "")\" />\(next(node.children))"
         case NodeType.embed.rawValue:
