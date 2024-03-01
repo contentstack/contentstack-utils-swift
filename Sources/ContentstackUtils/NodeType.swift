@@ -23,6 +23,7 @@ public enum NodeType: String {
          orderList = "ol",
          unOrderList = "ul",
          listItem = "li",
+         fragment = "fragment",
   
          hr,
 

@@ -22,6 +22,7 @@ class NodeTypeTest: XCTestCase {
         XCTAssertEqual(NodeType.heading_5.rawValue, "h5")
         XCTAssertEqual(NodeType.heading_6.rawValue, "h6")
         XCTAssertEqual(NodeType.orderList.rawValue, "ol")
+        XCTAssertEqual(NodeType.fragment.rawValue, "fragment")
         XCTAssertEqual(NodeType.unOrderList.rawValue, "ul")
         XCTAssertEqual(NodeType.listItem.rawValue, "li")
         XCTAssertEqual(NodeType.hr.rawValue, "hr")
