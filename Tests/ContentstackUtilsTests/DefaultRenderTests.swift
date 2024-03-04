@@ -225,6 +225,15 @@ class OptionTests: XCTestCase {
         })
         XCTAssertEqual(result, "<ol>\(text)</ol>")
     }
+    
+    func testFragmentRender() {
+        let node = NodeParser.parse(from: kBlankDocument)
+
+        let result = defaultRender.renderNode(nodeType: NodeType.fragment.rawValue, node: node, next: { _ in
+            return text
+        })
+        XCTAssertEqual(result, "<fragment>\(text)</fragment>")
+    }
 
     func testUnorderListRender() {
         let node = NodeParser.parse(from: kBlankDocument)

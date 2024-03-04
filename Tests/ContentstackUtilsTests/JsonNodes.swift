@@ -854,3 +854,115 @@ let kHRJson = """
     "type": "doc"
 }
 """
+
+let kFragmentJson = """
+{
+    "type": "doc",
+    "attrs":
+    {},
+    "children":
+    [
+        {
+            "type": "ul",
+            "children":
+            [
+                {
+                    "type": "li",
+                    "attrs":
+                    {
+                        "style":
+                        {},
+                        "redactor-attributes":
+                        {},
+                        "dir": "ltr"
+                    },
+                    "children":
+                    [
+                        {
+                            "type": "fragment",
+                            "children":
+                            [
+                                {
+                                    "text": "One",
+                                    "bold": true
+                                }
+                            ],
+                        },
+                        {
+                            "type": "ul",
+                            "attrs":
+                            {
+                                "style":
+                                {}
+                            },
+                            "children":
+                            [
+                                {
+                                    "type": "li",
+                                    "attrs":
+                                    {
+                                        "style":
+                                        {},
+                                        "redactor-attributes":
+                                        {},
+                                        "dir": "ltr"
+                                    },
+                                    "children":
+                                    [
+                                        {
+                                            "text": "nested one "
+                                        }
+                                    ]
+                                },
+                                {
+                                    "type": "li",
+                                    "attrs":
+                                    {
+                                        "style":
+                                        {},
+                                        "redactor-attributes":
+                                        {},
+                                        "dir": "ltr"
+                                    },
+                                    "children":
+                                    [
+                                        {
+                                            "text": "nested two "
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "type": "li",
+                    "attrs":
+                    {
+                        "style":
+                        {},
+                        "redactor-attributes":
+                        {},
+                        "dir": "ltr"
+                    },
+                    "children":
+                    [
+                        {
+                            "text": "Two"
+                        }
+                    ]
+                }
+            ],
+            "attrs":
+            {
+                "style":
+                {},
+                "redactor-attributes":
+                {},
+                "dir": "ltr"
+            }
+        }
+    ],
+    "_version": 1
+}
+"""

@@ -276,6 +276,18 @@ class GQLJsonToHtml: XCTestCase {
         }
     }
     
+    func testFragment_Document()  {
+        guard let json = GQLJsonRTE(node: kFragmentJson) else { return }
+
+        if let result = try? ContentstackUtils.GQL.jsonToHtml(rte: json["single_rte"] as! [String : Any?]) as? String {
+            XCTAssertEqual(result, kFragmentHtml)
+        }
+
+        if let result = try? ContentstackUtils.GQL.jsonToHtml(rte: json["multiple_rte"] as! [String : Any?]) as? [String] {
+            XCTAssertEqual(result, [kFragmentHtml])
+        }
+    }
+    
     static var allTests = [
         ("testEmpty_Node_Returns_Empty_String", testEmpty_Node_Returns_Empty_String),
         ("testPlainText_Document_Return_HtmlString_Result", testPlainText_Document_Return_HtmlString_Result),
@@ -299,6 +311,7 @@ class GQLJsonToHtml: XCTestCase {
         ("testTable_Document", testTable_Document),
         ("testBlockquote_Document", testBlockquote_Document),
         ("testCode_Document", testCode_Document),
+        ("testFragment_Document", testFragment_Document),
     ]
 
 }

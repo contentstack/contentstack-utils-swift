@@ -455,6 +455,22 @@ class ContentstackUtilsJsonToHtmlTest: XCTestCase {
         XCTAssertEqual(result, ["<hr>"])
     }
     
+    func testFragment_Document() {
+        let node = NodeParser.parse(from: kFragmentJson)
+        
+        let result = ContentstackUtils.jsonToHtml(node: node)
+        
+        XCTAssertEqual(result, kFragmentHtml)
+    }
+    
+    func testFragmentArray_Document() {
+        let node = NodeParser.parse(from: kFragmentJson)
+        
+        let result = ContentstackUtils.jsonToHtml(node: [node])
+        
+        XCTAssertEqual(result, [kFragmentHtml])
+    }
+    
     static var allTests = [
         ("testEmpty_Node_Returns_Empty_String", testEmpty_Node_Returns_Empty_String),
         ("testEmpty_Nodes_Array_Returns_Empty_String_Array", testEmpty_Nodes_Array_Returns_Empty_String_Array),
@@ -516,6 +532,9 @@ class ContentstackUtilsJsonToHtmlTest: XCTestCase {
         
         ("testCode_Document", testCode_Document),
         ("testCodeArray_Document", testCodeArray_Document),
+        
+        ("testFragment_Document", testFragment_Document),
+        ("testFragmentArray_Document", testFragmentArray_Document),
     ]
 
 }
