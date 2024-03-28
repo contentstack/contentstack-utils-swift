@@ -88,6 +88,8 @@ open class Option: Renderable {
             return "<h6>\(next(node.children))</h6>"
         case NodeType.orderList.rawValue:
             return "<ol>\(next(node.children))</ol>"
+        case NodeType.fragment.rawValue:
+            return "<fragment>\(next(node.children))</fragment>"
         case NodeType.unOrderList.rawValue:
             return "<ul>\(next(node.children))</ul>"
         case NodeType.listItem.rawValue:

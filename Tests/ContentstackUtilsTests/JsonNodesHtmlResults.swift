@@ -21,3 +21,4 @@ let kBlockquoteHtml = "<blockquote>Praesent eu ex sed nibh venenatis pretium.</b
 let kCodeHtml = "<code>Code template.</code>"
 let kLinkInPHtml = "<p><strong><em><u><sub></sub></u></em></strong><a href=\"LINK.com\">LINK</a></p>"
 let kEmbedHtml = "<iframe src=\"https://www.youtube.com/watch?v=AOP0yARiW8U\"></iframe>"
+let kFragmentHtml = "<ul><li><fragment><strong>One</strong></fragment><ul><li>nested one </li><li>nested two </li></ul></li><li>Two</li></ul>"
