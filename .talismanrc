@@ -2,7 +2,7 @@ fileignoreconfig:
 - filename: README.md
   allowed_patterns: [API_KEY, DELIVERY_TOKEN, ENVIRONMENT]
 - filename: ContentstackUtils.xcodeproj/project.pbxproj
-  checksum: bc8adda12b44f1b59bb8ff59c8b5135533c024e1d5d3dd8f90ebf83921b13acc
+  checksum: b1be37b72c0581396a2c6ada39eec9edb8a4e93c2b884c54c188049951af3dd9
 - filename: Sources/ContentstackUtils/JSONNodes.swift
   checksum: 46364e65d2303da49c331ef2f3b7ab5792bc8a38091c7e1672a7a9878341f1b4
 - filename: Sources/ContentstackUtils/GQLEmbededEntry.swift
@@ -15,3 +15,6 @@ fileignoreconfig:
   checksum: 16acd4ea1aa33414082b10b8a1415d2abb6edb0b6280f922c5afa4d699333f7f
 - filename: Sources/ContentstackUtils/GQLEmbededAsset.swift
   checksum: 12089cea20bec0300bf3293cfdb03279d1fc9fb1f30dc4549ac0b81dac0dfe14
+- filename: PrivacyInfo.xcprivacy
+  checksum: 7697fa6a0a5e0600d35d4678ffff9ef14c5dff5dc1613d37968de7ded3ff1fd0
+version: ""
