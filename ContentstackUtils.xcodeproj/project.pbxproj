@@ -64,7 +64,7 @@
 		0FFF2F242668FB6F003E9DBF /* MarkType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FFF2F232668FB6F003E9DBF /* MarkType.swift */; };
 		0FFF2F2A2668FC54003E9DBF /* NodeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FFF2F292668FC54003E9DBF /* NodeType.swift */; };
 		0FFF2F382668FE85003E9DBF /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FFF2F372668FE85003E9DBF /* Node.swift */; };
-		64F522042BF5C43D00AE6E0F /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 64F522032BF5C43D00AE6E0F /* PrivacyInfo.xcprivacy */; };
+		64F522112BF5C81000AE6E0F /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 64F522102BF5C81000AE6E0F /* PrivacyInfo.xcprivacy */; };
 		OBJ_22 /* ContentstackUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_9 /* ContentstackUtils.swift */; };
 		OBJ_29 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_6 /* Package.swift */; };
 		OBJ_40 /* ContentstackUtilsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_12 /* ContentstackUtilsTests.swift */; };
@@ -137,7 +137,7 @@
 		0FFF2F232668FB6F003E9DBF /* MarkType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkType.swift; sourceTree = "<group>"; };
 		0FFF2F292668FC54003E9DBF /* NodeType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NodeType.swift; sourceTree = "<group>"; };
 		0FFF2F372668FE85003E9DBF /* Node.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
-		64F522032BF5C43D00AE6E0F /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		64F522102BF5C81000AE6E0F /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		"ContentstackUtils::ContentstackUtils::Product" /* ContentstackUtils.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = ContentstackUtils.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		"ContentstackUtils::ContentstackUtilsTests::Product" /* ContentstackUtilsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; path = ContentstackUtilsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		OBJ_12 /* ContentstackUtilsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentstackUtilsTests.swift; sourceTree = "<group>"; };
@@ -344,9 +344,9 @@
 		OBJ_5 = {
 			isa = PBXGroup;
 			children = (
+				64F522102BF5C81000AE6E0F /* PrivacyInfo.xcprivacy */,
 				0FAA3EBD26A1C65B00173FA9 /* ContentstackUtils.podspec */,
 				OBJ_6 /* Package.swift */,
-				64F522032BF5C43D00AE6E0F /* PrivacyInfo.xcprivacy */,
 				0F7142C725517A4900C18A61 /* README.md */,
 				0FA3D58E252228E300E58179 /* Scripts */,
 				OBJ_7 /* Sources */,
@@ -470,7 +470,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				64F522042BF5C43D00AE6E0F /* PrivacyInfo.xcprivacy in Resources */,
+				64F522112BF5C81000AE6E0F /* PrivacyInfo.xcprivacy in Resources */,
 				0F5E484E2525DDD70038C16B /* EntryEmbedded.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

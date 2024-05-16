@@ -2,7 +2,7 @@ fileignoreconfig:
 - filename: README.md
   allowed_patterns: [API_KEY, DELIVERY_TOKEN, ENVIRONMENT]
 - filename: ContentstackUtils.xcodeproj/project.pbxproj
-  checksum: b1be37b72c0581396a2c6ada39eec9edb8a4e93c2b884c54c188049951af3dd9
+  checksum: 29a19f9bec25712d57fadc29c149b240d2acc19c1cc3a38c76e093656b322cf1
 - filename: Sources/ContentstackUtils/JSONNodes.swift
   checksum: 46364e65d2303da49c331ef2f3b7ab5792bc8a38091c7e1672a7a9878341f1b4
 - filename: Sources/ContentstackUtils/GQLEmbededEntry.swift
