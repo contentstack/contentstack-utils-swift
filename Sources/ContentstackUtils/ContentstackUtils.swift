@@ -2,6 +2,10 @@ import Foundation
 
 public struct ContentstackUtils {
 
+    public enum VariantUtilityError: Error {
+    case invalidArgument(String)
+    }
+
     public struct GQL {
         public static func jsonToHtml(rte document: [String: Any?], _ option: Option = Option()) throws -> Any {
             do {
@@ -72,6 +76,79 @@ public struct ContentstackUtils {
     public static func jsonToHtml(node document: Node, _ option: Option = Option()) -> String {
         return nodeChildrenToHtml(children: document.children, option)
     }
+    
+    public static func getVariantAliases(entry: [String: Any], contentTypeUid: String) throws -> [String: Any] {
+
+        try validateContentTypeUid(contentTypeUid)
+
+        guard let uid = entry["uid"] as? String, !uid.isEmpty else{
+            throw VariantUtilityError.invalidArgument("entry uid is required.")
+        }
+
+        guard let publish = entry["publish_details"] as? [String: Any],
+              let variants = publish["variants"] as? [String: Any] else{
+            return [
+                "entry_uid": uid,
+                "contenttype_uid": contentTypeUid,
+                "variants": [] as [String]
+            ]
+        }
+        var aliases : [String] = []
+        for(_, value) in variants {
+            if let obj = value as? [String: Any],
+               let alias = obj["alias"] as? String {
+                aliases.append(alias)
+            }
+        }
+        
+        return [
+            "entry_uid": uid,
+            "contenttype_uid": contentTypeUid,
+            "variants": aliases
+        ]
+    }
+
+    public static func getVariantAliases(entries: [[String: Any]], contentTypeUid: String) throws -> [[String: Any]] {
+        try validateContentTypeUid(contentTypeUid)
+        return try entries.map { entry in
+            try getVariantAliases(entry: entry, contentTypeUid: contentTypeUid)
+        }
+    }
+
+    public static func getDataCsvariantsAttribute(entry: [String: Any]?, contentTypeUid: String) throws -> [String: Any]{
+        guard let e = entry else {
+            return ["data-csvariants": "[]"]
+        }
+        
+        let payload = try getVariantAliases(entry: e, contentTypeUid: contentTypeUid)
+        let s = try jsonString(for: [payload])
+        return ["data-csvariants": s]
+
+    }
+
+    public static func getDataCsvariantsAttribute(entries: [[String: Any]], contentTypeUid: String) throws -> [String: Any]{
+        try validateContentTypeUid(contentTypeUid)
+        let payloads = try getVariantAliases(entries: entries, contentTypeUid: contentTypeUid)
+        let s = try jsonString(for: payloads)
+        return ["data-csvariants": s]
+    }
+
+
+    private static func validateContentTypeUid(_ contentTypeUid: String) throws {
+        if contentTypeUid.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+            throw VariantUtilityError.invalidArgument("contentTypeUid must not be empty")
+        }
+    }
+
+    private static func jsonString(for array: [[String: Any]]) throws -> String{
+        let data = try JSONSerialization.data(withJSONObject: array, options: [])
+        guard let json = String(data: data, encoding: .utf8) else {
+            throw VariantUtilityError.invalidArgument("Failed to encode JSON string")
+        }
+        return json
+    }
+
+
 
     static private func nodeChildrenToHtml(children nodes:[Node], _ option: Option) -> String {
         nodes.map{ (node) -> String in
@@ -156,3 +233,4 @@ public struct ContentstackUtils {
         return nil
     }
 }
+
