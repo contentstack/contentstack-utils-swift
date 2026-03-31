@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.5.0] - 2026-03-31
+
+- **`getVariantMetadataTags`** is the canonical API for `data-csvariants`; **`getDataCsvariantsAttribute`** is deprecated (delegates to it until removed in a major release).
+
 ## [1.4.0] - 2026-03-30
 
 ### Enhancement
