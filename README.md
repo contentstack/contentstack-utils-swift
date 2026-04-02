@@ -1,7 +1,18 @@
 # ![Contentstack](https://www.contentstack.com/docs/static/images/contentstack.png)
 
-# Contentstack Swift SDK
+# ContentstackUtils
+
 ![ContentstackUtils CI](https://github.com/contentstack/contentstack-utils-swift/workflows/ContentstackUtils%20CI/badge.svg)
+
+## Important
+
+**ContentstackUtils** is a **companion** library for the [Contentstack Swift SDK](https://github.com/contentstack/contentstack-swift)—utilities for JSON RTE, embedded items, and related helpers; it is **not** the core Content Delivery API (CDA) client. Add **ContentstackUtils** with Swift Package Manager from [`contentstack/contentstack-utils-swift`](https://github.com/contentstack/contentstack-utils-swift), add the [Swift SDK](https://github.com/contentstack/contentstack-swift) the same way (see also [Swift Package Index](https://swiftpackageindex.com/contentstack/contentstack-swift)), and **align versions** between them as described in this README.
+
+We are **deprecating CocoaPods** (`pod 'ContentstackUtils'`) as the recommended integration path for **new** projects—prefer SPM. **Existing** CocoaPods users can keep shipping; migrate when it suits you. This applies only to the **CocoaPods delivery channel**, not to the Swift libraries themselves.
+
+Read the full customer-facing notice: **[DEPRECATION.md](./DEPRECATION.md)**. Swift CDA reference: [Swift SDK reference](https://www.contentstack.com/docs/developers/sdks/content-delivery-sdk/swift/reference). Optional context: [CocoaPods Specs Repo](https://blog.cocoapods.org/CocoaPods-Specs-Repo/).
+
+---
 
 Contentstack is a headless CMS with an API-first approach. It is a CMS that developers can use to build powerful cross-platform applications in their favorite languages. Build your application frontend, and Contentstack will take care of the rest. [Read More](https://www.contentstack.com/).
 
