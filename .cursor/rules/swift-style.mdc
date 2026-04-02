@@ -1,0 +1,14 @@
+---
+description: Swift style and project conventions for all Swift sources (SwiftLint, layout, vendored Kanna).
+globs: "**/*.swift"
+---
+
+# Swift style (this repo)
+
+- **Tooling:** Run SwiftLint using `.swiftlint.yml`. Do not weaken rules for new code without team agreement; `Sources/Kanna` is excluded upstream—avoid copying patterns that would fail lint in `Sources/ContentstackUtils/`.
+- **Package layout:** Library code lives under `Sources/ContentstackUtils/`. Vendored **Kanna** lives under `Sources/Kanna/`; treat it as third-party unless explicitly updating the fork—prefer fixes in `ContentstackUtils` or documented Kanna upgrades.
+- **Platforms:** The package supports macOS 10.13+, iOS/tvOS 11+, watchOS 4+ (`Package.swift`). Avoid APIs that break the declared deployment targets without bumping them deliberately.
+- **libxml2:** Non-Linux Apple platforms use system libxml; Linux uses the `libxml2` system target and `pkg-config`. Keep `Modules/` and conditional compilation in sync with `Package.swift` when changing platform support.
+- **Naming:** Follow existing Swift naming (types `UpperCamelCase`, members `lowerCamelCase`). Preserve established public names even if imperfect (e.g. historical typos in protocol/API) unless doing a semver-major cleanup.
+- **Imports:** `import Foundation` where needed; HTML parsing goes through Kanna types re-exported/used from this package’s structure—follow existing files.
+- **Access control:** Mark public API `public`/`open` intentionally; keep implementation details `internal` or `private` unless cross-target tests require `@testable` patterns already in use.

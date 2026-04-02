@@ -1,0 +1,14 @@
+---
+description: XCTest conventions for ContentstackUtilsTests—naming, mocks, fixtures, coverage ignores.
+globs: "Tests/**/*.swift"
+---
+
+# Tests (ContentstackUtilsTests)
+
+- **Runner:** XCTest via SPM (`swift test`) and Xcode scheme `ContentstackUtils-Package`. Test target folder: `Tests/ContentstackUtilsTests/`.
+- **Naming:** Files follow `*Tests.swift`, `*Test.swift`, or descriptive names (`GQLJsonToHtml.swift`, `JsonNodes.swift`). Mirror the feature under test (e.g. `VariantUtilityTests.swift` for variant helpers).
+- **Fixtures:** JSON/HTML fixtures and helpers live alongside tests (`JsonNodes.swift`, `JsonNodesHtmlResults.swift`, `EmbededModelMock.swift`, `CustomRenderOptionMock.swift`, etc.). Prefer extending existing fixtures over one-off huge literals when possible.
+- **SwiftLint:** `Tests/ContentstackUtilsTests/Constants.swift` is excluded in `.swiftlint.yml`; other test files are linted—keep them compliant.
+- **Coverage:** Slather ignores `Tests/*` and parts of sources per `.slather.yml`; new code under `Sources/ContentstackUtils/` should be covered unless explicitly excluded.
+- **Integration vs unit:** This repo does not use separate integration directories; tests are colocated in `ContentstackUtilsTests` with mocks (`TestClient`, model mocks) simulating API payloads—no live network calls required for CI.
+- **Manifests:** `XCTestManifests.swift` exists for Linux/test discovery where applicable—update when adding tests if your workflow requires it.

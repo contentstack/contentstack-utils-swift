@@ -1,0 +1,14 @@
+---
+description: PR review checklist for Contentstack Utils Swift—API, docs, errors, compatibility, security, tests.
+alwaysApply: true
+---
+
+# Code review checklist (this repo)
+
+- **Public API stability:** Any change to `public`/`open` types in `Sources/ContentstackUtils/` (e.g. `ContentstackUtils`, `Option`, `Node`, GQL helpers, variant APIs) must be semver-conscious; call out breaking renames or signature changes.
+- **Documentation:** User-visible behavior belongs in `README.md` and `CHANGELOG.md`; podspec summary/version when releasing. Examples should match actual method names (`jsonToHtml` overloads, `GQL.jsonToHtml`).
+- **Error handling:** New `throws` paths should use clear error types; avoid silent failures on bad RTE JSON or variant input when callers need to debug.
+- **Backward compatibility:** Support existing Contentstack JSON RTE and GraphQL result shapes; prefer additive fields and default `Option()` behavior.
+- **Dependencies and security:** `Package.swift` / `ContentstackUtils.podspec` dependency changes need justification; CI may run SCA/policy scans—address reported issues per org process.
+- **Tests:** Add or update tests under `Tests/ContentstackUtilsTests/` for bug fixes and features; run `swift test` and/or `xcodebuild` as in CI.
+- **Vendored code:** Changes under `Sources/Kanna/` or `Modules/` need extra scrutiny (upstream parity, licensing, platform builds).
