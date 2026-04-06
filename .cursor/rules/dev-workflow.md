@@ -1,48 +1,39 @@
-# Development workflow (ContentstackUtils Swift)
+# Development Workflow – Contentstack Utils Swift
 
-## Branches and pull requests
+Use this as the standard workflow when contributing to Contentstack Utils Swift.
 
+## Branches
+
+- Use feature branches for changes (e.g. `feat/...`, `fix/...`, ticket branches like `DX-5372-cursor`).
 - **CI** runs on push to `master` and on pull requests targeting `master` or `next` (see `.github/workflows/ci.yml`).
-- **Merges into `master`** from the wider org are gated: pull requests whose base is `master` are expected to come from the `staging` branch; other head branches may be blocked by the check-branch workflow (`.github/workflows/check-branch.yml`). Confirm with your team’s release process before opening PRs to `master`.
+- **Merges into `master`** may be gated: PRs whose base is `master` are expected to come from the `staging` branch; other head branches may be blocked (see `.github/workflows/check-branch.yml`). Confirm with your team’s release process before opening PRs to `master`.
 
-## Build and test
+## Running tests
 
-**Swift Package Manager (library development):**
+- **All tests (SPM):** `swift test`
+- **Build:** `swift build`
+- **CI-style Xcode (iOS Simulator):**  
+  `xcodebuild -project "ContentstackUtils.xcodeproj" -scheme "ContentstackUtils-Package" -destination "OS=13.4.1,name=iPhone 11 Pro" test`  
+  Adjust `-destination` for your local Xcode/Simulator.
 
-```bash
-swift build
-swift test
-```
+Run tests before opening a PR. Integration-style behavior is covered with **offline** mocks and fixtures—no `.env` or live stack credentials required for the default test suite.
 
-**Xcode (matches CI):** CI uses the Xcode project and iOS Simulator:
+## Lint
 
-```bash
-xcodebuild -project "ContentstackUtils.xcodeproj" -scheme "ContentstackUtils-Package" -destination "OS=13.4.1,name=iPhone 11 Pro" test
-```
+- **SwiftLint:** `swiftlint` (config `.swiftlint.yml`)
 
-Adjust `-destination` for your local Xcode/Simulator names. CI pins `DEVELOPER_DIR` to a specific Xcode; local runs use your default toolchain.
+## Pull requests
 
-## Lint and format
+- Ensure the build passes: `swift build` and `swift test` (and/or `xcodebuild` if you touch Xcode-specific paths).
+- Follow the **code-review** rule (see `.cursor/rules/code-review.mdc`) for the PR checklist.
+- Keep changes backward-compatible for public API; call out any breaking changes clearly.
+- Describe behavior changes and semver impact; update `CHANGELOG.md` and version metadata (`ContentstackUtils.podspec`, tags) when releasing—per team process.
+- Security/policy scans may run in CI (`.github/workflows/sca-scan.yml`, `policy-scan.yml`); fix findings per org policy.
 
-- **SwiftLint:** configuration is `.swiftlint.yml` (excludes `Carthage`, `Pods`, `Sources/Kanna`, and some test constants). Run from repo root:
+## Optional: TDD
 
-```bash
-swiftlint
-```
-
-- **Formatting:** there is no separate formatter config in-repo; match existing file style and SwiftLint output.
+If the team uses TDD, follow RED–GREEN–REFACTOR when adding behavior: write a failing test first, implement to pass, then refactor. The **testing** rule and **skills/testing** skill describe test structure and naming.
 
 ## Coverage
 
-- **Slather** is configured in `.slather.yml` (Cobertura, scheme `ContentstackUtils-Package`, ignores tests, Kanna, and `Decodable.*` under ContentstackUtils). Use Slather/Xcode coverage as your team prefers after a test run.
-
-## Pull request expectations
-
-- Describe behavior changes and any public API or semver impact.
-- Update `CHANGELOG.md` and version metadata (`ContentstackUtils.podspec`, tags) when releasing—per team process.
-- Ensure tests pass locally (`swift test` and/or `xcodebuild` as above).
-- Security/policy scans may run in CI (`.github/workflows/sca-scan.yml`, `policy-scan.yml`); fix findings per org policy.
-
-## Test-driven development
-
-TDD is optional; there is no enforced workflow. New behavior should include or update tests under `Tests/ContentstackUtilsTests/` when feasible.
+- **Slather** is configured in `.slather.yml` (scheme `ContentstackUtils-Package`). Use after tests to inspect coverage of `Sources/ContentstackUtils/`.
