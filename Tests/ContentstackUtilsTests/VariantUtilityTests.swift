@@ -21,6 +21,26 @@ final class VariantUtilityTests: XCTestCase {
         return arr.compactMap { $0 as? [String: Any] }
     }
 
+    /// JSON string equality is unstable (key order); compare payload semantics.
+    private func assertSemanticEqualDataCsvariantsPayload(_ a: [String: Any], _ b: [String: Any], file: StaticString = #file, line: UInt = #line) throws {
+        let sa = try XCTUnwrap(a["data-csvariants"] as? String, file: file, line: line)
+        let sb = try XCTUnwrap(b["data-csvariants"] as? String, file: file, line: line)
+        let aArr = try JSONSerialization.jsonObject(with: Data(sa.utf8)) as! [Any]
+        let bArr = try JSONSerialization.jsonObject(with: Data(sb.utf8)) as! [Any]
+        XCTAssertEqual(aArr.count, bArr.count, file: file, line: line)
+        for i in 0..<aArr.count {
+            guard let da = aArr[i] as? [String: Any], let db = bArr[i] as? [String: Any] else {
+                XCTFail("Expected object at index \(i)", file: file, line: line)
+                return
+            }
+            XCTAssertEqual(da["entry_uid"] as? String, db["entry_uid"] as? String, file: file, line: line)
+            XCTAssertEqual(da["contenttype_uid"] as? String, db["contenttype_uid"] as? String, file: file, line: line)
+            let va = Set(da["variants"] as? [String] ?? [])
+            let vb = Set(db["variants"] as? [String] ?? [])
+            XCTAssertEqual(va, vb, file: file, line: line)
+        }
+    }
+
     func testGetVariantAliasesSingleEntry() throws {
         let root = try TestDecodable.loadJSONObject(named: "variantsSingleEntry")
         let entry = try XCTUnwrap(root["entry"] as? [String: Any])
@@ -31,10 +51,10 @@ final class VariantUtilityTests: XCTestCase {
         XCTAssertEqual(stringSet(from: result["variants"]), ["cs_personalize_0_0", "cs_personalize_0_3"])
     }
 
-    func testGetDataCsvariantsAttributeSingleEntry() throws {
+    func testGetVariantMetadataTagsSingleEntry() throws {
         let root = try TestDecodable.loadJSONObject(named: "variantsSingleEntry")
         let entry = try XCTUnwrap(root["entry"] as? [String: Any])
-        let wrapper = try ContentstackUtils.getDataCsvariantsAttribute(entry: entry, contentTypeUid: contentTypeUid)
+        let wrapper = try ContentstackUtils.getVariantMetadataTags(entry: entry, contentTypeUid: contentTypeUid)
 
         let parsed = try parseDataCsvariantsArray(wrapper)
         XCTAssertEqual(parsed.count, 1)
@@ -66,10 +86,10 @@ final class VariantUtilityTests: XCTestCase {
         XCTAssertEqual((third["variants"] as? [String])?.count, 0)
     }
 
-    func testGetDataCsvariantsAttributeMultipleEntries() throws {
+    func testGetVariantMetadataTagsMultipleEntries() throws {
         let root = try TestDecodable.loadJSONObject(named: "variantsEntries")
         let entries = try XCTUnwrap(root["entries"] as? [[String: Any]])
-        let wrapper = try ContentstackUtils.getDataCsvariantsAttribute(entries: entries, contentTypeUid: contentTypeUid)
+        let wrapper = try ContentstackUtils.getVariantMetadataTags(entries: entries, contentTypeUid: contentTypeUid)
 
         let parsed = try parseDataCsvariantsArray(wrapper)
         XCTAssertEqual(parsed.count, 3)
@@ -102,9 +122,29 @@ final class VariantUtilityTests: XCTestCase {
         }
     }
 
-    func testGetDataCsvariantsAttributeWhenEntryNil() throws {
-        let result = try ContentstackUtils.getDataCsvariantsAttribute(entry: nil, contentTypeUid: "landing_page")
+    func testGetVariantMetadataTagsWhenEntryNil() throws {
+        let result = try ContentstackUtils.getVariantMetadataTags(entry: nil, contentTypeUid: "landing_page")
         XCTAssertEqual(result["data-csvariants"] as? String, "[]")
+    }
+
+    /// Deprecated `getDataCsvariantsAttribute` must match canonical `getVariantMetadataTags` until removal.
+    func testDeprecatedGetDataCsvariantsAttributeDelegatesToGetVariantMetadataTags() throws {
+        let root = try TestDecodable.loadJSONObject(named: "variantsSingleEntry")
+        let entry = try XCTUnwrap(root["entry"] as? [String: Any])
+
+        let canonical = try ContentstackUtils.getVariantMetadataTags(entry: entry, contentTypeUid: contentTypeUid)
+        let deprecated = try ContentstackUtils.getDataCsvariantsAttribute(entry: entry, contentTypeUid: contentTypeUid)
+        try assertSemanticEqualDataCsvariantsPayload(canonical, deprecated)
+
+        let multiRoot = try TestDecodable.loadJSONObject(named: "variantsEntries")
+        let entries = try XCTUnwrap(multiRoot["entries"] as? [[String: Any]])
+        let canonicalMany = try ContentstackUtils.getVariantMetadataTags(entries: entries, contentTypeUid: contentTypeUid)
+        let deprecatedMany = try ContentstackUtils.getDataCsvariantsAttribute(entries: entries, contentTypeUid: contentTypeUid)
+        try assertSemanticEqualDataCsvariantsPayload(canonicalMany, deprecatedMany)
+
+        let nilCanonical = try ContentstackUtils.getVariantMetadataTags(entry: nil, contentTypeUid: "x")
+        let nilDeprecated = try ContentstackUtils.getDataCsvariantsAttribute(entry: nil, contentTypeUid: "x")
+        XCTAssertEqual(nilCanonical["data-csvariants"] as? String, nilDeprecated["data-csvariants"] as? String)
     }
 
     // MARK: - Edge cases
@@ -120,8 +160,8 @@ final class VariantUtilityTests: XCTestCase {
         }
     }
 
-    func testGetDataCsvariantsAttributeEmptyEntriesArray() throws {
-        let wrapper = try ContentstackUtils.getDataCsvariantsAttribute(entries: [], contentTypeUid: contentTypeUid)
+    func testGetVariantMetadataTagsEmptyEntriesArray() throws {
+        let wrapper = try ContentstackUtils.getVariantMetadataTags(entries: [], contentTypeUid: contentTypeUid)
         XCTAssertEqual(wrapper["data-csvariants"] as? String, "[]")
     }
 
@@ -175,16 +215,16 @@ final class VariantUtilityTests: XCTestCase {
         }
     }
 
-    func testGetDataCsvariantsAttributeThrowsWhenContentTypeUidEmptyWithEntry() throws {
+    func testGetVariantMetadataTagsThrowsWhenContentTypeUidEmptyWithEntry() throws {
         let root = try TestDecodable.loadJSONObject(named: "variantsSingleEntry")
         let entry = try XCTUnwrap(root["entry"] as? [String: Any])
-        XCTAssertThrowsError(try ContentstackUtils.getDataCsvariantsAttribute(entry: entry, contentTypeUid: "")) { error in
+        XCTAssertThrowsError(try ContentstackUtils.getVariantMetadataTags(entry: entry, contentTypeUid: "")) { error in
             XCTAssertTrue(error is ContentstackUtils.VariantUtilityError)
         }
     }
 
-    func testGetDataCsvariantsAttributeEntriesThrowsWhenContentTypeUidWhitespaceOnly() {
-        XCTAssertThrowsError(try ContentstackUtils.getDataCsvariantsAttribute(entries: [], contentTypeUid: "\t\n")) { error in
+    func testGetVariantMetadataTagsEntriesThrowsWhenContentTypeUidWhitespaceOnly() {
+        XCTAssertThrowsError(try ContentstackUtils.getVariantMetadataTags(entries: [], contentTypeUid: "\t\n")) { error in
             XCTAssertTrue(error is ContentstackUtils.VariantUtilityError)
         }
     }
@@ -192,21 +232,22 @@ final class VariantUtilityTests: XCTestCase {
     #if !canImport(ObjectiveC)
     static var allTests = [
         ("testGetVariantAliasesSingleEntry", testGetVariantAliasesSingleEntry),
-        ("testGetDataCsvariantsAttributeSingleEntry", testGetDataCsvariantsAttributeSingleEntry),
+        ("testGetVariantMetadataTagsSingleEntry", testGetVariantMetadataTagsSingleEntry),
         ("testGetVariantAliasesMultipleEntries", testGetVariantAliasesMultipleEntries),
-        ("testGetDataCsvariantsAttributeMultipleEntries", testGetDataCsvariantsAttributeMultipleEntries),
+        ("testGetVariantMetadataTagsMultipleEntries", testGetVariantMetadataTagsMultipleEntries),
         ("testGetVariantAliasesThrowsWhenEntryMissingUid", testGetVariantAliasesThrowsWhenEntryMissingUid),
         ("testGetVariantAliasesThrowsWhenContentTypeUidEmpty", testGetVariantAliasesThrowsWhenContentTypeUidEmpty),
-        ("testGetDataCsvariantsAttributeWhenEntryNil", testGetDataCsvariantsAttributeWhenEntryNil),
+        ("testGetVariantMetadataTagsWhenEntryNil", testGetVariantMetadataTagsWhenEntryNil),
+        ("testDeprecatedGetDataCsvariantsAttributeDelegatesToGetVariantMetadataTags", testDeprecatedGetDataCsvariantsAttributeDelegatesToGetVariantMetadataTags),
         ("testGetVariantAliasesEmptyEntriesArray", testGetVariantAliasesEmptyEntriesArray),
         ("testGetVariantAliasesEmptyEntriesThrowsWhenContentTypeUidEmpty", testGetVariantAliasesEmptyEntriesThrowsWhenContentTypeUidEmpty),
-        ("testGetDataCsvariantsAttributeEmptyEntriesArray", testGetDataCsvariantsAttributeEmptyEntriesArray),
+        ("testGetVariantMetadataTagsEmptyEntriesArray", testGetVariantMetadataTagsEmptyEntriesArray),
         ("testGetVariantAliasesEntryWithoutPublishDetails", testGetVariantAliasesEntryWithoutPublishDetails),
         ("testGetVariantAliasesEntryWithEmptyVariantsMap", testGetVariantAliasesEntryWithEmptyVariantsMap),
         ("testGetVariantAliasesSkipsInvalidVariantValues", testGetVariantAliasesSkipsInvalidVariantValues),
         ("testGetVariantAliasesThrowsWhenUidIsEmptyString", testGetVariantAliasesThrowsWhenUidIsEmptyString),
-        ("testGetDataCsvariantsAttributeThrowsWhenContentTypeUidEmptyWithEntry", testGetDataCsvariantsAttributeThrowsWhenContentTypeUidEmptyWithEntry),
-        ("testGetDataCsvariantsAttributeEntriesThrowsWhenContentTypeUidWhitespaceOnly", testGetDataCsvariantsAttributeEntriesThrowsWhenContentTypeUidWhitespaceOnly),
+        ("testGetVariantMetadataTagsThrowsWhenContentTypeUidEmptyWithEntry", testGetVariantMetadataTagsThrowsWhenContentTypeUidEmptyWithEntry),
+        ("testGetVariantMetadataTagsEntriesThrowsWhenContentTypeUidWhitespaceOnly", testGetVariantMetadataTagsEntriesThrowsWhenContentTypeUidWhitespaceOnly),
     ]
     #endif
 }
