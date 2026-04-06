@@ -1,10 +1,21 @@
-# Agent skills (Contentstack Utils Swift)
+# Skills – Contentstack Utils Swift
 
-Skills are reusable instruction sets for AI agents. Each skill is a folder containing `SKILL.md` with YAML frontmatter (`name`, `description`).
+This directory contains **skills**: reusable guidance for AI agents (and developers) on specific tasks. Each skill is a folder with a `SKILL.md` file (YAML frontmatter: `name`, `description`).
 
-| Skill folder | When to use it |
-|--------------|----------------|
-| `contentstack-utils-api` | Changing or documenting public API, `ContentstackUtils` / `Option` / RTE JSON types, GQL JSON entry points, errors, semver impact. |
-| `contentstack-utils-testing` | Adding or fixing XCTest tests, mocks, JSON fixtures, `swift test` / Xcode test workflow. |
-| `contentstack-utils-code-review` | Structured PR review with severity (blocker/major/minor) aligned with this SDK. |
-| `contentstack-utils-platform` | libxml2, Kanna vendoring, SPM targets, deployment platforms, `Modules/`, Linux vs Apple differences. |
+## When to use which skill
+
+| Skill | Use when |
+|-------|----------|
+| **contentstack-utils** | Implementing or changing Utils features: `ContentstackUtils`, `Option` / `Renderable`, RTE/JSON models, GQL helpers, variant APIs, errors, documentation and semver. |
+| **testing** | Writing or refactoring tests: XCTest, `swift test`, Xcode scheme, mocks, fixtures, SwiftLint/Slather, offline fixtures. |
+| **code-review** | Reviewing a PR or preparing your own: API design, errors, backward compatibility, dependencies/security, test coverage, severity (blocker/major/minor). |
+| **framework** | Touching SPM layout, `libxml2` / `Modules/`, vendored Kanna, deployment targets, or `ContentstackUtils.podspec` / CI `xcodebuild` assumptions. |
+
+## How agents should use skills
+
+- **contentstack-utils:** Apply when editing `Sources/ContentstackUtils/` or documenting public behavior. Do not add hard dependencies on the main Contentstack iOS SDK or Apollo unless product requires it and `Package.swift` is updated deliberately.
+- **testing:** Apply when creating or modifying files under `Tests/ContentstackUtilsTests/`. Follow existing mocks and fixtures; keep tests credential-free.
+- **code-review:** Apply when performing or simulating a PR review. Work through `.cursor/rules/code-review.mdc` and optionally tag findings by severity.
+- **framework:** Apply when changing `Package.swift`, `Modules/`, `Sources/Kanna/`, or podspec—keep Apple vs Linux libxml behavior and CI destinations in mind.
+
+Each skill’s `SKILL.md` contains more detailed instructions and references.

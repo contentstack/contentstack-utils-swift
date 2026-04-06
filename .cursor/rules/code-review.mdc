@@ -1,14 +1,40 @@
 ---
-description: PR review checklist for Contentstack Utils Swift—API, docs, errors, compatibility, security, tests.
+description: PR and code review checklist – API stability, docs, errors, compatibility, security, tests
 alwaysApply: true
 ---
 
-# Code review checklist (this repo)
+# Code Review Checklist – Contentstack Utils Swift
 
-- **Public API stability:** Any change to `public`/`open` types in `Sources/ContentstackUtils/` (e.g. `ContentstackUtils`, `Option`, `Node`, GQL helpers, variant APIs) must be semver-conscious; call out breaking renames or signature changes.
-- **Documentation:** User-visible behavior belongs in `README.md` and `CHANGELOG.md`; podspec summary/version when releasing. Examples should match actual method names (`jsonToHtml` overloads, `GQL.jsonToHtml`).
-- **Error handling:** New `throws` paths should use clear error types; avoid silent failures on bad RTE JSON or variant input when callers need to debug.
-- **Backward compatibility:** Support existing Contentstack JSON RTE and GraphQL result shapes; prefer additive fields and default `Option()` behavior.
-- **Dependencies and security:** `Package.swift` / `ContentstackUtils.podspec` dependency changes need justification; CI may run SCA/policy scans—address reported issues per org process.
-- **Tests:** Add or update tests under `Tests/ContentstackUtilsTests/` for bug fixes and features; run `swift test` and/or `xcodebuild` as in CI.
-- **Vendored code:** Changes under `Sources/Kanna/` or `Modules/` need extra scrutiny (upstream parity, licensing, platform builds).
+Use this checklist when reviewing pull requests or before opening a PR.
+
+## API design and stability
+
+- [ ] **Public API:** New or changed `public` / `open` types in `Sources/ContentstackUtils/` are necessary, semver-conscious, and documented (`README.md` / `CHANGELOG.md` when user-visible).
+- [ ] **Backward compatibility:** No breaking changes to public API unless explicitly called out and justified (e.g. major version). Prefer additive behavior and default `Option()` paths.
+- [ ] **Naming:** Method and type names match existing Utils style and Contentstack RTE terminology (`ContentstackUtils`, `Option`, `Node`, `GQL`, etc.).
+
+## Error handling and robustness
+
+- [ ] **Errors:** New `throws` paths use clear domain types (e.g. `VariantUtilityError`); callers can distinguish invalid input from parsing failures where relevant.
+- [ ] **Optionals:** Avoid force-unwraps on public code paths; document preconditions for non-optional parameters.
+- [ ] **RTE JSON:** Decoding and HTML traversal stay tolerant of documented stack payload shapes; regressions in embedded-item handling are called out.
+
+## Dependencies and security
+
+- [ ] **Dependencies:** Changes to `Package.swift` or `ContentstackUtils.podspec` are justified; version bumps do not introduce known vulnerabilities.
+- [ ] **SCA:** Address any security findings (e.g. from Snyk or org scanners) in the PR scope or via an agreed follow-up.
+
+## Testing
+
+- [ ] **Coverage:** New or modified behavior in `Sources/ContentstackUtils/` is covered by tests under `Tests/ContentstackUtilsTests/` when feasible.
+- [ ] **Test quality:** Tests are readable, deterministic, and follow project naming (`*Tests.swift`, mocks, fixtures).
+
+## Vendored and native code
+
+- [ ] **Kanna / libxml2 / `Modules/`:** Changes are reviewed for upstream parity, licensing, and cross-platform builds (Apple vs Linux).
+
+## Severity (optional)
+
+- **Blocker:** Must fix before merge (e.g. breaking public API without approval, security issue, no tests for new code where tests are practical).
+- **Major:** Should fix (e.g. inconsistent error handling, README examples that do not compile).
+- **Minor:** Nice to fix (e.g. style, minor docs).

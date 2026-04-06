@@ -1,0 +1,28 @@
+---
+description: XCTest patterns for ContentstackUtilsTests—naming, mocks, fixtures, Slather, SwiftLint exclusions.
+globs: "Tests/**/*.swift"
+---
+
+# Testing Rules – Contentstack Utils Swift
+
+Apply when writing or editing tests. The project uses **XCTest** and **SwiftLint** (see `.swiftlint.yml`); coverage is reported with **Slather** (see `.slather.yml`).
+
+## Test naming and layout
+
+- **Target:** `ContentstackUtilsTests`; path **`Tests/ContentstackUtilsTests/`**.
+- **File names:** `*Tests.swift`, `*Test.swift`, or feature-oriented names (`GQLJsonToHtml.swift`, `JsonNodes.swift`, `VariantUtilityTests.swift`).
+- **Fixtures and mocks:** Reuse `JsonNodes.swift`, `JsonNodesHtmlResults.swift`, `EmbededModelMock.swift`, `CustomRenderOptionMock.swift`, `TestClient.swift`, etc., before adding parallel helpers.
+
+## XCTest usage
+
+- Run tests via **`swift test`** (SPM) and/or Xcode scheme **`ContentstackUtils-Package`** (`ContentstackUtils.xcodeproj`), matching CI (`.github/workflows/ci.yml`).
+- This repo does **not** split integration tests into a separate tree; use mocks for API-shaped payloads—**no live network** or credentials in CI.
+
+## SwiftLint and coverage
+
+- **`Tests/ContentstackUtilsTests/Constants.swift`** is excluded from SwiftLint; other test files are linted.
+- **Slather** ignores `Tests/*` in reports; new production code under `Sources/ContentstackUtils/` should still gain tests when practical.
+
+## Linux / discovery
+
+- Maintain **`XCTestManifests.swift`** if your workflow requires explicit Linux test discovery.
