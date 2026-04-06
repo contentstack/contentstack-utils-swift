@@ -1,6 +1,6 @@
 ---
 name: testing
-description: Use when writing or refactoring tests—XCTest, swift test, Xcode scheme, mocks, fixtures, Slather/SwiftLint.
+description: XCTest—layout, mocks, fixtures, SwiftLint/Slather, offline tests, Linux manifests.
 ---
 
 # Testing – Contentstack Utils Swift
@@ -8,17 +8,33 @@ description: Use when writing or refactoring tests—XCTest, swift test, Xcode s
 ## When to use
 
 - Adding or changing tests under `Tests/ContentstackUtilsTests/`.
-- Debugging flaky or slow tests; improving fixtures or mocks.
+- Debugging flaky tests; improving fixtures or mocks.
 
-## Instructions
+## Runner and tooling
 
-- **Run:** `swift test` from repo root; use Xcode scheme **`ContentstackUtils-Package`** and `ContentstackUtils.xcodeproj` to mirror `.github/workflows/ci.yml`.
-- **Layout:** Files such as `*Tests.swift`, `*Test.swift`, or feature files (`GQLJsonToHtml.swift`, `DefaultRenderTests.swift`). Reuse `CustomRenderOptionMock.swift`, `EmbededModelMock.swift`, `TestClient.swift`, `JsonNodes.swift`, `JsonNodesHtmlResults.swift`.
-- **Lint:** `.swiftlint.yml` excludes only `Tests/ContentstackUtilsTests/Constants.swift` from SwiftLint.
-- **Coverage:** Slather ignores `Tests/*` in reports; still add tests for new production behavior in `Sources/ContentstackUtils/` when practical.
-- **Secrets:** Tests stay **offline**—no API keys or `.env` in CI.
+- **XCTest** via **`swift test`** (SPM) and/or Xcode scheme **`ContentstackUtils-Package`** (`ContentstackUtils.xcodeproj`), matching `.github/workflows/ci.yml`.
+- **SwiftLint:** `.swiftlint.yml`; **`Tests/ContentstackUtilsTests/Constants.swift`** is excluded—other test files are linted.
+- **Slather:** `.slather.yml` ignores `Tests/*` in coverage reports; still add tests for new production code in `Sources/ContentstackUtils/` when practical.
+
+## Test naming and layout
+
+- **Target:** `ContentstackUtilsTests`; path **`Tests/ContentstackUtilsTests/`**.
+- **File names:** `*Tests.swift`, `*Test.swift`, or feature-oriented names (`GQLJsonToHtml.swift`, `JsonNodes.swift`, `VariantUtilityTests.swift`).
+- **Fixtures and mocks:** Prefer `JsonNodes.swift`, `JsonNodesHtmlResults.swift`, `EmbededModelMock.swift`, `CustomRenderOptionMock.swift`, `TestClient.swift`, etc., before adding parallel helpers.
+
+## Integration vs unit
+
+- No separate integration tree: tests live in **`ContentstackUtilsTests`** with mocks for API-shaped payloads—**no live network** or credentials in CI.
+
+## Linux / discovery
+
+- Maintain **`XCTestManifests.swift`** if your workflow requires explicit Linux test discovery.
+
+## Secrets
+
+- Tests are **offline**; do not commit API keys or real tokens.
 
 ## References
 
-- Project rule: `.cursor/rules/testing.mdc`
-- Workflow: `.cursor/rules/dev-workflow.md`
+- `skills/dev-workflow/SKILL.md`
+- `skills/code-review/SKILL.md`

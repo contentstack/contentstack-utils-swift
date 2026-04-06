@@ -1,36 +1,39 @@
 ---
 name: framework
-description: Use when changing SPM, libxml2 Modules, vendored Kanna, deployment targets, CocoaPods, or CI xcodebuild setup.
+description: SPM targets, libxml2 Modules, vendored Kanna, deployment targets, CocoaPods podspec, CI xcodebuild.
 ---
 
-# Framework – Contentstack Utils Swift
+# Framework / build – Contentstack Utils Swift
 
 ## When to use
 
 - Editing `Package.swift`, `Modules/`, or `Sources/Kanna/`.
-- Changing iOS/macOS/tvOS/watchOS deployment targets or conditional libxml linking.
-- Updating `ContentstackUtils.podspec` or CI Xcode destination/scheme assumptions.
+- Changing deployment targets or conditional libxml linking.
+- Updating `ContentstackUtils.podspec` or CI assumptions (scheme, destination).
 
-## Instructions
+## Swift Package Manager
 
-### Swift Package Manager
+- **Product:** `ContentstackUtils`.
+- **Targets:** `ContentstackUtils` (sources under `Sources/`), `ContentstackUtilsTests`, system library **`libxml2`** → **`Modules/`**.
+- **Apple vs Linux:** Conditional `libxml2` dependency and `pkg-config` as in `Package.swift`—preserve behavior when refactoring.
 
-- **Product:** `ContentstackUtils`; **targets:** `ContentstackUtils`, `ContentstackUtilsTests`, system **`libxml2`** → **`Modules/`**.
-- **Platforms:** Apple vs Linux: conditional `libxml2` dependency and `pkg-config` as in `Package.swift`—preserve behavior when refactoring.
+## Vendored Kanna
 
-### Vendored Kanna
+- **`Sources/Kanna/`** is excluded from SwiftLint. Updates = intentional vendoring (license, diff, cross-platform build).
 
-- **`Sources/Kanna/`** is excluded from SwiftLint; treat updates as intentional vendoring work (licensing, diffs, cross-platform build).
+## CocoaPods
 
-### CocoaPods
+- **`ContentstackUtils.podspec`:** e.g. `source_files` `Sources/**/*.{swift}`, `HEADER_SEARCH_PATHS` / `-lxml2` for libxml. Keep aligned with SPM layout and tagged releases.
 
-- **`ContentstackUtils.podspec`:** `source_files` `Sources/**/*.{swift}`, header search and `-lxml2` for libxml—keep in sync with SPM layout.
+## Platforms
 
-### CI
+- Declared in `Package.swift` / podspec (e.g. macOS 10.13+, iOS/tvOS 11+, watchOS 4+). See also **`skills/swift-style/SKILL.md`** for API availability and naming.
 
-- GitHub Actions uses **xcodebuild** with `ContentstackUtils-Package`; validate low-level changes with both `swift test` and Xcode builds when touching parsing or linking.
+## CI
+
+- **GitHub Actions** uses **xcodebuild** with scheme **`ContentstackUtils-Package`**. After changing parsing or linking, validate with both **`swift test`** and Xcode builds.
 
 ## References
 
-- Project rule: `.cursor/rules/swift-style.mdc`
-- Workflow: `.cursor/rules/dev-workflow.md`
+- `skills/swift-style/SKILL.md`
+- `skills/dev-workflow/SKILL.md`
