@@ -52,7 +52,7 @@ Add the following to your Podfile:
     let package = Package(
         name: "YourProject",
         dependencies: [
-            .package(url: "https://github.com/tid-kijyun/ContentstackUtils.git", from: "1.3.1"),
+            .package(url: "https://github.com/tid-kijyun/ContentstackUtils.git", from: "1.5.0"),
         ],
         targets: [
             .target(
@@ -267,4 +267,8 @@ graphQLClient.fetch (query: ProductsQuery(), cachePolicy: CachePolicy.fetchIgnor
     }
 }
 ```
+
+### Variant metadata (`data-csvariants`)
+
+To build the JSON string for the `data-csvariants` HTML attribute from Delivery API entry JSON, use **`ContentstackUtils.getVariantMetadataTags`**. See [Docs/variant-metadata-api.md](Docs/variant-metadata-api.md) for parameters, return values, and migration from the deprecated `getDataCsvariantsAttribute` APIs.
 
