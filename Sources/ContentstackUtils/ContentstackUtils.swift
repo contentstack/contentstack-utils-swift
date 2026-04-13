@@ -115,22 +115,32 @@ public struct ContentstackUtils {
         }
     }
 
-    public static func getDataCsvariantsAttribute(entry: [String: Any]?, contentTypeUid: String) throws -> [String: Any]{
+    /// Builds the `data-csvariants` HTML attribute payload from one entry (or `nil` → empty JSON array string).
+    public static func getVariantMetadataTags(entry: [String: Any]?, contentTypeUid: String) throws -> [String: Any] {
         guard let e = entry else {
             return ["data-csvariants": "[]"]
         }
-        
         let payload = try getVariantAliases(entry: e, contentTypeUid: contentTypeUid)
         let s = try jsonString(for: [payload])
         return ["data-csvariants": s]
-
     }
 
-    public static func getDataCsvariantsAttribute(entries: [[String: Any]], contentTypeUid: String) throws -> [String: Any]{
+    /// Builds the `data-csvariants` HTML attribute payload for multiple entries (empty input → `"[]"`).
+    public static func getVariantMetadataTags(entries: [[String: Any]], contentTypeUid: String) throws -> [String: Any] {
         try validateContentTypeUid(contentTypeUid)
         let payloads = try getVariantAliases(entries: entries, contentTypeUid: contentTypeUid)
         let s = try jsonString(for: payloads)
         return ["data-csvariants": s]
+    }
+
+    @available(*, deprecated, message: "Use getVariantMetadataTags(entry:contentTypeUid:). Will be removed in a future major release.")
+    public static func getDataCsvariantsAttribute(entry: [String: Any]?, contentTypeUid: String) throws -> [String: Any] {
+        try getVariantMetadataTags(entry: entry, contentTypeUid: contentTypeUid)
+    }
+
+    @available(*, deprecated, message: "Use getVariantMetadataTags(entries:contentTypeUid:). Will be removed in a future major release.")
+    public static func getDataCsvariantsAttribute(entries: [[String: Any]], contentTypeUid: String) throws -> [String: Any] {
+        try getVariantMetadataTags(entries: entries, contentTypeUid: contentTypeUid)
     }
 
 
