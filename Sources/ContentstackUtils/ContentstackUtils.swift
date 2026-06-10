@@ -150,6 +150,18 @@ public struct ContentstackUtils {
         }
     }
 
+    /// Proxy for `Endpoint.getContentstackEndpoint(_:_:_:)`.
+    /// Both calls produce identical results; this exists so callers already using
+    /// `ContentstackUtils.` don't need to change their import.
+    @discardableResult
+    public static func getContentstackEndpoint(
+        _ region: String = "us",
+        _ service: String = "",
+        _ omitHttps: Bool = false
+    ) throws -> Any {
+        return try Endpoint.getContentstackEndpoint(region, service, omitHttps)
+    }
+
     private static func jsonString(for array: [[String: Any]]) throws -> String{
         let data = try JSONSerialization.data(withJSONObject: array, options: [])
         guard let json = String(data: data, encoding: .utf8) else {
