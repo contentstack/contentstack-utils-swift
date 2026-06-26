@@ -78,3 +78,6 @@ TestCase
 /TestCase
 /xcov_output
 /html
+
+# Contentstack regions registry — downloaded by Scripts/download-regions.sh, never committed
+Sources/ContentstackUtils/Resources/regions.json
