@@ -8,9 +8,9 @@ All notable changes to this project will be documented in this file.
 
 - 2026-04-02: Added CocoaPods deprecation guidance for **new** projects—**SPM** is recommended for ContentstackUtils; clarified companion role vs the core Swift CDA SDK. Updated README (Important section), added root **DEPRECATION.md** (customer-facing only), added **Docs/overview.md** banner with link to `DEPRECATION.md`.
 
-## [1.6.0] - 2026-06-26
+## [1.6.0] - 2026-06-29
 
-### Added
+### Enhancement
 
 - **Region endpoint resolution** — `Endpoint.getContentstackEndpoint` resolves service endpoints dynamically from the Contentstack Regions Registry (alias-aware, case-insensitive), with `Endpoint.EndpointError` on invalid input.
 
