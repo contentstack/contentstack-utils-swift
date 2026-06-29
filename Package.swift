@@ -1,4 +1,4 @@
-// swift-tools-version:5.1
+// swift-tools-version:5.3
 // The swift-tools-version declares the minimum version of Swift required to build this package.
 
 import PackageDescription
@@ -53,11 +53,22 @@ let package = Package(
         .target(
             name: "ContentstackUtils",
             dependencies: dependencies,
-            path: "Sources"),
+            path: "Sources",
+            resources: [
+                // regions.json is downloaded by Scripts/download-regions.sh and is NOT committed.
+                // SPM bundles it when present; Endpoint falls back to HTTP download when absent.
+                .process("ContentstackUtils/Resources")
+            ]
+        ),
         .testTarget(
             name: "ContentstackUtilsTests",
-            dependencies: ["ContentstackUtils"]),
-        
+            dependencies: ["ContentstackUtils"],
+            resources: [
+                .process("EntryEmbedded.json"),
+                .process("variantsEntries.json"),
+                .process("variantsSingleEntry.json")
+            ]),
+
     ],
     swiftLanguageVersions: [.v5]
 )
